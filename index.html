@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko"><!-- main_page -->
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Anton|Cinzel+Decorative:400,700,900|Jura:300,400,500,600,700|Noto+Sans+KR:100,300,400,500,700,900|Open+Sans:300,400,600,700,800&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,korean,latin-ext,vietnamese" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Courgette&display=swap&subset=latin-ext" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<meta name="HandheldFriendly" content="true">
+	<meta name="format-detection" content="telephone=no, email=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content=" yes">
+	<meta name="robots" content="index,follow">
+	<meta http-equiv="imagetoolbar" content="no">
+	<!--<meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+
+	<title>UXKM</title>
+
+	<!-- opengraph -->
+	<meta name="title" content="https://uxkm.github.io">
+	<meta name="description" content="html, css, javascript, accessibility, ncs,  등의 강의를 목적으로 제작">
+	<meta property="og:title" content="UXKM">
+	<meta property="og:url" content="https://uxkm.github.io">
+	<meta property="og:type" content="website">
+	<meta property="og:description" content="html, css, javascript, accessibility, ncs,  등의 강의를 목적으로 제작">
+	<meta property="og:image" content="/assets/lib/img/og_image.png">
+	<meta property="og:image:width" content="1000">
+	<meta property="og:image:height" content="750">
+
+	<!-- icon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/assets/lib/img/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/assets/lib/img/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/lib/img/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/assets/lib/img/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/lib/img/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/assets/lib/img/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/lib/img/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/assets/lib/img/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/lib/img/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/assets/lib/img/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/lib/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/lib/img/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/lib/img/favicon/favicon-16x16.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/lib/img/favicon/favicon/favicon.ico">
+	<link rel="manifest" href="assets/lib/img/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/assets/lib/img/icon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- css -->
+	<link href="/assets/lib/js/codemirror/addon/scroll/simplescrollbars.css" rel="stylesheet" /><!-- 코드미러 스크롤바 -->
+	<link href="/assets/lib/js/codemirror/lib/codemirror.css" rel="stylesheet" /><!-- 코드미러 기본 -->
+
+	<link href="/assets/lib/css/ayu-mirage.css" rel="stylesheet" /><!-- 테마 -->
+	<!-- <link href="/assets/lib/js/codemirror/theme/moxer.css" rel="stylesheet" /> 테마 -->
+	<!-- <link href="/assets/lib/js/codemirror/theme/seti.css" rel="stylesheet" /> 테마 -->
+	<!-- <link href="/assets/lib/js/codemirror/theme/yonce.css" rel="stylesheet" /> 테마 -->
+
+	<!--<link href="/assets/lib/css/swiper.css" rel="stylesheet" />-->
+	<link href="/assets/lib/css/highlight.min.css" rel="stylesheet" />
+	<link href="/assets/lib/css/github-gist.css" rel="stylesheet" />
+	<!--<link href="/assets/lib/css/animate_4.1.0.css" rel="stylesheet" />-->
+	<link href="/assets/lib/css/uk.css" rel="stylesheet" />
+	<link href="/assets/lib/css/uk_sub.css" rel="stylesheet" />
+
+	<!-- js -->
+	<script type="text/javascript" src="/assets/lib/js/plugin/jquery-1.9.1.min.js"></script>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="/ukncs/js/plugin/html5.js"></script>
+	<script type="text/javascript" src="/ukncs/js/plugin/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div class="wrap">
+
+	<nav class="uk-skip">
+		<a href="#content">본문내용으로 건너띄기</a>
+	</nav>
+	<!-- //uk-skip -->
+
+	<header class="uk_header">
+		<div class="inner">
+			<h1 class="hd_logo uk_logo beta"><a href="/" class="uk_link">UXKM</a></h1>
+
+			<div class="hd_nav_area">
+				<nav class="nav">
+					<h2 class="sound_only">상단 메뉴</h2>
+				</nav>
+
+				<section class="aside">
+					<h2 class="sound_only">유틸 메뉴</h2>
+
+					<!-- 검색 -->
+					<article class="hd_search">
+						<h3 class="sound_only">검색</h3>
+						<!--<button type="button" class="ly_btn search_btn"><i>Search button</i></button>-->
+						<div class="hd_layer_box search_area">
+							<div class="inner">
+								<h4>Search Area</h4>
+								<div class="form">
+									<input type="text" placeholder="검색어를 입력해 주세요." required />
+									<button type="button" class="sch_bt search_submit"><i>검색하기</i></button>
+								</div>
+
+								<dl class="keyword_ex">
+									<dt>keyword example</dt>
+									<dd>div, p, strong, width, border-color, click, function</dd>
+								</dl>
+							</div>
+						</div>
+						<button type="button" class="search_close">검색 닫기</button>
+					</article>
+
+					<!-- 사이트맵 -->
+					<article class="hd_assetsLink">
+						<h3 class="sound_only">UI/UX Assets 전체메뉴</h3>
+						<button type="button" class="ly_btn assetsLink_btn"><i>Assets link button</i></button>
+						<div class="hd_layer_box assetsLink_area">
+							<!--<div class="ly_action_wrap">-->
+								<div class="assetsLink_in inner">
+									<h4>UI/UX <i>A</i>ssets Link</h4>
+								</div>
+							<!--</div>-->
+						</div>
+					</article>
+				</section>
+			</div>
+		</div>
+	</header>
+	<!-- //uk-header -->
+
+	<section class="uk_container"></section>
+	<!-- //uk-main -->
+
+	<footer class="uk_footer">
+		<nav class="nav inner">
+			<div class="depth1"></div>
+			<div class="depth2"></div>
+		</nav>
+		<div class="btm">
+			<h1 class="uk_logo"><a href="/" class="uk_link">uxkm</a></h1>
+			<p class="copy">&copy; 2019 All Right Reserved. By UXKM.</p>
+		</div>
+	</footer>
+	<!-- //uk-footer -->
+
+
+	<div class="zoom_wrap"></div><!-- 사용한다면 uk_container/uk_footer를 감쌀것-->
+
+</div><!-- //wrap -->
+
+
+<!--<div class="loading"><i>페이지 로딩 중</i></div>-->
+<div class="loading uxkm_start">
+	<div class="loading_wrap">
+		<div class="loading_rorate bg1"></div>
+		<div class="loading_rorate bg2"></div>
+		<div class="loading_txt">
+			<p class="tit">UXKM</p>
+			<p class="dot">loading...</p>
+		</div>
+	</div>
+</div>
+
+
+<!-- js ------------------------------------ -->
+<!-- plugin -->
+<script type="text/javascript" src="/assets/lib/js/plugin/jquery.easing.1.3.min.js"></script>
+<script type="text/javascript" src="/assets/lib/js/plugin/ukDetect-1.0.0.js"></script>
+<script type="text/javascript" src="/assets/lib/js/plugin/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="/assets/lib/js/plugin/iscroll.js"></script>
+<script type="text/javascript" src="/assets/lib/js/plugin/highlight.min.js"></script>
+<!--<script type="text/javascript" src="/assets/lib/js/plugin/jquery.touchFlow.js"></script>-->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>-->
+
+<!-- codemirror -->
+<!--<script src="/assets/lib/js/codemirror/lib/codemirror.5.59.4.js"></script>&lt;!&ndash; 기본 &ndash;&gt;-->
+<script src="/assets/lib/js/codemirror/lib/codemirror.js"></script><!-- 기본 -->
+<script src="/assets/lib/js/codemirror/addon/selection/active-line.js"></script><!-- 줄 강조 -->
+<!--<script src="/assets/lib/js/codemirror/addon/search/match-highlighter.js"></script> 같은 단어 강조 -->
+<script src="/assets/lib/js/codemirror/mode/css/css.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/sass/sass.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/htmlmixed/htmlmixed.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/htmlembedded/htmlembedded.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/javascript/javascript.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/php/php.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/xml/xml.js"></script><!-- 모드 -->
+
+<script src="/assets/lib/js/codemirror/addon/scroll/simplescrollbars.js"></script><!-- 스크롤바 -->
+<script src="/assets/lib/js/codemirror/codemirror.js"></script>
+
+<!-- uk.js -->
+<script type="text/javascript" src="/assets/lib/js/menu.js"></script>
+<script type="text/javascript" src="/assets/lib/js/uk.js"></script>
+</body>
+</html>

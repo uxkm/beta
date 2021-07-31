@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko" class="sub_page" style="background:#fff;"><!-- main_page -->
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Anton|Cinzel+Decorative:400,700,900|Jura:300,400,500,600,700|Noto+Sans+KR:100,300,400,500,700,900|Open+Sans:300,400,600,700,800&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,korean,latin-ext,vietnamese" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"><meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<meta name="HandheldFriendly" content="true">
+	<meta name="format-detection" content="telephone=no, email=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content=" yes">
+	<meta name="robots" content="index,follow">
+	<meta http-equiv="imagetoolbar" content="no">
+	<!--<meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+
+	<title>UXKM</title>
+
+	<!-- opengraph -->
+	<meta name="title" content="https://uxkm.github.io">
+	<meta name="description" content="html, css, javascript, accessibility, ncs,  등의 강의를 목적으로 제작">
+	<meta property="og:title" content="UXKM">
+	<meta property="og:url" content="https://uxkm.github.io">
+	<meta property="og:type" content="website">
+	<meta property="og:description" content="html, css, javascript, accessibility, ncs,  등의 강의를 목적으로 제작">
+	<meta property="og:image" content="/assets/lib/img/og_image.png">
+	<meta property="og:image:width" content="1000">
+	<meta property="og:image:height" content="750">
+
+	<!-- icon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/assets/lib/img/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/assets/lib/img/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/lib/img/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/assets/lib/img/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/lib/img/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/assets/lib/img/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/lib/img/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/assets/lib/img/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/lib/img/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/assets/lib/img/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/lib/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/lib/img/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/lib/img/favicon/favicon-16x16.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/lib/img/favicon/favicon/favicon.ico">
+	<link rel="manifest" href="assets/lib/img/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/assets/lib/img/icon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- css -->
+	<link href="/assets/lib/js/codemirror/addon/scroll/simplescrollbars.css" rel="stylesheet" /><!-- 코드미러 스크롤바 -->
+	<link href="/assets/lib/js/codemirror/lib/codemirror.css" rel="stylesheet" /><!-- 코드미러 기본 -->
+	<!--<link href="/assets/lib/css/swiper.css" rel="stylesheet" />-->
+	<link href="/assets/lib/css/uk.css" rel="stylesheet" />
+
+	<!-- js -->
+	<script type="text/javascript" src="/assets/lib/js/plugin/jquery-1.9.1.min.js"></script>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="/ukncs/js/plugin/html5.js"></script>
+	<script type="text/javascript" src="/ukncs/js/plugin/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div class="wrap">
+	<div class="content_area inner" style="padding-bottom:50px;">
+
+		<p>
+			[상하 간격]<br>
+			.mt_xxl { margin-top 50px }<br>
+			.mt_l { margin-top 30px }<br>
+			.mt_m { margin-top 20px }<br>
+			.mt_s { margin-top 10px }<br>
+			.mt_sm { margin-top 5px }<br>
+
+			[들여쓰기]<br>
+			.indent {margin-left:25px;} (모바일에서 8px)
+		</p>
+
+		<blockquote class="uk_note mt_l" role="note">
+			<h2 class="sound_only">요약 설명</h2>
+			<p>HTML은 Tim Berners-Lee, Robert Cailliau 및 1989 년 부터 시작된 사람들에 의해 처음 만들어졌습니다.</p>
+			<p>HTML 은 프로그래밍 언어가 아닙니다. 콘텐츠의 구조를 정의하는 마크업 언어입니다.</p>
+			<p>HTML은 콘텐츠의 서로 다른 부분들을 씌우거나(wrap) 감싸서(enclose) 다른 형식으로 보이게하거나 특정한 방식으로 동작하도록 하는 일련의 요소(elements)로 이루어져 있습니다.</p>
+			<p>tags로 감싸는 것으로 단어나 이미지를 다른 어딘가로 하이퍼링크(hyperlink)하거나 단어들을 이탤릭체로 표시하고 글씨체를 크게 또는 작게 만드는 등의 일을 할 수 있습니다.</p>
+			<p>마크 업 언어는 컴퓨터가 텍스트를 처리하고 표시되는 방법을 제어하기 위해 서로 말을하는 방법입니다. 이를 위해 HTML은 tags와 attributes 라는 두 가지를 사용 합니다.</p>
+		</blockquote>
+		<!-- uk_note -->
+
+		<div class="ol_lst mt_l">
+			<h3 class="sound_only">설명</h3>
+			<ol>
+				<li>HTML은 HyperText Markup Language의 약자입니다.</li>
+				<li>웹 페이지는 HTML 문서라고도 불리며, HTML 태그들로 구성됩니다.</li>
+				<li>HTML(Hypertext Markup Language)은 웹페이지를 만들기 위한 표준 마크업 언어입니다.</li>
+				<li>각각의 HTML 태그는 웹 페이지의 디자인이나 기능을 결정하는데 사용됩니다.</li>
+				<li>HTML은 HyperText Markup Language의 약자입니다.</li>
+				<li>웹 페이지는 HTML 문서라고도 불리며, HTML 태그들로 구성됩니다.</li>
+				<li>HTML(Hypertext Markup Language)은 웹페이지를 만들기 위한 표준 마크업 언어입니다.</li>
+				<li>각각의 HTML 태그는 웹 페이지의 디자인이나 기능을 결정하는데 사용됩니다.</li>
+				<li>HTML은 HyperText Markup Language의 약자입니다.</li>
+				<li>웹 페이지는 HTML 문서라고도 불리며, HTML 태그들로 구성됩니다.</li>
+				<li>HTML(Hypertext Markup Language)은 웹페이지를 만들기 위한 표준 마크업 언어입니다.</li>
+				<li>각각의 HTML 태그는 웹 페이지의 디자인이나 기능을 결정하는데 사용됩니다.</li>
+			</ol>
+		</div>
+		<!-- ol_lst -->
+
+		<div class="txt_ex mt_l">
+			<h3>1. HTML5 doctype</h3>
+			<p>현재 문서가 HTML5 문서임을 명시합니다. doctype은 문서의 최상위에 위치해야 하며, doctype의 선언방식은 다음과 같습니다.</p>
+		</div>
+		<!-- txt_ex -->
+
+		<dl class="line_code mt_l">
+			<h4>1. HTML5 doctype</h4>
+			<p>&lt;!DOCTYPE html&gt;</p>
+		</dl>
+		<!-- line_code -->
+
+		<aside class="browser_support mt_l" data-tit="class">
+			<ul>
+				<li class="ie false">지원안함</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">지원</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</aside>
+		<!-- browser_support -->
+
+		<section class="view_editor ex_code mt_l" data-target="html/01-htmlStart/1.1.html_basic.html">
+			<h3 class="ve_tit">코드 설명용 에디터</h3>
+			<div class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+				<div class="code_wrap"><textarea></textarea></div>
+			</div>
+		</section>
+		<!-- 코드 설명용 에디터 -->
+
+		<section class="view_editor edit_code mt_l" data-target="html/01-htmlStart/1.1.html_basic.html">
+			<h3 class="ve_tit">코드 편집용 에디터</h3>
+			<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+				<div class="code_wrap"><textarea></textarea></div>
+			</div>
+		</section>
+		<!-- 코드 편집용 에디터 -->
+
+		<span class="reference mt_l"><a href="참조링크" target="_blank" title="새창열림">참조링크</a></span>
+		<!-- 참조 링크 -->
+
+		<article class="reference_box mt_l">
+			<h2 class="tit">참조</h2>
+			<ul class="link_lst">
+				<li class="reference"><a href="00000000000000" target="_blank" class="fas" title="새창열림">W3C 문서</a></li>
+				<li class="reference"><a href="00000000000000" target="_blank" class="fas" title="새창열림">MDN 문서</a></li>
+				<li class="reference"><a href="00000000000000" target="_blank" class="fas" title="새창열림">W3C 전역속성</a></li>
+			</ul>
+		</article>
+		<!-- 참조 링크 박스 -->
+
+		<figure class="img_figure mt_l">
+			<img src="/ukncs/images/html/uxkm_html_tag_structure.svg" alt="html 요소 설명">
+			<figcaption>[HTML 요소의 부분 설명]</figcaption>
+		</figure>
+		<!-- 이미지 박스 -->
+
+		<div class="line_code_box mt_ms">
+			<code>
+				<span class="t_777">.box {</span>
+				<span class="el_block indent">
+						transition-property: transform, color, border;<br>
+						transition-duration: .5s;<br>
+						transition-timing-function: ease;<br>
+						transition-delay: .2s;
+					</span>
+				<span class="t_777">}</span>
+			</code>
+		</div>
+		<!-- 간단 코드 박스 -->
+
+		<div class="line_code_box line_code_number">
+			<ul>
+				<li>div {</li>
+				<li class="indent">transition-property: opacity, left;</li>
+				<li class="indent">transition-duration: 3s, 5s, 2s, 1s;</li>
+				<li class="indent">p {</li>
+				<li class="indent_max">000</li>
+				<li class="indent">}</li>
+				<li>}</li>
+				<li>/* 위를 아래와 같이 해석합니다. */</li>
+				<li>div {</li>
+				<li class="indent">transition-property: opacity, left;</li>
+				<li class="indent">transition-duration: 3s, 5s;</li>
+				<li>}</li>
+				<li>&lt;!--  --&gt;</li>
+			</ul>
+		</div>
+		<!-- 간단 코드 박스(라인 넘버) -->
+
+		<!-- 실제 gist 코드 임베디드 적용 -->
+		<div class="gist_code" data-url="https://gist.github.com/uxkm/7eb8c1860f230c5628c3742bfb33494f.js">
+			<div class="gist_code_wrap"></div>
+		</div>
+
+		<!-- uk gist code -->
+		<!-- 설명줄이 필요할 때 문장 앞에 '//ex_line' 추가 (한줄만 가능) -->
+		<div class="uk_gist_code_box mt_ms" data-tit="타이틀명">
+			<textarea readonly="readonly">
+				<div draggable="true">
+					The element to drag.
+				</div>
+			</textarea>
+		</div>
+		<div class="uk_gist_code_box full_code_layer" data-filename="gulpfile.js" data-tit="app.js">
+					<textarea>
+						// plug-in 연결
+						const gulp = require("gulp");                   // gulp 연결
+						const Fiber = require('fibers');                // dart sass 이용시 gulp-sass와 세트 플러그인
+						const dartSass = require('dart-sass');          // dart-sass 연결(기본)
+						const scss = require('gulp-sass');              // gulp-sass 연결(기본)
+						const sourcemaps = require('gulp-sourcemaps');  // css.map 파일 생성용
+						var nodemon = require('gulp-nodemon');          // 파일 변경이 감지될 때 자동으로 재시작
+
+
+						// 소스 파일 경로
+						const src = './src';
+						const dist = './dist';
+						const assets = '/assets';
+						// 작업폴더 경로 ('src'에서 작업한 것을)
+						const PATH = {
+							HTML: src + '/html',
+							ASSETS: {
+								CSS: src + assets + '/css',
+								FONTS: src + assets + '/fonts',
+								IMAGES: src + assets + '/images',
+								JS: src + assets + '/js',
+							}
+						}
+						// 산출물 경로 ('dist'에 생성한다.)
+						const DEST_PATH = {
+							HTML: dist,
+							ASSETS: {
+								CSS: dist + assets +'/css',
+								FONTS: dist + assets +'/fonts',
+								IMAGES: dist + assets +'/images',
+								JS: dist + assets +'/js',
+							}
+						};
+
+						//scss 컴파일
+						gulp.task('scss:compile', () => {
+							return new Promise(resolve => {
+								const options = {
+									//scss 옵션 정의
+									scss : {
+										outputStyle: "expanded",  // 컴파일 스타일: nested(default), expanded, compact, compressed
+										indentType: "space",      // 들여쓰기 스타일: space(default), tab
+										indentWidth: 2,           // 들여쓰기 칸 수 (Default : 2)
+										precision: 8,             // 컴파일 된 CSS 의 소수점 자리수 (Type : Integer , Default : 5)
+										sourceComments: true,     // 코멘트 제거 여부 (Default : false)
+										compiler: dartSass,       // 컴파일 도구
+										fiber: Fiber,             // 컴파일 오버해드 방지
+									},
+								};
+								gulp
+									.src( PATH.ASSETS.CSS + '/*.scss' )                      // 컴파일 대상 scss파일 찾기
+									.pipe( sourcemaps.init() )                               // 소스맵 작성
+									.pipe( scss(options.scss).on('error', scss.logError) )   // scss 옵션 적용, scss 작성시 watch가 멈추지 않도록 logError 설정
+									.pipe( sourcemaps.write('') )                            // 위에서 생성한 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) );                // 컴파일 후 css파일이 생성될 목성지 설정
+								resolve();
+							});
+						});
+
+						// html 빌드
+						gulp.task('html', () => {
+							return new Promise(resolve => {
+								gulp.src(PATH.HTML + '/*.html')
+								.pipe(gulp.dest(DEST_PATH.HTML));
+								resolve();
+							});
+						});
+
+						//app.js 파일을 참조하여 express 서버 구동
+						gulp.task('nodemon:start', () => {
+							return new Promise(resolve => {
+								nodemon({
+									script: 'app.js',
+									watch: 'app'
+								});
+								resolve();
+							});
+						});
+
+						//실행
+						gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start']));
+					</textarea>
+		</div>
+		<!-- 오류가 있을 시 data-ex 사용하여 별도 script 작업 -->
+		<div class="uk_gist_code_box indent mt_s" data-tit="sub element" data-ex="sub">
+				<textarea readonly="readonly">
+					.sub {
+						vertical-align: sub;
+						font-size: smaller;
+					}
+				</textarea>
+		</div>
+	</div>
+</div><!-- //wrap -->
+
+<!-- plugin -->
+<script type="text/javascript" src="/assets/lib/js/plugin/jquery.easing.1.3.min.js"></script>
+<script type="text/javascript" src="/assets/lib/js/plugin/ukDetect-1.0.0.js"></script>
+<script type="text/javascript" src="/assets/lib/js/plugin/masonry.pkgd.min.js"></script>
+<!--<script type="text/javascript" src="/assets/lib/js/plugin/jquery.touchFlow.js"></script>-->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>-->
+
+<!-- codemirror -->
+<script src="/assets/lib/js/codemirror/lib/codemirror.js"></script><!-- 기본 -->
+<script src="/assets/lib/js/codemirror/addon/selection/active-line.js"></script><!-- 줄 강조 -->
+<script src="/assets/lib/js/codemirror/addon/search/match-highlighter.js"></script><!-- 같은 단어 강조 -->
+<script src="/assets/lib/js/codemirror/mode/css/css.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/sass/sass.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/htmlmixed/htmlmixed.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/htmlembedded/htmlembedded.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/javascript/javascript.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/php/php.js"></script><!-- 모드 -->
+<script src="/assets/lib/js/codemirror/mode/xml/xml.js"></script><!-- 모드 -->
+<link href="/assets/lib/js/codemirror/theme/moxer.css" rel="stylesheet" /><!-- 테마 -->
+<script src="/assets/lib/js/codemirror/addon/scroll/simplescrollbars.js"></script><!-- 스크롤바 -->
+
+<!-- uk.js -->
+<script type="text/javascript" src="/assets/lib/js/menu.js"></script>
+<script type="text/javascript" src="/assets/lib/js/uk.js"></script>
+<script src="/assets/lib/js/codemirror/codemirror.js"></script>
+<script>
+	$(function(){
+		var uk_editor = $('.uk_editor');
+		uk_editor.each(function(i, e){
+			var target = $(e).parent().attr('data-target');
+			var txtarea = $(e).find('textarea');
+			if( target.match('html') ){
+				$.get('/ukncs/tutorials/'+target, function(content){
+					txtarea.text(content);
+				});
+			}
+		});
+	});
+
+	setTimeout(uk_editor, 500);
+</script>
+</body>
+</html>

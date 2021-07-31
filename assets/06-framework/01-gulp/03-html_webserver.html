@@ -1,0 +1,423 @@
+
+
+	<header>
+		<h1></h1><!-- HTML과 웹서버 -->
+		<time class="last_update" datetime="2021-04-16">2021-04-16</time>
+	</header>
+
+	<blockquote class="uk_note mt_xxl" role="note">
+		<h2 class="sound_only">요약 설명</h2>
+		<p>
+			이 페이지에서는 Node.js의 Express 패키지를 이용해 웹서버를 띄우는 방법과,<br>
+			컴파일된 CSS를 html에 적용해서 웹서버를 이용하여 브라우저에서 확인하기 위한 작업을 진행합니다.
+		</p>
+	</blockquote>
+
+	<!-- 1.3.1. 웹서버 세팅 -->
+	<section class="indent mt_xxl">
+		<h2 class="ml_mn">1.3.1. 웹서버 세팅</h2>
+
+		<ol class="ol_lst">
+			<!-- 패키지 설치 -->
+			<li class="tit_h3 mt_xl">
+				<h3>패키지 설치</h3>
+				<p class="mt_ms">
+					명령프롬프트에서 아래의 명령어를 입력합니다.
+				</p>
+				<div class="terminal_code_box mt_ms">
+					<textarea>
+						//full code
+						npm install gulp-nodemon -D  // Node.js 기반의 어플리케이션 개발시 파일 변경이 감지될 때 자동으로 재시작하도록 도와주는 툴
+						npm install express -D       // 웹서버를 열고, 서버파일이 수정 될 떄마다 서버 재시작
+						npm install ejs -D           // 템플릿 엔진(Embedded Javascript의 약자). 파일 병합 또는 include
+
+						//shorthand
+						npm install -D gulp-nodemon express ejs
+					</textarea>
+				</div>
+			</li>
+
+			<!-- app.js 파일 생성 -->
+			<li class="tit_h3 mt_xl">
+				<h3>app.js 파일 생성</h3>
+				<p class="mt_ms">
+					폴더의 root 경로에 <mark>app.js</mark>를 생성하고 아래의 코드를 입력합니다.<br>
+					<mark>app.js</mark>는 dist 폴더를 Context path로 잡아서 거기서 부터 HTML파일을 읽어 내는 아주 중요한 역활을 합니다.
+				</p>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-app.js.png" alt="app.js 파일 생성"/></p>
+				<div class="uk_gist_code_box mt_ms" data-filename="app.js" data-tit="app.js">
+					<textarea>
+						const express = require('express');  // express 모듈을불러옵니다.
+						const app = express();               // app.js 에서 사용할 변수 app을 생성합니다.
+
+						// view로 활용될 폴더 경로를 설정합니다.
+						app.set( 'views' , '${ __dirname }/dist/' );
+						app.engine('html', require('ejs').renderFile);
+						app.set( 'view engine', 'html');
+
+						// 웹사이트의 location 의 루트경로를 설정합니다.
+						app.use( '/' , express.static( `${ __dirname }/dist/` ));
+						app.get( '/' , ( req , res ) => {
+							res.render( 'index' , {}) ;
+						});
+
+						// Dir.js 에서 설정한 port 번호로 서버를 띄울 준비를 합니다.
+						const server = app.listen( 8005, () => {
+							console.log( 'Express listening on port : ' + server.address().port );
+						});
+					</textarea>
+				</div>
+			</li>
+
+			<!-- gulpfile.js 파일 수정 -->
+			<li class="tit_h3 mt_xl">
+				<h3>gulpfile.js 파일 수정</h3>
+				<p class="mt_ms">
+					app.js를 세팅했으면 다음으로 <mark>gulpfile.js</mark>를 아래 처럼 수정합니다.<br>
+					<span class="t_blue">
+						※ 앞으로 기능을 추가하면서 <mark>gulpfile.js</mark>도 길어지게 됩니다. 이제부터 <mark>gulpfile.js</mark> 수정은
+						<b>추가된 코드</b>와 <b>변경된 코드</b> 위주로만 표시되며, <span style="color:green;">기존 코드는 생략</span> 됩니다.
+						수정된 전체코드는 에디터 왼쪽 'View full code' 버튼을 통해 확인할 수 있습니다.
+					</span>
+				</p>
+				<div class="uk_gist_code_box mt_ms" data-filename="gulpfile.js" data-tit="app.js">
+					<textarea>
+						// plug-in 연결
+						//
+						// 생략...
+						//
+						const nodemon = require('gulp-nodemon'); // --add--
+
+						// --no_change-- autoprefixer 옵션: 브라우저 버전 지정
+
+						// --no_change-- 소스 파일 경로
+
+						// --no_change-- scss 컴파일
+
+						// --add-- nodemon:start : app.js 파일을 참조하여 express 서버 구동
+						gulp.task('nodemon:start', () => {
+							return new Promise(resolve => {
+								nodemon({
+									script: 'app.js',
+									watch: 'app'
+								});
+								resolve();
+							});
+						});
+
+						// default : 실행 --add-- 'nodemon:start'
+						gulp.task( 'default', gulp.series(['scss:compile', 'nodemon:start']));
+					</textarea>
+				</div>
+				<div class="uk_gist_code_box full_code_layer" data-filename="gulpfile.js" data-tit="app.js">
+					<textarea>
+						// plug-in 연결
+						const gulp = require("gulp");                   // gulp 연결
+						const Fiber = require('fibers');                // dart sass 이용시 gulp-sass와 세트 플러그인
+						const dartSass = require('dart-sass');          // dart-sass 연결(기본)
+						const scss = require('gulp-sass');              // gulp-sass 연결(기본)
+						const sourcemaps = require('gulp-sourcemaps');  // css.map 파일 생성용
+						const minificss = require('gulp-minify-css');   // css 압축
+						const autoprefixer = require('autoprefixer');   // 고려할 브라우저 버전 설정
+						const postCss = require('gulp-postcss');        // 설정한 브라우저에 버전에 맞춰 css 컴파일
+						const rename = require('gulp-rename');          // 파일 이름 변경
+						const nodemon = require('gulp-nodemon');        // 파일 변경이 감지될 때 자동으로 재시작
+
+						// autoprefixer 옵션: 브라우저 버전 지정
+						const apfBrwsowsers = [
+							'ie > 0', 'chrome > 0', 'firefox > 0'  // 브라우저의 모든 버전 적용
+							//'last 2 versions'                    // 최신 브라우저 기준 하위 2개의 버전까지 적용
+						];
+
+						// 소스 파일 경로
+						const src = './src/assets';
+						const dist = './dist/assets';
+						// 작업폴더 경로 ('src'에서 작업한 것을)
+						const PATH = {
+							ASSETS: {
+								CSS: src+'/css',
+								FONTS: src+'/fonts',
+								IMAGES: src+'/images',
+								JS: src+'/js',
+							}
+						}
+						// 산출물 경로 ('dist'에 생성한다.)
+						const DEST_PATH = {
+							ASSETS: {
+								CSS: dist+'/css',
+								FONTS: dist+'/fonts',
+								IMAGES: dist+'/images',
+								JS: dist+'/js',
+							}
+						};
+
+						// scss 컴파일
+						gulp.task('scss:compile', () => {
+							return new Promise(resolve => {
+								const options = {
+									//scss 옵션 정의
+									scss : {
+										outputStyle: "expanded",  // 컴파일 스타일: nested(default), expanded, compact, compressed
+										indentType: "space",      // 들여쓰기 스타일: space(default), tab
+										indentWidth: 2,           // 들여쓰기 칸 수 (Default : 2)
+										precision: 8,             // 컴파일 된 CSS 의 소수점 자리수 (Type : Integer , Default : 5)
+										sourceComments: true,     // 코멘트 제거 여부 (Default : false)
+										compiler: dartSass,       // 컴파일 도구
+										fiber: Fiber,             // 컴파일 오버해드 방지
+									},
+								};
+								gulp.src( PATH.ASSETS.CSS + '/*.scss' )                   // 컴파일 대상 scss파일 찾기
+									// *.css 생성
+									.pipe( sourcemaps.init() )                              // 소스맵 작성
+									.pipe( scss(options.scss).on('error', scss.logError) )  // scss 옵션 적용, scss 작성시 watch가 멈추지 않도록 logError 설정
+									.pipe( postCss(options.postcss) )                       // 하위 브라우저 고려
+									.pipe( sourcemaps.write() )                             // 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+									// *.min.css 생성
+									.pipe( minificss() )                                    // 컴파일된 css 압축
+									.pipe( rename({ suffix: '.min' }) )                     // 압축파일 *.min.css 생성
+									.pipe( sourcemaps.write() )                             // 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+								resolve();
+							});
+						});
+
+						// nodemon:start : app.js 파일을 참조하여 express 서버 구동
+						gulp.task('nodemon:start', () => {
+							return new Promise(resolve => {
+								nodemon({
+									script: 'app.js',
+									watch: 'app'
+								});
+								resolve();
+							});
+						});
+
+						// default : 실행
+						gulp.task( 'default', gulp.series(['scss:compile', 'nodemon:start']));
+					</textarea>
+				</div>
+				<p class="mt_ms">
+					nodemon을 이용해 node.js express 서버를 띄우는 역할을 수행하게합니다.<br>
+					이때 app.js 파일을 참조하여 서버를 띄우게 만들었는데
+					app.js파일은 dist 폴더를 Context path로 잡아서 거기서 부터 HTML파일을 읽어 내기 위한 설정입니다.
+				</p>
+			</li>
+
+			<!-- gulp 실행 후 웹서버 확인 -->
+			<li class="tit_h3 mt_xl">
+				<h3>gulp 실행 후 웹서버 확인</h3>
+				<p class="mt_ms">
+					<code>gulp</code> 명령을 입력하면 어떤 메시지를 띄우는지 확인해 봅니다.
+				</p>
+				<div class="terminal_code_box mt_ms">
+					<textarea>
+						gulp
+					</textarea>
+				</div>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-nodemon_srart.png" alt="nodemon_srart"/></p>
+				<p class="mt_ms">
+					이 후 브라우져에서 <mark>http://localhost:8005/</mark>주소로 들어가보면 아래 처럼 에러 메시지만 있게 됩니다.<br>
+					<mark>정상입니다.</mark> 단순히 <mark>index.html 파일이 없어서 에러가 발생</mark>한 것이기 때문에 여기까지 진행됬다면 정상적으로 진행된것입니다.
+				</p>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-nodemon_error.png" alt="에러가 발생한 웹서버 브라우저"/></p>
+			</li>
+		</ol>
+	</section>
+
+	<!-- 1.3.2. html 생성 -->
+	<section class="indent mt_xxl">
+		<h2 class="ml_mn">1.3.2. html 생성</h2>
+
+		<ol class="ol_lst">
+			<!-- html 폴더 및 파일 생성 -->
+			<li class="tit_h3 mt_xl">
+				<h3>html 폴더 및 파일 생성</h3>
+				<p class="mt_ms">
+					'src > assets' 폴더의 형제로 'html' 폴더를 생성하고 그 안에 <mark>index.html</mark> 파일을 생성합니다.
+				</p>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-html_srart.png" alt="html 폴더 및 파일 생성"/></p>
+				<p class="mt_ms">
+					<mark>index.html</mark>에 아래의 코드를 입력합니다.
+				</p>
+				<div class="uk_gist_code_box mt_ms" data-filename="index.html" data-tit="index.html">
+					<textarea readonly="readonly">
+						<!DOCTYPE html>
+						<html lang="ko">
+							<head>
+								<meta charset="UTF-8">
+								<meta name="viewport" content="width=device-width, initial-scale=1.0">
+								<meta http-equiv="X-UA-Compatible" content="ie=edge">
+								<title>Gulp Setting UXKM</title>
+								<link rel="stylesheet" href="/assets/css/style.css"/>
+							</head>
+							<body>
+								<h1>Hello, UXKM</h1>
+							</body>
+						</html>
+					</textarea>
+				</div>
+			</li>
+
+			<!-- gulpfile.js 파일 수정 -->
+			<li class="tit_h3 mt_xl">
+				<h3>gulpfile.js 파일 수정</h3>
+				<p class="mt_ms">
+					index.html 생성 후 <mark>gulpfile.js</mark>를 아래 처럼 수정합니다.
+				</p>
+				<div class="uk_gist_code_box mt_ms" data-filename="gulpfile.js" data-tit="app.js">
+					<textarea>
+						// --no_change-- plug-in 연결
+
+						// --no_change-- autoprefixer 옵션: 브라우저 버전 지정
+
+						// --no_change-- 소스 파일 경로
+
+						// --no_change-- scss 컴파일
+
+						// --add-- html 빌드
+						gulp.task('html', () => {
+							return new Promise(resolve => {
+								gulp.src(PATH.HTML + '/*.html')
+								.pipe(gulp.dest(DEST_PATH.HTML));
+								resolve();
+							});
+						});
+
+						// --no_change-- nodemon:start : app.js 파일을 참조하여 express 서버 구동
+
+						// default : 실행 --add-- 'html'
+						gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start']));
+					</textarea>
+				</div>
+				<div class="uk_gist_code_box full_code_layer" data-filename="gulpfile.js" data-tit="app.js">
+					<textarea>
+						// plug-in 연결
+						const gulp = require("gulp");                   // gulp 연결
+						const Fiber = require('fibers');                // dart sass 이용시 gulp-sass와 세트 플러그인
+						const dartSass = require('dart-sass');          // dart-sass 연결(기본)
+						const scss = require('gulp-sass');              // gulp-sass 연결(기본)
+						const sourcemaps = require('gulp-sourcemaps');  // css.map 파일 생성용
+						const minificss = require('gulp-minify-css');   // css 압축
+						const autoprefixer = require('autoprefixer');   // 고려할 브라우저 버전 설정
+						const postCss = require('gulp-postcss');        // 설정한 브라우저에 버전에 맞춰 css 컴파일
+						const rename = require('gulp-rename');          // 파일 이름 변경
+						const nodemon = require('gulp-nodemon');        // 파일 변경이 감지될 때 자동으로 재시작
+
+						// autoprefixer 옵션: 브라우저 버전 지정
+						const apfBrwsowsers = [
+							'ie > 0', 'chrome > 0', 'firefox > 0'  // 브라우저의 모든 버전 적용
+							//'last 2 versions'                    // 최신 브라우저 기준 하위 2개의 버전까지 적용
+						];
+
+						// 소스 파일 경로
+						const src = './src';
+						const dist = './dist';
+						const assets = '/assets';
+						// 작업폴더 경로 ('src'에서 작업한 것을)
+						const PATH = {
+							HTML: src + '/html',
+							ASSETS: {
+								CSS: src + assets + '/css',
+								FONTS: src + assets + '/fonts',
+								IMAGES: src + assets + '/images',
+								JS: src + assets + '/js',
+								LIB: src + assets + '/lib',
+							}
+						}
+						// 산출물 경로 ('dist'에 생성한다.)
+						const DEST_PATH = {
+							HTML: dist,
+							ASSETS: {
+								CSS: dist + assets +'/css',
+								FONTS: dist + assets +'/fonts',
+								IMAGES: dist + assets +'/images',
+								JS: dist + assets +'/js',
+								LIB: dist + assets + '/lib',
+							}
+						};
+
+						// scss 컴파일
+						gulp.task('scss:compile', () => {
+							return new Promise(resolve => {
+								const options = {
+									//scss 옵션 정의
+									scss : {
+										outputStyle: "expanded",  // 컴파일 스타일: nested(default), expanded, compact, compressed
+										indentType: "space",      // 들여쓰기 스타일: space(default), tab
+										indentWidth: 2,           // 들여쓰기 칸 수 (Default : 2)
+										precision: 8,             // 컴파일 된 CSS 의 소수점 자리수 (Type : Integer , Default : 5)
+										sourceComments: true,     // 코멘트 제거 여부 (Default : false)
+										compiler: dartSass,       // 컴파일 도구
+										fiber: Fiber,             // 컴파일 오버해드 방지
+									},
+								};
+								gulp.src( PATH.ASSETS.CSS + '/*.scss' )                   // 컴파일 대상 scss파일 찾기
+									// *.css 생성
+									.pipe( sourcemaps.init() )                              // 소스맵 작성
+									.pipe( scss(options.scss).on('error', scss.logError) )  // scss 옵션 적용, scss 작성시 watch가 멈추지 않도록 logError 설정
+									.pipe( postCss(options.postcss) )                       // 하위 브라우저 고려
+									.pipe( sourcemaps.write() )                             // 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+									// *.min.css 생성
+									.pipe( minificss() )                                    // 컴파일된 css 압축
+									.pipe( rename({ suffix: '.min' }) )                     // 압축파일 *.min.css 생성
+									.pipe( sourcemaps.write() )                             // 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+								resolve();
+							});
+						});
+
+						// html 빌드
+						gulp.task('html', () => {
+							return new Promise(resolve => {
+								gulp.src(PATH.HTML + '/*.html')
+								.pipe(gulp.dest(DEST_PATH.HTML));
+								resolve();
+							});
+						});
+
+						// nodemon:start : app.js 파일을 참조하여 express 서버 구동
+						gulp.task('nodemon:start', () => {
+							return new Promise(resolve => {
+								nodemon({
+									script: 'app.js',
+									watch: 'app'
+								});
+								resolve();
+							});
+						});
+
+						// default : 실행
+						gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start']));
+					</textarea>
+				</div>
+				<p class="mt_ms">
+					PATH쪽에 HTML 경로를 추가했고 html task()를 추가했습니다.
+				</p>
+			</li>
+
+			<!-- gulp 실행 후 웹서버 확인 -->
+			<li class="tit_h3 mt_xl">
+				<h3>gulp 실행 후 웹서버 확인</h3>
+				<p class="mt_ms">
+					<code>gulp</code> 명령을 입력하면 어떤 메시지를 띄우는지 확인해 봅니다.
+				</p>
+				<div class="terminal_code_box mt_ms">
+					<textarea>
+						gulp
+					</textarea>
+				</div>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-html_srart2.png" alt="html_srart"/></p>
+				<p class="mt_ms">
+					브라우져에서 <mark>http://localhost:8005/</mark>주소로 다시 들어가보면
+					아래 처럼 기존에 생성했던 css까지 적용되어 <span style="color:#fff; background:gray;">회색 바탕에 흰색 글씨</span>로
+					'Hello, UXKM'가 있는 것을 확인할 수 있습니다.
+				</p>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-nodemon.png" alt="웹서버 브라우저"/></p>
+				<p class="mt_ms">
+					다음 파트에서는 <mark>html, scss가 변경될 때마다 gulp가 감지하여 컴파일을 다시해서 배포하는 기능</mark>을 추가합니다.
+				</p>
+			</li>
+		</ol>
+	</section>

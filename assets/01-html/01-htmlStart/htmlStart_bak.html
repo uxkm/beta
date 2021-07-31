@@ -1,0 +1,547 @@
+
+
+	<article id="html_start" class="uk_course" data-last-update="2019-11-11">
+		<h2>HTML이란?</h2>
+
+		<div class="uk_note mt_l">
+			<h3 class="sound_only">HTML 요약 설명</h3>
+			<p>HTML은 Tim Berners-Lee, Robert Cailliau 및 1989 년 부터 시작된 사람들에 의해 처음 만들어졌습니다.</p>
+			<p>HTML 은 프로그래밍 언어가 아닙니다. 콘텐츠의 구조를 정의하는 마크업 언어입니다.</p>
+			<p>HTML은 콘텐츠의 서로 다른 부분들을 씌우거나(wrap) 감싸서(enclose) 다른 형식으로 보이게하거나 특정한 방식으로 동작하도록 하는 일련의 요소(elements)로 이루어져 있습니다.</p>
+			<p>tags로 감싸는 것으로 단어나 이미지를 다른 어딘가로 하이퍼링크(hyperlink)하거나 단어들을 이탤릭체로 표시하고 글씨체를 크게 또는 작게 만드는 등의 일을 할 수 있습니다.</p>
+			<p>마크 업 언어는 컴퓨터가 텍스트를 처리하고 표시되는 방법을 제어하기 위해 서로 말을하는 방법입니다. 이를 위해 HTML은 tags와 attributes 라는 두 가지를 사용 합니다.</p>
+		</div>
+
+		<div class="indent">
+			<div class="ol_lst mt_l">
+				<h3 class="sound_only">HTML 기능 설명</h3>
+				<ol>
+					<li>HTML은 HyperText Markup Language의 약자입니다.</li>
+					<li>웹 페이지는 HTML 문서라고도 불리며, HTML 태그들로 구성됩니다.</li>
+					<li>HTML(Hypertext Markup Language)은 웹페이지를 만들기 위한 표준 마크업 언어입니다.</li>
+					<li>각각의 HTML 태그는 웹 페이지의 디자인이나 기능을 결정하는데 사용됩니다.</li>
+					<li>월드와이드웹(WWW, world-wide web)의 가장 기초적인 구성요소입니다.</li>
+					<li>HTML은 웹콘텐츠의 의미와 구조를 정의하는 기능을 합니다.</li>
+					<li>하이퍼텍스트(Hypertext)는 웹페이지 또는 웹사이트들을 서로 참조하고 연결하는 링크(link)를 말합니다.</li>
+					<li>HTML의 마크업(markup)은 태그를 통해 텍스트, 이미지 등의 내용을 표시함을 의미합니다.</li>
+					<li>HTML은 웹브라우저가 해석하여 텍스트, 이미지, 동영상 등의 내용을 화면에 표시합니다.</li>
+					<li>대표적인 웹브라우저로는 인터넷익스플로러(IE), 엣지(Edge), 크롬(Chrome), 사파리(Safari), 파이어폭스(Firefox), 오페라(Opera) 등이 있습니다.</li>
+				</ol>
+			</div>
+
+			<div class="view_editor edit_code mt_l" data-target="html/01-htmlStart/1.1.html_basic.html">
+				<h3 class="ve_tit">HTML 기본구조</h3>
+				<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+		</div>
+	</article>
+	<!-- HTML이란? -->
+
+
+	<article id="html_basic" class="uk_course" data-last-update="2019-11-11">
+		<h2>HTML 기본구조</h2>
+
+		<div class="uk_note mt_l">
+			<h3 class="sound_only">요약 설명</h3>
+			<p>Document Type Definition 는 브라우저 랜더링 모드를 지정해주고 유효성 검증기의 기준이 되므로 XHTML 문서의 상단에 반드시 선언해 주어야 한다.</p>
+			<p>만일 DTD 를 생략 하거나 형식이 잘못된 문서일 경우에는 웹 브라우저마다 코드의 해석방식이 다른 Quirks mode 로 렌더링이 되기 때문에 엉뚱한 결과물로 출력되는 문제에 직면하게 된다.</p><br>
+			<p>
+				DTD 기본형식.<br>
+				&lt;!DOCTYPE<br>
+				이 문서는<br>
+				html<br>
+				① HTML 문서로서<br>
+				PUBLIC<br>
+				① 국제적이며<br>
+				"-//W3C//DTD XHTML 1.0 Transitional//EN"<br>
+				② 비공인인증인 W3C기관에 의해 XHTML 1.0을 Transitional 방식으로 영어공용어로 출력하며<br>
+				"<span class="break_all">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</span>"<br>
+				③ 참조할 DTD 문서는"<span class="break_all">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</span>" 이거다.
+			</p><br>
+			<p>
+				이런 식으로 되있으며<br>
+				① 최상위 엘리먼트네임<br>
+				② 국제적,공용 or 내부적 제한용<br>
+				③ ISO공인인증기관 또는 비공인인증기관 등 본문서가 어디에서 만든 DTD를 사용하는 가에 대한 내용이다.<br>
+				공인 인증기관 일경우 "+"를 비공인인증기관일경우엔 "-"를 사용한다. 참고로 W3C는 비공인 인증기관이다.
+			</p>
+			<p>
+				DOCTYPE 정의<br>
+				– DOCTYPE은 브라우저에게 웹페이지의 문서 종류를 알려주는 선언문이다.<br>
+				– DOCTYPE은 HTML 태그가 아닌, DTD로 정의되어 있다.<br>
+				– DOCTYPE은 웹페이지에서 제일 처음에 선언되어야 한다.<br>
+				– DOCTYPE은 브라우저가 올바른 화면표시(rendering)를 하기 위해 필요하다.<br>
+				– DOCTYPE을 선언하지 않는다면, 브라우저는 호환모드(quirks mode)로 웹페이지를 해석해서 화면표시를 한다.<br>
+				하지만 호환모드일 경우, 브라우저별로 정확한 화면표시를 보장할 수 없다.
+			</p>
+		</div>
+
+		<div class="indent">
+			<div class="txt_ex mt_l">
+				<h3>&lt;!DOCTYPE html&gt;</h3>
+				<p>현재 문서가 HTML5 문서임을 명시합니다. doctype은 문서의 최상위에 위치해야 하며, doctype의 선언방식은 다음과 같습니다.</p>
+				<!--
+				<div class="line_code indent mt_m">
+					<h4>HTML5 doctype</h4>
+					<p class="indent">&lt;!DOCTYPE html&gt;</p>
+				</div>
+				<div class="line_code indent mt_m">
+					<h4>HTML 4.01 strict doctype</h4>
+					<p class="indent">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</p>
+				</div>
+				<div class="line_code indent mt_m">
+					<h4>HTML 4.01 transitional doctype</h4>
+					<p class="indent">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</p>
+				</div>
+				<div class="line_code indent mt_m">
+					<h4>XML 1.0 strict and transitional doctypes</h4>
+					<p class="indent">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</p>
+					<p class="indent">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</p>
+				</div>
+				<div class="line_code indent mt_m">
+					<h4>HTML 4.01 and XML 1.0 frameset doctypes</h4>
+					<p class="indent">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Frameset//EN&quot; &quot;http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;</p>
+					<p class="indent">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;</p>
+				</div>
+				-->
+
+				<div class="ol_lst indent">
+					<ol>
+						<li class="line_code mt_m">
+							<h4>HTML5 doctype</h4>
+							<p>&lt;!DOCTYPE html&gt;</p>
+						</li>
+						<li class="line_code mt_m">
+							<h4>HTML 4.01 strict doctype</h4>
+							<p>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</p>
+						</li>
+						<li class="line_code mt_m">
+							<h4>HTML 4.01 transitional doctype</h4>
+							<p>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</p>
+						</li>
+						<li class="line_code mt_m">
+							<h4>XML 1.0 strict and transitional doctypes</h4>
+							<p>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</p>
+							<p>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</p>
+						</li>
+						<li class="line_code mt_m">
+							<h4>HTML 4.01 and XML 1.0 frameset doctypes</h4>
+							<p>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Frameset//EN&quot; &quot;http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;</p>
+							<p>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;</p>
+						</li>
+					</ol>
+				</div>
+			</div>
+
+			<div class="txt_ex mt_l">
+				<h3>&lt;html&gt;&lt;/html&gt;</h3>
+				<p>&lt;html&gt; 요소. 이 요소는 페이지 전체의 콘텐츠를 감싸며, 루트(root) 요소라고도 합니다.</p>
+			</div>
+
+			<div class="txt_ex mt_l">
+				<h3>&lt;head&gt;&lt;/head&gt;</h3>
+				<p>&lt;head&gt; 요소. 이 요소는 HTML 페이지에 포함되어 있는 모든 것들(여러분의 페이지를 조회하는 사람들에게 보여주지 않을 콘텐츠)의 컨테이너 역할을 합니다. 여기에는 keywords와 검색 결과에 표시되길 원하는 페이지 설명, 콘텐츠를 꾸미기 위한 CSS, 문자 집합 선언 등과 같은 것들이 포함됩니다.</p>
+			</div>
+
+			<div class="txt_ex mt_l">
+				<h3>&lt;meta charset=&quot;utf-8&quot;&gt;</h3>
+				<p>이 요소는 문서가 사용해야 할 문자 집합을 utf-8으로 설정합니다. charset은 사용언어에 따라 euc-kr로 설정 가능합니다.</p>
+			</div>
+
+			<div class="txt_ex mt_l">
+				<h3>&lt;title&gt;&lt;/title&gt;</h3>
+				<p>&lt;title&gt; 요소. 이 요소는 페이지의 제목을 설정하는 것으로 페이지가 로드되는 브라우저의 탭에 이 제목이 표시됩니다. 이 요소는 북마크나 즐겨찾기에서 페이지를 설명하는 것으로도 사용됩니다.</p>
+			</div>
+
+			<div class="txt_ex mt_l">
+				<h3>&lt;body&gt;&lt;/body&gt;</h3>
+				<p>&lt;body&gt; 요소. 이것은 페이지에 방문한 모든 웹 사용자들에게 보여주길 원하는 모든 컨텐트를 담고 있으며, 그것이 텍스트일 수도, 이미지, 비디오, 게임, 플레이할 수 있는 오디오 트랙이나 다른 무엇이든 될 수 있습니다.</p>
+			</div>
+
+			<div class="txt_ex mt_l">
+				<h3>&lt;h1&gt;&lt;/h1&gt;</h3>
+				<p>&lt;h1&gt; 요소. 문서의 제목을 의미합니다. 이 요소는 여러 검색엔진은 각 웹 사이트의 내용을 바로 이 태그를 이용하여 키워드를 수집하고, 그 내용을 파악합니다. 따라서 HTML 문서에 포함되는 제목은 이 태그로 작성해야만 검색엔진에 의해 제대로 검색될 확률을 높일 수 있습니다.</p>
+			</div>
+
+			<div class="txt_ex mt_l">
+				<h3>&lt;p&gt;&lt;/p&gt;</h3>
+				<p>&lt;p&gt; 요소. 단락이란 내용상 끊어서 구분할 수 있는 하나하나의 부분을 의미하며, 문단이라고도 부릅니다. HTML에서는 &lt;p&gt;태그를 이용하여 이러한 단락을 표현합니다.</p>
+			</div>
+		</div>
+	</article>
+	<!-- HTML 기본구조 -->
+
+
+	<article id="html_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>HTML 요소</h2>
+		<figure class="img_figure mt_l">
+			<img src="/ukncs/images/html/uxkm_html_tag_structure.svg" alt="html 요소 설명">
+			<figcaption>[HTML 요소의 부분 설명]</figcaption>
+		</figure>
+
+		<div class="indent">
+			<div class="ol_lst mt_l">
+				<h3 class="sound_only">HTML 요소 설명</h3>
+				<ol>
+					<li>
+						시작태그: 이것은 요소의 이름으로 구성되고 (여기에서는 p), 여닫는 꺾쇠괄호로 감싸집니다.<br>
+						이것은 요소가 시작되는 곳, 또는 효과를 시작하는 곳임을 나타냅니다.<br>
+						위 이미지 예제에서는 문단이 시작되는 위치를 나타냅니다.<br>
+						속성명과 속성값을 표기 할 수 있습니다.
+					</li>
+					<li>
+						종료태그: 이것은 여는 태그와 같지만, 요소의 이름 앞에 전방향 슬래시가 포함된다는 점이 다릅니다.<br>
+						이것은 요소의 끝을 나타냅니다.<br>
+						위 이미지 예제에서는 문단이 끝나는 위치를 나타냅니다.<br>
+						초보자가 가장 흔히 범하는 오류 중 하나가 닫는 태그를 쓰지 않는 것으로 마크업 구조의 표준에 어긋나게 됩니다.
+					</li>
+					<li>내용(content): 이것은 요소의 내용(content)으로 이 예제에서는 그냥 텍스트입니다.</li>
+					<li>요소(element): 요소는 여는 태그와 닫는 태그, 그리고 콘텐츠로 이루어집니다.</li>
+				</ol>
+			</div>
+
+			<dl class="txt_ex mt_l">
+				<h3>1.3.1 전역 속성(Global Attributes)</h3>
+				<p>
+					모든 HTML 요소에서 공통적으로 사용 가능한 속성.<br>
+					[attribute]에는 전역속성 (Global Attributes), 이벤트속성 (Event Attributes), 요소별 사용되는 속성으로 구분될 수 있음.<br>
+					아래 열거된 내용 외에 더 많은 속성이 있음.<br>
+					<span class="reference">참조 : <a href="https://www.w3.org/TR/html51/dom.html#global-attributes" target="_blank" title="새창열림" class="fas">W3C 전역속성</a></span>
+				</p>
+
+				<div class="indent">
+					<div class="txt_ex mt_l">
+						<h4>[class] <span class="t_blue">&lt;element class=&quot;name&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								class global 속성 은 요소 클래스의 공백으로 구분 된 목록입니다.<br>
+								한 페이지내에서 같은 name을 사용할 수 있으며, 한 요소에 여러 name을 지정할 수 있음.<br>
+								첫 name은 숫자,대문자,특수문자로 시작해서는 안됨.(ex. class="2name", class="Name", class="+name" 등)<br>
+								항상 소문자로 시작하며, 특수문자는 _(언더스코어),-(하이픈)만 적용가능.(ex. class="btn", class="btn-list", class="btn_list" 등)<br>
+								CSS 혹은 JavaScript의 요소 선택기(CSS 선택자나 getElementsByClassName(), querySelectorAll(selector) 같은)를 통해서 요소를 선택하거나 접근.
+							</p>
+							<ul class="browser_support mt_s" data-tit="class">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">32.0</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- class -->
+
+					<div class="txt_ex mt_l">
+						<h4>[id] <span class="t_blue">&lt;element id=&quot;name&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								문서에서 고유한 식별자(idenifier, ID)를 정의.<br>
+								한 페이지내에서 유일한 name을 가지고 있어야 하며, 같은 name이 중복되어서는 안됨.<br>
+								CSS 혹은 JavaScript의 요소 선택기(CSS 선택자나 getElementById(), Document.querySelector() 같은)를 통해서 요소를 선택하거나 접근.
+							</p>
+							<ul class="browser_support mt_s" data-tit="id">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">32.0</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- id -->
+
+					<div class="txt_ex mt_l">
+						<h4>[style] <span class="t_blue">&lt;element style=&quot;value&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								요소에 적용할 CSS를 선언.<br>
+								인라이스타일 방식이며, CSS우선순위에서는 1순위에 해당한다.
+							</p>
+							<ul class="browser_support mt_s" data-tit="style">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">지원</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- style -->
+
+					<div class="txt_ex mt_l">
+						<h4>[title] <span class="t_blue">&lt;element title=&quot;text&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								요소의 정보(설명)을 지정.<br>
+								target="_blank" 속성이 있을 경우 title="새 창" 또는 적합한 설명을 지정해야 함.
+							</p>
+							<ul class="browser_support mt_s" data-tit="title">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">지원</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- title -->
+
+					<div class="txt_ex mt_l">
+						<h4>[lang] <span class="t_blue">&lt;element lang=&quot;요소의 언어(ISO 639-1)를 지정&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								요소의 언어(ISO 639-1)를 지정.
+							</p>
+							<ul class="browser_support mt_s" data-tit="lang">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">지원</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- lang -->
+
+					<div class="txt_ex mt_l">
+						<h4>[data-*] <i class="fab fa-html5"></i> <span class="t_blue">&lt;element data-global=&quot;text&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								(data-custom-data-attributes)속성은 사용자 정의 데이터 속성을 지정.<br>
+								현재 많이 사용하는 방법이며 활용성면에서도 우수함.<br>
+								HTML에 JavaScript에서 이용할 수 있는 데이터(정보)를 저장하는 용도로 사용.
+							</p>
+
+							<div class="view_editor ex_code mt_s" data-target="html/01-htmlStart/1.3.data-global.html">
+								<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+									<div class="code_wrap"><textarea></textarea></div>
+								</div>
+							</div>
+
+							<ul class="browser_support mt_m" data-tit="data-global">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">지원</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- data-* -->
+
+					<div class="txt_ex mt_l">
+						<h4>[draggable] <i class="fab fa-html5"></i> <span class="t_blue">&lt;element draggable=&quot;true | false&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								요소가 <span class="reference"><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">Drag and Drop API</a></span> 를 사용 가능한지 여부를 지정.
+							</p>
+							<div class="ol_lst">
+								<ol>
+									<li>이 속성이 설정되지 않은 경우 기본값은 auto입니다.</li>
+									<li>true 는 요소가 드래그 될 수 있음을 나타냅니다.</li>
+									<li>false 는 요소가 드래그되지 않을 수 있음을 나타냅니다.</li>
+								</ol>
+							</div>
+
+							<div class="view_editor ex_code mt_s" data-target="html/01-htmlStart/1.3.draggable.html">
+								<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+									<div class="code_wrap"><textarea></textarea></div>
+								</div>
+							</div>
+
+							<ul class="browser_support mt_m" data-tit="draggable">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">2.0</li>
+								<li class="opera">12.0</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- draggable -->
+
+					<div class="txt_ex mt_l">
+						<h4>[hidden] <span class="t_blue">&lt;element hidden&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								기본적으로 hidden 속성은 boolean attribute(블리언 속성) 입니다.<br>
+								불리언 속성은 해당 속성을 명시하지 않으면 속성값이 자동으로 false 값을 가지게 되며, 명시하면 자동으로 true 값을 가지게 됩니다.<br>
+								해당요소를 숨김(CSS 기본값 : display:none;).
+							</p>
+
+							<div class="view_editor ex_code mt_s" data-target="html/01-htmlStart/1.3.hidden.html">
+								<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+									<div class="code_wrap"><textarea></textarea></div>
+								</div>
+							</div>
+
+							<ul class="browser_support mt_m" data-tit="hidden">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">지원</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- hidden -->
+
+					<div class="txt_ex mt_l">
+						<h4>[tabindex] <span class="t_blue">&lt;element tabindex=&quot;숫자&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								Tab키를 이용해 요소를 순차적으로 포커스 탐색할 순서를 지정.<br>
+								필요한 경우에만 사용하고 습관적으로 사용하면 안됨.<br>
+								대화형 콘텐츠(Interactive Content)는 기본적으로 코드 순서대로 탭 순서가 지정됨.<br>
+								비대화형 콘텐츠에 tabindex="0"을 지정하여 대화형 콘텐츠와 같이 탭 순서를 사용.<br>
+								tabindex="-1"을 통해 포커스는 가능하지만 탭 순서에서 제외 가능.<br>
+								tabindex="1" 이상의 양수 값은 논리적 흐름을 방해하기 때문에 사용을 추천하지 않음.
+							</p>
+
+							<div class="view_editor ex_code mt_s" data-target="html/01-htmlStart/1.3.tabindex.html">
+								<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+									<div class="code_wrap"><textarea></textarea></div>
+								</div>
+							</div>
+
+							<ul class="browser_support mt_m" data-tit="tabindex">
+								<li class="ie">지원</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">지원</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- tabindex -->
+
+					<div class="txt_ex mt_l">
+						<h4>[contenteditable] <i class="fab fa-html5"></i> <span class="t_blue">&lt;element contenteditable=&quot;true&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								사용자가 요소를 편집 할 수 있는지 여부를 나타내는 열거형 속성입니다.<br>
+								이 경우 브라우저는 위젯을 수정하여 편집을 허용하도록 합니다.<br>
+								속성값은 다음 값 중 하나이어야 합니다.<br><br>
+
+								true 혹은 빈 문자열 : 요소를 편집 가능하도록 지정합니다.<br>
+								false, 요소를 편집 할 수 없도록 지정합니다.<br>
+								이 속성을 설정하지 않으면 기본값은 상위 요소에서 상속됩니다.<br><br>
+
+								이 속성은 Boolean 속성이 아니라 열거형 속성입니다.<br>
+								이는 속성값으로 true, false 또는 빈 문자열 중 하나를 명시적으로 사용하는 것이 필수적이라는 것을 의미하며,<br>
+								&lt;label contenteditable&gt;Example Label&lt;/label&gt;와 같은 축약적인 표현은 허용되지 않습니다.<br>
+								올바른 사용법은 &lt;label contenteditable=&quot;true&quot;&gt;Example Label&lt;/label&gt; 입니다.
+							</p>
+
+							<div class="view_editor ex_code mt_s" data-target="html/01-htmlStart/1.3.contenteditable.html">
+								<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+									<div class="code_wrap"><textarea></textarea></div>
+								</div>
+							</div>
+
+							<ul class="browser_support mt_m" data-tit="contenteditable">
+								<li class="ie">5.5+</li>
+								<li class="edge">지원</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">3.0</li>
+								<li class="opera">9.0</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- contenteditable -->
+
+					<div class="txt_ex mt_l">
+						<h4>[dir] <span class="t_blue">&lt;element dir=&quot;ltr | rtl | auto&quot;&gt;</span></h4>
+						<div class="indent mt_sm">
+							<p>
+								열거형 속성으로 요소의 텍스트에 대한 방향성을 나타냅니다. 이 속성은 다음과 같은 값을 가질 수 있습니다.<br>
+								dir 속성은 (base, br, frame, frameset, hr, iframe, param, script) 태그에서는 유효하지 않습니다.
+							</p>
+							<div class="ol_lst indent mt_sm">
+								<ol>
+									<li class="line_code font14">
+										<strong>ltr</strong>
+										<p>왼쪽에서 오른쪽 방향을 의미하며, 영어와 같이 왼쪽에서 오른쪽으로 기술되는 언어에 사용됩니다.</p>
+									</li>
+									<li class="line_code font14">
+										<strong>rtl</strong>
+										<p>오른쪽에서 왼쪽 방향을 의미하며, 아랍어와 같이 오른쪽에서 왼쪽으로 기술되는 언어에 사용됩니다.</p>
+									</li>
+									<li class="line_code font14">
+										<strong>auto</strong>
+										<p>사용자 에이전트가 결정하도록 합니다. 이 방식은 요소의 내부에 있는 문자를 강한 방향성(strong directionality)을 갖는 문자를 찾을 때까지 파싱을 계속해 나가며, 찾은 방향성을 요소 전체에 적용하는 기본적인 알고리즘을 사용합니다.</p>
+									</li>
+								</ol>
+							</div>
+							<p class="mt_sm">
+								이 속성은 의미적으로 다른 뜻을 가지는 &lt;bdo&gt; 요소에 필수 속성입니다.<br>
+								이 속성은 &lt;bdi&gt; 요소의 속성을 상속하지 않습니다. 따로 설정되지 않으면 그 값은 auto입니다.<br>
+								CSS 페이지가 활성화되고 해당 요소가 CSS 속성인 direction와 unicode-bidi을 지원하는 경우, 이들 속성에 의해 오버라이드될 수 있습니다.<br>
+								텍스트의 방향은 내용과 의미적으로 관련되고 표시 방식과는 관련이 없으므로 웹 개발자는 가능한 관련 CSS속성 대신 이 속성을 사용하는 것이 좋습니다.<br>
+								이렇게 하면 CSS를 지원하지 않거나 CSS가 비활성화된 브라우저에서도 텍스트가 올바르게 표시됩니다.<br>
+								auto 값은 사용자 입력 데이터와 같이 데이터의 방향성을 모르며 최종적으로 데이터베이스에 저장되는 데이터일 경우에만 사용되어야 합니다.
+							</p>
+
+							<div class="view_editor ex_code mt_s" data-target="html/01-htmlStart/1.3.dir.html">
+								<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+									<div class="code_wrap"><textarea></textarea></div>
+								</div>
+							</div>
+
+							<ul class="browser_support mt_m" data-tit="dir">
+								<li class="ie false">지원안함</li>
+								<li class="edge false">지원안함</li>
+								<li class="chrome">지원</li>
+								<li class="firefox">지원</li>
+								<li class="opera">지원</li>
+								<li class="safari">지원</li>
+							</ul>
+						</div>
+					</div>
+					<!-- dir -->
+				</div>
+			</dl>
+		</div>
+	</article>
+	<!-- HTML 요소 -->
+
+
+	<article class="uk_note mt_xxl">
+		<h2 class="tit">Javascript에서 사용하는 이벤트 핸들러 속성</h2>
+		<p>
+			onabort, onautocomplete, onautocompleteerror, onblur, oncancel, oncanplay,
+			oncanplaythrough, onchange, onclick, onclose, oncontextmenu, oncuechange,
+			ondblclick, ondrag, ondragend, ondragenter, ondragleave, ondragover,
+			ondragstart, ondrop, ondurationchange, onemptied, onfocus, onerror,
+			onfocus, oninput, oninvalid, onkeydown, onkeypress, onkeyup, onload,
+			onloadeddata, onloadedmetadata, onloadstart, onmousedown, onmouseenter,
+			onmouseleave, onmousemove, onmouseout, onmouseover, onmouseup,
+			onmousewheel, onpause, onplay, onplaying, onprogress, onratechange,
+			onseeked, onresize, onscroll, onseeked, onseeking, onselect, onshow, onsort,
+			onstalled, onsubmit, onsuspend, ontimeupdate, ontoggle, onvolumechange, onwaiting.
+		</p>
+	</article>
+	<!-- 요약 설명 -->
+
+
+	<article class="reference_box">
+		<h2 class="tit">참조</h2>
+		<ul class="link_lst">
+			<li class="reference"><a href="https://www.w3.org/TR/html52/document-metadata.html" target="_blank" class="fas">W3C 문서</a></li>
+			<li class="reference"><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element" target="_blank" class="fas">MDN 문서</a></li>
+			<li class="reference"><a href="https://www.w3.org/TR/html51/dom.html#global-attributes" target="_blank" class="fas">W3C 전역속성</a></li>
+		</ul>
+	</article>
+	<!-- 참조 -->

@@ -1,0 +1,586 @@
+
+	<div class="uk_note mt_l">
+		<h3 class="sound_only">콘텐츠 그룹화 요약 설명</h3>
+		<p>시작 &lt;body&gt; 태그와 종료 &lt;/body&gt; 태그 사이에 있는 콘텐츠의 블록이나 구획을 HTML 텍스트 콘텐츠를 사용해서 구성하세요.</p>
+		<p>accessibility와 SEO는 중요하며, 이 요소들은 콘텐츠의 구조나 목적을 식별화합니다.</p>
+	</div>
+
+
+	<article id="main_element" class="uk_course" data-last-update="2019-11-11">
+		<h2 class="html5">main element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				&lt;main&gt; 요소는 문서나 앱 &lt;body&gt;의 주요 콘텐츠를 나타냅니다. 주요 콘텐츠 영역은 문서의 핵심 주제나 애플리케이션의 핵심 기능성에 대해 부연, 또는 직접적으로 연관된 콘텐츠들로 이루어집니다.<br>
+				&lt;main&gt; 요소는 대부분의 인터넷 익스플로러 11 이하를 제외한 브라우저에서 지원합니다.<br>
+				따라서 &quot;main&quot; ARIA role 속성을 &lt;main&gt; 요소에 추가해 인터넷 익스플로러에서도 접근성을 확보하는 편이 좋습니다.
+			</p>
+
+			<div class="ol_lst indent mt_sm">
+				<ol>
+					<li>&lt;main&gt; 요소의 콘텐츠는 사이드바나, 내비게이션 링크, 저작권 정보, 사이트 로고, (문서의 주요 기능이 검색 폼이 아닐 경우)검색 폼과 같은 모든 문서에 반복적으로 있는 어떠한 콘텐츠라도 제외되어야 하며 문서 안에 가장 유일한 요소여야 합니다.</li>
+					<li>한 문서에 반복적으로 사용하는 경우 hidden 속성으로 표시하여 사용해야 함.</li>
+					<li>hidden 속성 없이는 문서에 하나보다 많은 &lt;main&gt; 요소가 존재해선 안됩니다.</li>
+				</ol>
+			</div>
+
+			<div class="view_editor ex_code mt_l" data-target="html/04-grouping/4.1.main_element/4.1.main_element1.html">
+				<h3 class="ve_tit">main 요소를 하나 이상 사용할때 올바른 예</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_s" data-target="html/04-grouping/4.1.main_element/4.1.main_element2.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_s" data-target="html/04-grouping/4.1.main_element/4.1.main_element3.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<div class="view_editor ex_code ex_wrong mt_l" data-target="html/04-grouping/4.1.main_element/4.1.main_element4.html">
+				<h3 class="ve_tit">main 요소를 하나 이상 사용할때 잘못된 예</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="main">
+				<li class="ie false">지원안함</li>
+				<li class="edge">12.0</li>
+				<li class="chrome">26.0</li>
+				<li class="firefox">21.0</li>
+				<li class="opera">16.0</li>
+				<li class="safari">7.0</li>
+			</ul>
+		</div>
+	</article>
+	<!-- main element -->
+
+
+	<article id="p_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>p element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				단락(Paragraph)이란 내용상 끊어서 구분할 수 있는 하나하나의 부분을 의미하며, 문단이라고도 부릅니다.<br>
+				HTML에서는 &lt;p&gt;태그를 이용하여 이러한 단락을 표현합니다.<br>
+				브라우저 기본 스타일은 문단끼리 한 줄의 간격으로 분리합니다. 첫 줄 들여쓰기 등 다른 구분 방법은 CSS를 통해 사용할 수 있습니다.
+			</p>
+
+			<div class="ol_lst indent mt_sm">
+				<ol>
+					<li>콘텐츠를 문단으로 나누면 페이지의 접근성을 높입니다.</li>
+					<li>스크린 리더 등 보조 기술은 다음 문단으로 넘어갈 수 있는 단축키 등을 제공하므로, 시각적 매체의 여백이 사용자의 빠른 콘텐츠 탐색을 돕는 것과 같은 효과를 얻을 수 있습니다.</li>
+					<li>빈 &lt;p&gt; 요소를 사용해 두 문단에 여백을 추가하는건 스크린 리더 사용자에게 부정적인 경험을 줄 수 있습니다.</li>
+					<li>스크린 리더가 문단의 존재는 알려주고서 그 내용은, 사실 아무 내용도 없기 때문에, 읽지 않을 것이기 때문에 스크린 리더 사용자는 혼란스러울 수 있습니다.</li>
+					<li>여분의 공간이 필요하다면 margin 등 CSS 속성을 통해 적용하세요.</li>
+				</ol>
+			</div>
+
+			<div class="uk_note mt_m">
+				<h3 class="sound_only">요약 설명</h3>
+				<p>
+					시작 태그는 필수이며, 닫는 태그는 &lt;p&gt; 요소의 바로 뒤에 &lt;address&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;blockquote&gt;, &lt;div&gt;, &lt;dl&gt;, &lt;fieldset&gt;, &lt;footer&gt;, &lt;form&gt;, &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt;, &lt;h6&gt;, &lt;header&gt;, &lt;hr&gt;, &lt;menu&gt;, &lt;nav&gt;, &lt;ol&gt;, &lt;pre&gt;, &lt;section&gt;, &lt;table&gt;, &lt;ul&gt;, &lt;p&gt; 요소가 위치하는 경우 또는, 부모 태그의 콘텐츠가 더 존재하지 않고 부모가 &lt;a&gt; 요소가 아닐 때 생략할 수 있습니다.
+					<br><br>
+					습관적으로 종료 태그는 사용 해주는것을 권장합니다.
+				</p>
+			</div>
+
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.2.p_element/4.2.p_element1.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.2.p_element/4.2.p_element2.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.2.p_element/4.2.p_element3.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.2.p_element/4.2.p_element4.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="p">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">지원</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- p element -->
+
+
+	<article id="ol_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>ol element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				순서가 있는 목록(정렬된 리스트의 항목들)을 나타냅니다.<br>
+				일반적으로, 정렬된 리스트의 항목들은 앞에 번호와 함께 표시되며, 이 번호는 순자,문자,로마 숫자,간단한 점과 같이 어떤 형태로든 나타날수 있습니다.<br>
+				단, CSS에서 스타일이 조절되었으면 html 속성은 적용이 안 됩니다.
+			</p>
+
+			<div class="txt_ex mt_l">
+				<h3>4.3.1. ol(Ordered List) 속성</h3>
+
+				<div class="txt_ex indent mt_m">
+					<h4>[reversed] <span class="t_blue">&lt;ol reversed&gt;</span></h4>
+					<div class="indent mt_sm">
+						<p>항목이 역순으로 지정되도록 지정합니다. html5에서 새로 생성됨.</p>
+						<div class="view_editor ex_code mt_s" data-target="html/04-grouping/4.3.ol_element/4.3.ol_element1.html">
+							<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+								<div class="code_wrap"><textarea></textarea></div>
+							</div>
+						</div>
+
+						<ul class="browser_support mt_l" data-tit="reversed">
+							<li class="ie false">지원안함</li>
+							<li class="edge">76.0</li>
+							<li class="chrome">20.0</li>
+							<li class="firefox">18.0</li>
+							<li class="opera">12.1</li>
+							<li class="safari">6.1</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="txt_ex indent mt_l">
+					<h4>[start] <span class="t_blue">&lt;start=&quot;항목의 시작 값&quot;&gt;</span></h4>
+					<div class="indent mt_sm">
+						<p>
+							목록 항목의 시작 값을 지정합니다.<br>
+							목록 요소의 순서 유형이 XXXI 또는 문자와 같은 로마 숫자 일 수도 있지만 start 값은 항상 숫자로 표시됩니다.<br>
+							3번부터 번호를 시작하려면 &lt;ol start=&quot;3&quot;&gt; 와 같이 사용할 수 있습니다.<br>
+							이 속성은 HTML4에서 더 이상 사용되지 않지만 HTML5에서 다시 도입되었습니다.
+						</p>
+						<div class="view_editor ex_code mt_s" data-target="html/04-grouping/4.3.ol_element/4.3.ol_element2.html">
+							<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+								<div class="code_wrap"><textarea></textarea></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="txt_ex indent mt_l">
+					<h4>[type] <span class="t_blue">&lt;ol type=&quot;1 | a | A | i | I&quot;&gt;</span></h4>
+					<div class="indent mt_sm">
+						<p>
+							목록 마커의 종류.<br>
+							&lt;li&gt;요소 내에서 다른 속성을 사용 하지 않으면 유형 목록이 전체 목록에 사용됩니다.<br>
+							이 속성은 HTML4에서 더 이상 사용되지 않지만 HTML5에서 다시 도입되었습니다.
+						</p>
+						<div class="ol_lst indent mt_sm">
+							<ol>
+								<li>'1' - 번호 (기본값) 1,2,3 로 표시</li>
+								<li>'a' - 소문자 a,b,c... 로 표시</li>
+								<li>'A' - 대문자 A,B,C... 로 표시</li>
+								<li>'i' - 소문자 로마 숫자 ⅰ,ⅱ,ⅲ... 로 표시</li>
+								<li>'I' - 대문자 로마 숫자 Ⅰ,Ⅱ,Ⅲ... 로 표시</li>
+							</ol>
+						</div>
+						<div class="view_editor ex_code mt_s" data-target="html/04-grouping/4.3.ol_element/4.3.ol_element3.html">
+							<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+								<div class="code_wrap"><textarea></textarea></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="view_editor edit_code mt_l" data-target="html/04-grouping/4.3.ol_element/4.3.ol_element4.html">
+				<h3 class="ve_tit">기본 리스트 / 중첩 리스트</h3>
+				<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="ol">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- ol element -->
+
+
+	<article id="ul_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>ul element</h2>
+
+		<div class="indent mt_l">
+			<p>순서가 없는 목록(숫자 순서를 가지고 있지 않은)을 나타냅니다. 일반적으로, 순서가 없는 목록은 굵은 점과 함께 표시됩니다.</p>
+
+			<div class="view_editor edit_code mt_l" data-target="html/04-grouping/4.4.ul_element/4.4.ul_element.html">
+				<h3 class="ve_tit">기본 리스트 / 중첩 리스트</h3>
+				<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="ol">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- ul element -->
+
+
+	<article id="li_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>li element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				리스트 항목을 나타낼때 사용됩니다.<br>
+				이 요소는 자신이 리스트에서 하나의 개체를 나타내는 정렬된 리스트(&lt;ol&gt;), 정렬되지 않은 리스트(&lt;ul&gt;) 에 포함되어야 합니다.<br>
+				메뉴와 정렬되지 않은 리스트에서, 리스트 항목들은 일반적으로 글머리 기호와 함께 표시됩니다.<br>
+				정렬된 리스트에서는, 숫자나 글자가 내림차순으로 왼쪽에 같이 표시됩니다.<br>
+				종료 태그는 자신 바로 뒤에 다른 &lt;li&gt; 요소가 따라오거나, 부모 요소 안에 더 이상 다른 요소가 없을경우 생략될수 있습니다.<br>
+				습관적으로 종료 태그는 사용 해주는것을 권장합니다.
+			</p>
+
+			<div class="txt_ex mt_l">
+				<h3>4.5.1. li 속성</h3>
+
+				<div class="txt_ex indent mt_m">
+					<h4>[value] <span class="t_blue">&lt;li value="숫자"&gt;</span></h4>
+					<div class="indent mt_sm">
+						<p>
+							의미로는 항목의 순서를 설정, 값은 숫자(Number)로 표시, 특징은 이하 항목들의 순서가 다시 지정됨.<br>
+							이 정수 속성은 &lt;ol&gt; 요소 내부의 항목의 현재 서수 값을 나타냅니다.<br>
+							리스트가 로마 숫자나 문자로 표시되더라도 이 속성에는 숫자만 넣을수 있습니다.<br>
+							이 속성이 지정된 리스트 항목 뒤를 따르는 다른 항목들은 여기서 지정된 값에서부터 번호가 매겨집니다.<br>
+							value 속성은 정렬되지 않은 리스트 (&lt;ul&gt;)에서는 아무 의미가 없습니다.<br>
+							Note: 이 속성은 HTML4에서 더 이상 사용되지 않지만 HTML5에서 다시 도입되었습니다.<br>
+							Note: Gecko 9.0 이전에는 음수 값들이 비정상적으로 0으로 변환되었습니다. Gecko 9.0 에서부터는 모든 정수값들이 올바르게 변환됩니다.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.5.li_element/4.5.li_element1.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor edit_code mt_l" data-target="html/04-grouping/4.5.li_element/4.5.li_element2.html">
+				<h3 class="ve_tit">value 속성 사용과 ol reversed 사용 비교</h3>
+				<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="reversed">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- li element -->
+
+
+	<article id="dl_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>dl element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				정의 목록(Definition List)은 용어와 그 뜻을 나열할 때 사용합니다.<br>
+				정의 목록은 dl로, 용어는 dt로, 그 뜻은 dd로 만듭니다.
+			</p>
+
+			<div class="view_editor edit_code mt_m" data-target="html/04-grouping/4.6.dl_element/4.6.dl_element.html">
+				<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="dl">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- dl element -->
+
+
+	<article id="dt_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>dt element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				dt(Definition Term Element)는 정의 목록에서 용어를 구분합니다.<br>
+				이 요소는 &lt;dl&gt; 요소의 자식으로서만 등장할수 있습니다.<br>
+				보통 이것은 &lt;dd&gt;요소 전에 나오는데, 연속적으로 나오는 여러개의 &lt;dt&gt;요소는 바로 다음에 나오는 &lt;dd&gt;요소에 의해 정의되는 몇개의 용어를 가르킵니다.<br>
+				종료 태그는 이 요소 바로 뒤에 다른 &lt;dd&gt; 태그가 따라오거나, 부모 요소에 더 이상 다른 요소가 없을떄 생략 가능함.<br>
+				습관적으로 종료 태그는 사용 해주는것을 권장합니다.
+			</p>
+
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.7.dt_element/4.7.dt_element.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="dt">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- dt element -->
+
+
+	<article id="dd_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>dd element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				정의 목록 요소(&lt;dl&gt;)에서 용어의 정의를 나타냅니다.<br>
+				이것은 정의 목록 요소의 자식 요소로서만 등장할수 있으며, &lt;dt&gt;뒤에 요소가 따라와야합니다.<br>
+				종료 태그는 이 요소 바로 뒤에 다른 &lt;dd&gt; 요소가 있거나, 부모 요소에 더 이상 다른 요소가 없을 경우 생략 가능함.<br>
+				습관적으로 종료 태그는 사용 해주는것을 권장합니다.
+			</p>
+
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.8.dt_element/4.8.dd_element.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="dd">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- dd element -->
+
+
+	<article id="address_element" class="uk_course" data-last-update="2019-11-11">
+		<h2 class="html5">address element</h2>
+
+		<div class="indent mt_l">
+			<p>&lt;address&gt; 요소는 작성자가 가까운 &lt;article&gt; 또는 &lt;body&gt; 에 대한 연락처 정보를 제공하기 위해 사용됩니다. 후자의 경우에는 문서 전체에 적용됩니다.</p>
+
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.9.address_element/4.9.address_element1.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor edit_code mt_m" data-target="html/04-grouping/4.9.address_element/4.9.address_element2.html">
+				<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="address">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">1.0</li>
+			</ul>
+		</div>
+	</article>
+	<!-- address element -->
+
+
+	<article id="figure_element" class="uk_course" data-last-update="2019-11-11">
+		<h2 class="html5">figure element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				&lt;figure&gt; 요소는 독립적인 콘텐츠를 표현합니다.<br>
+				흔히 설명(&lt;figcaption&gt;) 과 함께 사용되며, 보통 단일적으로 참조됩니다.
+			</p>
+
+			<div class="ol_lst indent mt_s">
+				<ol>
+					<li>보통 &lt;figure&gt;는 주 문서에 영향을 주지 않으면서 다른 부분이나 부록으로 옮길 수 있는, 주 문서에서 참조하는 사진, 도표, 삽화, 오디오, 비디오, 코드 등입니다.</li>
+					<li>&lt;figure&gt;는 섹션 루트로, 안쪽 내용은 주 문서의 내용에서 배제됩니다.</li>
+					<li>안에 (첫번째나 마지막 자식으로) &lt;figcaption&gt;을 넣어서 설명을 &lt;figure&gt; 요소와 연관지을 수 있습니다.</li>
+					<li>
+						figure와 aside 차이
+						<div class="line_code">
+							<p>내용이 단순히 관련돼(느슨하게) 있고, 필수적인 내용이 아니면 aside</p>
+							<p>내용이 직접적인 관련이 있지만, 문맥상 그것의 위치가 중요하지 않으면 figure</p>
+						</div>
+					</li>
+				</ol>
+			</div>
+
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.10.figure_element/4.10.figure_element1.html">
+				<h3 class="ve_tit">이미지 삽입</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.10.figure_element/4.10.figure_element2.html">
+				<h3 class="ve_tit">코드 삽입</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.10.figure_element/4.10.figure_element3.html">
+				<h3 class="ve_tit">인용문 삽입</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.10.figure_element/4.10.figure_element4.html">
+				<h3 class="ve_tit">중첩</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="figure">
+				<li class="ie">9+</li>
+				<li class="edge">지원</li>
+				<li class="chrome">8.0</li>
+				<li class="firefox">4.0</li>
+				<li class="opera">11.0</li>
+				<li class="safari">5.1</li>
+			</ul>
+		</div>
+	</article>
+	<!-- figure element -->
+
+
+	<article id="figcaption_element" class="uk_course" data-last-update="2019-11-11">
+		<h2 class="html5">figcaption element</h2>
+
+		<div class="indent mt_l">
+			<p>&lt;figcaption&gt; 요소는 부모 &lt;figure&gt; 요소가 포함하는 도표나 도해 등의 다른 데이터에 대해 그에 관련된 설명 또는 범례를 표현합니다.</p>
+
+			<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.11.figcaption_element/4.11.figcaption_element.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="figure">
+				<li class="ie">9+</li>
+				<li class="edge">지원</li>
+				<li class="chrome">8.0</li>
+				<li class="firefox">4.0</li>
+				<li class="opera">11.0</li>
+				<li class="safari">5.1</li>
+			</ul>
+		</div>
+	</article>
+	<!-- figcaption element -->
+
+
+	<article id="pre_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>pre element</h2>
+
+		<div class="indent mt_l">
+			<p>
+				&lt;pre&gt; 요소는 미리 서식이 지정된 텍스트를 나타냅니다(Mark-up).<br>
+				이 요소 내의 텍스트는 대게 파일에 쓰여졌던 그대로 (요소 밖 텍스트와는) 비례하지 않는 글꼴로 표시됩니다.<br>
+				이 요소 내 빈 칸(white-space) 또한 타이핑한대로 입력됩니다.<br>
+				pre요소를 code요소와 함께 사용할 수 있습니다. 컴퓨터 출력 블록을 나타 내기 위해 pre요소를 samp요소와 함께 사용할 수 있습니다.<br>
+				마찬가지로 kbd요소 내에서 pre요소를 사용 하여 사용자가 입력해야하는 텍스트를 나타낼 수 있습니다.
+			</p>
+
+			<div class="view_editor edit_code mt_m" data-target="html/04-grouping/4.12.pre_element/4.12.pre_element.html">
+				<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="pre">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- pre element -->
+
+
+	<article id="blockquote_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>blockquote element</h2>
+
+		<div class="indent mt_l">
+			<p>Block Quotation Element는 감싸진 텍스트가 긴 인용문임을 가리킵니다. 일반적으로 이것은 들여쓰기로 렌더링 됩니다.</p>
+
+			<div class="txt_ex mt_l">
+				<h3>4.13.1. blockquote 속성</h3>
+
+				<div class="txt_ex indent mt_m">
+					<h4>[cite] <span class="t_blue">&lt;blockquote cite="URL"&gt;</span></h4>
+					<div class="indent mt_sm">
+						<p>URL은 인용된 정보에 대한 원본 문서 또는 메시지를 나타냅니다. 이 속성은 인용문의 컨텍스트나 참조를 설명하는 정보입니다.</p>
+
+						<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.13.blockquote_element/4.13.blockquote_element1.html">
+							<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+								<div class="code_wrap"><textarea></textarea></div>
+							</div>
+						</div>
+						<div class="view_editor ex_code mt_m" data-target="html/04-grouping/4.13.blockquote_element/4.13.blockquote_element2.html">
+							<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+								<div class="code_wrap"><textarea></textarea></div>
+							</div>
+						</div>
+						<div class="view_editor edit_code mt_m" data-target="html/04-grouping/4.13.blockquote_element/4.13.blockquote_element3.html">
+							<div class="uk_editor" data-result="true" data-mode="htmlmixed" data-theme="moxer" data-browser="default">
+								<div class="code_wrap"><textarea></textarea></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="reversed">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">1.0</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- blockquote element -->

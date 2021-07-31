@@ -1,0 +1,79 @@
+
+
+//function set
+.clear {
+	*zoom:1;
+	&:after {display: block; clear: both; content: "";}
+}
+.lft {float:left;}
+.rgt {float:right;}
+.both {float:none; clear:both;}
+.ell {overflow:hidden; white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis;}
+
+//placeholder
+.placeholder(@color: #999){
+	&::-webkit-input-placeholder {color:@color;}
+	&:-moz-placeholder {color:@color;}
+	&::-moz-placeholder {color:@color;}
+	&:-ms-input-placeholder {color:@color;}
+}
+
+//display-flex
+.display-flex(){
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.display-flex-height(){
+	.display-flex;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-ms-box-orient: vertical;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.flex(@state){
+	-webkit-box-flex: @state;
+	-webkit-flex: @state;
+	-ms-flex: @state;
+	flex-grow: @state;
+	flex: @state;
+}
+.flex_center {display:flex; justify-content:center; align-items:center;}
+
+
+//menu btn Action
+.menuBtnRotate(@step){
+	-webkit-transform:rotate(@step);
+	-moz-transform:rotate(@step);
+	transform:rotate(@step);
+}
+.menuBtnApp(@name){
+	-webkit-animation:@name @speed linear;
+	-moz-animation:@name @speed linear;
+	animation:@name @speed linear;
+	-webkit-animation-fill-mode:both;
+	animation-fill-mode:both;
+	animation-delay:@delay;
+}
+.menuBtnBefore(@name, @p1, @p2, @step1, @step2, @step3, @step4){
+	@keyframes @name{
+		0% {top:@p1; .menuBtnRotate(@step1);}
+		45% {top:@p2; .menuBtnRotate(@step2);}
+		75% {top:@p2; .menuBtnRotate(@step3);}
+		to {top:@p2; .menuBtnRotate(@step4);}
+	}
+	.menuBtnApp(@name);
+}
+.menuBtnAfter(@name, @p1, @p2, @step1, @step2, @step3, @step4){
+	@keyframes @name{
+		0% {bottom:@p1; .menuBtnRotate(@step1);}
+		45% {bottom:@p2; .menuBtnRotate(@step2);}
+		75% {bottom:@p2; .menuBtnRotate(@step3);}
+		to {bottom:@p2; .menuBtnRotate(@step4);}
+	}
+	.menuBtnApp(@name)
+}

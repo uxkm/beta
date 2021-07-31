@@ -1,0 +1,183 @@
+
+
+	<article class="uk_note mt_l">
+		<h2 class="sound_only">요약 설명</h2>
+		<p>HTML에는 두가지 종류의 요소(Element) 가 있습니다. 블록 레벨 요소(Block level element) 와 인라인 요소(Inline element) 입니다.</p>
+		<p>HTML의 모든 요소는 해당 요소가 웹 브라우저에 어떻게 보이는가를 결정짓는 display 속성을 가집니다.</p>
+		<p>대부분의 HTML 요소는 이러한 display 속성값으로 대표적으로 block, inline 두 가지 값 중 하나를 가지게 됩니다.</p>
+		<p>단, table의 기본 속성값은 다르게 이루어집니다.</p>
+		<p>HTML5에서는 콘텐츠모델별 분류하며 HTML5의 각 요소들은 특성에 따라 분류한 요소가 어떤 분류에도 속하지 않을 수도 있고 여러 분류에 속해있을 수도 있습니다.</p>
+	</article>
+	<!-- 요약 설명 -->
+
+
+	<article id="block_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>블록 레벨 요소</h2>
+		<div class="indent mt_l">
+			<p>display 속성값이 블록(block)인 요소는 언제나 새로운 라인(line)에서 시작하며, 해당 라인의 모든 너비를 차지합니다.</p>
+			<div class="ol_lst mt_s">
+				<ol>
+					<li>블록 레벨 요소(Block-level elements) 는 웹페이지 상에 블록(Block)을 만드는 요소입니다.</li>
+					<li>블록 레벨 요소는 앞뒤 요소 사이에 새로운 줄(Line)을 만들고 나타납니다. 즉 블록 레벨 요소 이전과 이후 요소사이의 줄을 바꿉니다.</li>
+					<li>
+						블록 레벨 요소는 일반적으로 페이지의 구조적 요소를 나타낼 때 사용됩니다.
+						예를 들어 개발자는 블록 레벨 요소를 사용하여 단락(Paragraphs), 목록(lists), 네비게이션 메뉴(Navigation Menus), 꼬리말(Footers) 등을 표현할 수 있습니다.
+					</li>
+					<li>블록 레벨 요소는 인라인 요소(Inline elements)에 중첩될(Nested inside)수 없습니다. 그러나 블록 레벨 요소는 다른 블록 레벨 요소에 중첩될 수 있습니다.</li>
+				</ol>
+			</div>
+			<div class="view_editor ex_code mt_l" data-target="html/02-blockInline/2.1.block_element.html">
+				<h3 class="ve_tit">block 요소의 기본 구조</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+			<div class="uk_note mt_l">
+				<h2 class="sound_only">블록 레벨 요소 요약 설명</h2>
+				<p>대표적인 블록 요소에는 다음과 같은 요소들이 있습니다.</p>
+				<p>div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, header, section, article, nav, footer, address, form 요소는 display 속성값이 블록(block)인 대표적인 요소입니다.</p>
+				<p>이 외에 다른 요소들도 많이 있습니다.</p>
+			</div>
+		</div>
+	</article>
+	<!-- 블록 레벨 요소 -->
+
+
+	<article id="div_block" class="uk_course" data-last-update="2019-11-11">
+		<h2>대표적인 블록 요소 - div</h2>
+		<div class="indent mt_l">
+			<p>&lt;div&gt;요소는 다른 HTML 요소들을 하나로 묶는 데 자주 사용되는 대표적인 블록(block) 요소입니다.</p>
+			<p>&lt;div&gt;요소는 주로 여러 요소들의 스타일을 한 번에 적용하기 위해 사용됩니다.</p>
+
+			<div class="view_editor ex_code mt_l" data-target="html/02-blockInline/2.2.div_block.html">
+				<h3 class="ve_tit">div 구조 예시</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="div">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">지원</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- 대표적인 블록 요소 - div -->
+
+
+	<article id="inline_element" class="uk_course" data-last-update="2019-11-11">
+		<h2>인라인 요소</h2>
+		<div class="indent mt_l">
+			<p>display 속성값이 인라인(inline)인 요소는 새로운 라인(line)에서 시작하지 않습니다. 또한, 요소의 너비도 해당 라인 전체가 아닌 해당 HTML 요소의 내용(content)만큼만 차지합니다. 그리고 인라인 요소 안에 블록 요소가 들어 올 수 없습니다.</p>
+			<div class="ol_lst mt_s">
+				<ol>
+					<li>인라인 요소(Inline elements)는 항상 블록 레벨 요소내에 포함되어 있습니다.</li>
+					<li>인라인 요소는 문서의 한 단락같은 큰 범위에는 적용될 수 없고 문장, 단어 같은 작은 부분에 대해서만 적용될 수 있습니다.</li>
+					<li>
+						인라인 요소는 새로운 줄(Line)을 만들지 않습니다. 즉 인라인 요소를 작성하면 그것을 작성한 단락내에 나타나게 됩니다.<br>
+						예를 들어, 인라인 요소에는 하이퍼링크를 정의하는 요소인 &lt;a&gt; , 텍스트(Text)를 강조하는 요소인 &lt;em&gt;,&lt;strong&gt; 등이 있습니다.
+					</li>
+				</ol>
+			</div>
+
+			<div class="view_editor ex_code mt_l" data-target="html/02-blockInline/2.3.inline_element.html">
+				<h3 class="ve_tit">inline 요소의 기본 구조</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<div class="uk_note mt_l">
+				<h2 class="sound_only">블록 레벨 요소 요약 설명</h2>
+				<p>대표적인 인라인 요소에는 다음과 같은 요소들이 있습니다.</p>
+				<p>span, a, img, strong, b, em, i, ins, del요소는 display 속성값이 인라인(inline)인 대표적인 요소입니다.</p>
+				<p>이 외에 다른 요소들도 많이 있습니다.</p>
+			</div>
+		</div>
+	</article>
+	<!-- 인라인 요소 -->
+
+
+	<article id="span_inline" class="uk_course" data-last-update="2019-11-11">
+		<h2>대표적인 인라인 요소 - span</h2>
+		<div class="indent mt_l">
+			<p>&lt;span&gt;요소는 텍스트(text)의 특정 부분을 묶는 데 자주 사용되는 인라인(inline) 요소입니다.</p>
+			<p>&lt;span&gt;요소는 주로 텍스트의 특정 부분에 따로 스타일을 적용하기 위해 사용됩니다.</p>
+
+			<div class="view_editor ex_code mt_l" data-target="html/02-blockInline/2.4.span_inline.html">
+				<h3 class="ve_tit">span 구조 예시</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<ul class="browser_support mt_l" data-tit="div">
+				<li class="ie">지원</li>
+				<li class="edge">지원</li>
+				<li class="chrome">지원</li>
+				<li class="firefox">지원</li>
+				<li class="opera">지원</li>
+				<li class="safari">지원</li>
+			</ul>
+		</div>
+	</article>
+	<!-- 대표적인 인라인 요소 - span -->
+
+
+	<article id="element_nesting" class="uk_course" data-last-update="2019-11-11">
+		<h2>요소 중첩</h2>
+		<div class="indent mt_l">
+			<p>요소를 다른 요소의 안에 놓을 수 있습니다 — 이것을 <b>중첩(nesting)</b>이라고 부릅니다.</p>
+
+			<div class="view_editor ex_code mt_l" data-target="html/02-blockInline/2.5.element_nesting1.html">
+				<h3 class="ve_tit">요소 중첩의 올바른 예</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<div class="uk_note mt_l">
+				<h3 class="sound_only">요약 설명</h3>
+				<p>마크업 시 요소가 적절히 중첩되었는지 확인할 필요가 있습니다.</p>
+				<p>위의 예제에서 우리는 p 요소를 먼저 열었고, 그다음 strong을 열었기 때문에 strong 요소를 먼저 닫고, 다음으로 p를 닫아야 합니다.</p>
+				<p>블록 요소안에 인라인 요소는 중첩 될 수 있으나, 인라인 요소에 블록요소는 중첩 될 수 없습니다.</p>
+				<p>다음은 잘못된 예제입니다.</p>
+			</div>
+
+			<div class="view_editor ex_code ex_wrong mt_l" data-target="html/02-blockInline/2.5.element_nesting2.html">
+				<h3 class="ve_tit">요소 중첩의 잘못된 예</h3>
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+		</div>
+	</article>
+	<!-- 요소 중첩 -->
+
+
+	<article id="only_empty" class="uk_course" data-last-update="2019-11-11">
+		<h2>단일 요소 또는 빈 요소</h2>
+		<div class="indent mt_l">
+			<p>
+				이런 요소들은 내용을 갖지 않습니다, 이러한 요소를 빈 요소(empty elements)라고 합니다.<br>
+				대표적으로 meta, link, img, hr, br 요소가 있습니다.
+			</p>
+
+			<div class="view_editor ex_code mt_l" data-target="html/02-blockInline/2.6.only_empty.html">
+				<div  class="uk_editor" data-result="false" data-mode="htmlmixed" data-theme="default" data-browser="default">
+					<div class="code_wrap"><textarea></textarea></div>
+				</div>
+			</div>
+
+			<p class="mt_s">
+				이 요소는 두 개의 속성을 포함하고 있으나 닫는 &lt;/img&gt; 태그가 없습니다.<br>
+				이미지 요소는 효과를 주기 위해 콘텐츠를 감싸지 않기 때문입니다.<br>
+				이 요소의 목적은 HTML 페이지에서 이미지가 나타날 위치에 이미지를 끼워 넣는 것입니다.
+			</p>
+		</div>
+	</article>
+	<!-- 단일 요소 또는 빈 요소 -->

@@ -1,0 +1,1116 @@
+
+
+	<header>
+		<h1></h1><!-- html include -->
+		<time class="last_update" datetime="2021-00-00">2021-00-00</time>
+	</header>
+
+	<blockquote class="uk_note mt_xxl" role="note">
+		<h2 class="sound_only">요약 설명</h2>
+		<p>
+			PHP, ASP, JSP같은 서버 사이드 언어(Server-side Programming Language)는 include라는 기능 제공하여 반복되는 마크업을 최소화 하고,
+			유지보수 또한 매우 편리하게 할 수 있습니다.<br>
+			하지만 html은 include 언어를 지원하지 않아 많은 양의 페이지를 코딩해야 할 경우 적합하지 않습니다.<br>
+		</p>
+
+		<p class="mt_ms">
+			'<mark>gulp-nunjucks-render</mark>'란(이하 '<mark>njk</mark>') 모질라(mozilla)에서 제작한 javascript 기반의 템플릿 언어입니다.<br>
+			Gulp는 <mark>njk</mark>패키지를 이용하여 html의 불편한 요소를 해소할 수 있으며, include 와 layout template 기능을 지원합니다.<br>
+			<!--<mark>njk</mark>를 제대로 사용하려면 javascript의 기본적인 문법(변수, 조건문, 반복문, 함수 등)은 활용할 수 있어야 합니다.-->
+			javascript의 기본적인 문법(변수, 조건문, 반복문, 함수 등)을 알면 <mark>njk</mark>를 제대로 활용할 수 있습니다.
+			프로젝트 환경이나 디자인에 따라 레이아웃은 시시각각 변화하기 때문에 상황에 맞게 적절히 레이아웃의 변화를 주려면 javascript 기본 문법을 어느정도 학습하는 것을 추천합니다.<br>
+			javascript가 익숙하지 않아도 아래 예제를 따라하다 보면 <mark>njk</mark>를 활용한 기본 레이아웃을 완성할 수 있습니다.
+		</p>
+	</blockquote>
+
+	<!-- 1.5.1. gulp-nunjucks-render 문법 -->
+	<section class="indent mt_xxl">
+		<h2 class="ml_mn">1.5.1. gulp-nunjucks-render(njk) 문법</h2>
+		<p class="mt_ms">
+			패키지 설치와 적용에 앞서 문법을 먼저 알아보겠습니다.<br>
+			<mark>njk</mark>는 javascript에서 사용하는 거의 모든 문법을 사용할 수 있습니다. 너무 많은 기능을 가지고 있기에 그 중 사용이 많은 문법 위주로 설명하겠습니다.<br>
+			자세한 내용은 모질라의 '<span class="reference mt_l"><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank" title="새창열림">Nunjucks</a></span>' 페이지에서 확인 가능합니다.
+		</p>
+
+		<!-- 변수 선언 -->
+		<article class="indent mt_l">
+			<h3 class="ml_mn">변수 선언</h3>
+			<p class="mt_s">
+				javscript의 변수와 같습니다. 다만 <code>var</code>, <code>let</code>, <code>const</code> 가 아닌 <code>set</code> 으로 변수를 선언합니다.<br>
+				변수의 값이 텍스트일 경우 반드시 큰따옴표(") 또는 작은따옴표(')로 감싸야 합니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-tit="njk - variable">
+				<textarea>
+					<!-- 문법 -->
+					{% set 변수명 = 변수 값 %}
+
+					<!-- 변수 선언 -->
+					{% set title = "uxkm" %}
+
+					<!-- 변수 대입 -->
+					<title>{{ title }}</title>
+
+					<!-- 빌드 후 -->
+					<title>uxkm</title>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				아래는 문자 배열을 활용하여 여러개의 변수를 선언하고 활용하는 방식입니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="array variable 1" data-tit="njk - variable">
+				<textarea>
+					<!-- 배열 변수 선언 1 -->
+					{% set pageData = { pageName: "UXKM", pageDescription: "강의와 스터디를 위한 홈페이지 입니다." } %}
+
+					<!-- 변수 대입 -->
+					<h1>{{ pageData.pageName }}</h1>
+					<p>{{ pageData.pageDescription }}</p>
+
+					<!-- 빌드 후 -->
+					<h1>UXKM</h1>
+					<p>강의와 스터디를 위한 홈페이지 입니다.</p>
+				</textarea>
+			</div>
+			<div class="uk_gist_code_box mt_ms" data-filename="array variable 2" data-tit="njk - variable">
+				<textarea>
+					<!-- 배열 변수 선언 2 -->
+					{% set items = [
+						{
+							title: "UXKM",
+							Description: "강의와 스터디를 위한 홈페이지 입니다."
+						},
+						{
+							title: "HTML 이란?",
+							Description: "HTML은 'HyperText Markup Language'의 약자입니다."
+						}
+					] %}
+
+					<!-- 변수 대입 -->
+					{% for item in items %}
+					<section>
+						<h2>{{ item.title }}</h2>
+						<p>{{ item.Description }}</p>
+					</section>
+					{% endfor %}
+
+					<!-- 빌드 후 -->
+					<section>
+						<h2>UXKM</h2>
+						<p>강의와 스터디를 위한 홈페이지 입니다.</p>
+					</section>
+
+					<section>
+						<h2>HTML 이란?</h2>
+						<p>HTML은 &#39;HyperText Markup Language&#39;의 약자입니다.</p>
+					</section>
+				</textarea>
+			</div>
+		</article>
+
+		<!-- 조건문 -->
+		<article class="indent mt_l">
+			<h3 class="ml_mn">조건문</h3>
+			<p class="mt_s">
+				javscript의 if문과 같습니다. 일반 적인 <code>if</code>, <code>else</code>, <code>else if</code>가 가능하며 삼항 연산자도 가능합니다.<br>
+				단, <mark>njk</mark>에서는 <mark>닫는 <code>if</code>도 필수로 선언</mark>되어야 합니다.
+			</p>
+
+			<!-- 일반 조건문 -->
+			<article class="indent mt_m">
+				<h4 class="ml_mn t_blue">일반 조건문</h4>
+				<div class="uk_gist_code_box all_black mt_ms" data-tit="njk - if">
+					<textarea>
+						// 한가지 조건
+						{% if 조건 %}
+							It is true
+						{% endif %}
+
+						// 한가지 이상의 조건
+						{% if 조건1 %}
+							I am hungry
+						{% elif 조건2 %}
+							I am tired
+						{% else %} // 외 조건
+							I am good!
+						{% endif %}
+					</textarea>
+				</div>
+				<p class="mt_ms">
+					javascript와 마찬가지로 <code>&& (and)</code>, <code>|| (or)</code> 도 가능합니다. 다만 <mark>njk</mark>에서는 기호가 아닌 영문으로 사용합니다.
+				</p>
+				<div class="uk_gist_code_box all_black mt_ms" data-tit="njk - if">
+					<textarea>
+						// and (&&)
+						{% if 조건1 and 조건2 %}  // 두가지 조건에 모두 만족할 때
+							It is true
+						{% endif %}
+
+						// or (||)
+						{% if 조건1 or 조건2 %}  // 두가지 조건 중 하나라도 만족할 때
+							It is true
+						{% endif %}
+					</textarea>
+				</div>
+			</article>
+
+			<!-- 삼항 연산자 -->
+			<article class="indent mt_m">
+				<h4 class="ml_mn t_blue">삼항 연산자</h4>
+				<p class="mt_s">
+					javascript의 삼항 연산자와 다르게 else 는 선택 사항입니다.
+				</p>
+				<div class="uk_gist_code_box all_black mt_ms" data-tit="njk - if">
+				<textarea>
+					//  foo가 진실이면 "true", 그렇지 않으면 "false" 문자열 출력
+					{{ "true" if foo else "false" }}
+
+					// foo가 진실이면 "true" 문자열 출력
+					{{ "true" if foo }}
+				</textarea>
+				</div>
+			</article>
+		</article>
+
+		<!-- 반복문 -->
+		<article class="indent mt_l">
+			<h3 class="ml_mn">반복문</h3>
+			<p class="mt_s">
+				json data와 연동하여 메뉴 링크를 반복해서 만들어 보겠습니다.<br>
+				아래 예제는 json의 data를 이용하여 반복문을 만들었지만 위 <mark>'변수 선언' 예제에서 적용한 것처럼</mark> 배열로 만들어진 변수로도 반복문을 만들 수 있습니다.<br>
+				data.json 파일이 연결되어 있고 아래와 같은 코드로 메뉴에 대한 정보가 있다고 가정해봅니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="data.json" data-tit="njk - data.json">
+				<textarea>
+					{
+						"nav_data": [
+							{
+								"name": "home",
+								"href": "/"
+							},
+							{
+								"name": "intro",
+								"href": "/page/intro.html"
+							},
+							{
+								"name": "history",
+								"href": "/page/history.html"
+							}
+						]
+					}
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				위 json을 이용하여 반복문을 선언합니다.
+			</p>
+			<div class="uk_gist_code_box  mt_ms" data-filename="nav.njk <i>(빌드 전)</i>" data-tit="njk - for">
+				<textarea>
+					<nav>
+						{%- for link_append in nav_data %}
+						<a href="{{ link_append.href }}">{{ link_append.name }}</a>
+						{%- endfor %}
+					</nav>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				빌드하게 되면 아래처럼 반복문이 3개의 태그를 생성해주고 href와 링크 택스트도 삽입합니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="nav.html <i>(빌드 후)<i>" data-tit="njk - for">
+				<textarea>
+					<nav>
+						<a href="/">home</a>
+						<a href="/page/intro.html">intro</a>
+						<a href="/page/history.html">history</a>
+					</nav>
+				</textarea>
+			</div>
+		</article>
+
+		<!-- 함수(macro) -->
+		<article class="indent mt_l">
+			<h3 class="ml_mn">함수(macro)</h3>
+			<p class="mt_s">
+				재사용 가능한 콘텐츠를 함수의 형태로 정의할 수 있습니다. react의 컴퍼넌트와 같다고 보면 됩니다.<br>
+				아래처럼 macro를 담을 파일을 생성 후 input에 대한 매크로를 작성합니다.
+			</p>
+			<div class="uk_gist_code_box all_black mt_ms" data-filename="_macros.njk" data-tit="njk - macro">
+				<textarea>
+					{% macro field( name, placeholder, type='text' ) %}
+					<input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}">
+					{% endmacro %}
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				_macros.njk 파일을 호출한 후 필요한 인수값을 적용하여 macro를 활용합니다.
+			</p>
+			<div class="uk_gist_code_box all_black mt_ms" data-filename="html <i>(빌드 전)</i>" data-tit="njk - macro">
+				<textarea>
+					{%- import '_macro.njk' as macro -%}
+					<form>
+						{{ field( 'email', 'email을 입력해 주세요.' ) }}
+						{{ field( 'password', '비밀번호를 입력해 주세요.', type='password' ) }}
+					</form>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				빌드 시 아래처럼 인수값이 반영되어 태그가 생성됩니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="html <i>(빌드 후)</i>" data-tit="njk - macro">
+				<textarea>
+					<!-- form -->
+					<form>
+						<input type="text" name="email" placeholder="email을 입력해 주세요.">
+						<input type="password" name="password" placeholder="비밀번호를 입력해 주세요.">
+					</form>
+				</textarea>
+			</div>
+		</article>
+
+		<!-- include -->
+		<article class="indent mt_l">
+			<h3 class="ml_mn">include</h3>
+			<p class="mt_s">
+				페이지 마다 같은 내용이 반복될 경우 template으로 만들어 불어들일 수 있습니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="_header.njk" data-tit="njk - include">
+				<textarea>
+					<header>
+						<h1>UXKM</h1>
+						<p>Welcome to...</p>
+					</header>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				필요한 페이지에서 _header.njk 파일을 include합니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="html <i>(include 선언)</i>" data-tit="njk - include">
+				<textarea>
+					<div class="wrap">
+						{% include("_header.njk") %}
+
+						<p>UXKM 홈페이지의 모든 문서는 UXKM의 자산입니다.</p>
+					</div>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				빌드 시 아래처럼 _header.njk의 내용이 병합된 상태로 출력됩니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="html <i>(빌드 후)</i>" data-tit="njk - include">
+				<textarea>
+					<!-- include 호출 -->
+					<div class="wrap">
+						<header>
+							<h1>UXKM</h1>
+							<p>Welcome to...</p>
+						</header>
+
+						<p>UXKM 홈페이지의 모든 문서는 UXKM의 자산입니다.</p>
+					</div>
+				</textarea>
+			</div>
+		</article>
+
+		<!-- layout template -->
+		<article class="indent mt_l">
+			<h3 class="ml_mn">layout template</h3>
+			<p class="mt_s">
+				기준이 되는 레이아웃 <mark>템플릿.njk</mark>를 만든 후 호출하여 개별 html에서는 컨텐츠에 해당하는 부분만 작업할 수 있습니다.
+				<mark>njk</mark>의 특징이라고 할 수 있습니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="_layout.njk" data-tit="njk - layout template">
+				<textarea>
+					<!DOCTYPE html>
+					<html lang="ko">
+						<head>
+							<meta charset="UTF-8">
+							<title>UXKM</title>
+						</head>
+						<body>
+							<div class="wrap">
+								&nbsp;
+								<!-- content -->
+								{%- block content %}
+								{%- endblock -%}
+								&nbsp;
+							</div>
+							<!-- //wrap -->
+						</body>
+					</html>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				위 템플릿을 보면 컨텐츠 영역은 <code>block <mark>content</mark></code>으로 지정되어 있습니다.
+				여기서 <code><mark>content</mark></code>는 이 <code>block</code> 의 이름을 임의로 지정한 것이며 사용 용도에 따라 자유롭게 이름을 지정할 수 있습니다.<br>
+				아래는 개별 페이지에서 템플릿을 호출하고 <code>block</code>영역에 컨텐츠를 삽입하는 방법입니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="index.html <i>빌드 전</i>" data-tit="njk - layout template">
+				<textarea>
+					{%- extends "__layout_default.njk" -%}
+
+					{% block content %}
+						<p>UXKM 홈페이지의 모든 문서는 UXKM의 자산입니다.</p>
+					{% endblock %}
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				위 index.html을 빌드하게 되면 아래처럼 _layout.njk와 index.html이 병합된 상태로 출력됩니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="index.html <i>빌드 후</i>" data-tit="njk - layout template">
+				<textarea>
+					<!DOCTYPE html>
+					<html lang="ko">
+						<head>
+							<meta charset="UTF-8">
+							<title>UXKM</title>
+						</head>
+						<body>
+							<div class="wrap">
+								&nbsp;
+								<p>UXKM 홈페이지의 모든 문서는 UXKM의 자산입니다.</p>
+								&nbsp;
+							</div>
+							<!-- //wrap -->
+						</body>
+					</html>
+				</textarea>
+			</div>
+		</article>
+
+		<!-- template 상속 -->
+		<article class="indent mt_l">
+			<h3 class="ml_mn">template 상속</h3>
+			<p class="mt_s">
+				일반적으로 호출하는 템플릿의 컨텐츠 영역에 새롭게 내용을 채우거나 <code>{{ super() }}</code>를 이용하여 기존 내용을 유지한 상태로 새로운 내용을 추가할 수 있습니다.<br>
+				예를 들어 _content.njk에 아래와 같은 코드가 있습니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="_content.njk" data-tit="njk - layout inheritance">
+				<textarea>
+					<div class="wrap">
+						<!-- content -->
+						{%- block content %}
+							<p>안녕하세요 UXKM 입니다.</p>
+						{%- endblock -%}
+					</div>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				intro.html 에서 위 템플릿을 호출하고 block content에 내용을 채우면 <code>&lt;p&gt;안녕하세요 UXKM 입니다.&lt;/p&gt;</code>는 사라지고 새로운 내용이 채워집니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="intro.html (super 사용 전)" data-tit="njk - layout inheritance">
+				<textarea>
+					<!-- 빌드 전 -->
+					{%- extends "_content.njk" -%}
+					{%- block content %}
+						<p>반갑습니다. 환영합니다.</p>
+					{%- endblock -%}
+
+					<!-- 빌드 후 -->
+					<div class="wrap">
+						<!-- content -->
+						<p>반갑습니다. 환영합니다.</p>
+					</div>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				<code>{{ super() }}</code>를 사용하면 <code>&lt;p&gt;안녕하세요 UXKM 입니다.&lt;/p&gt;</code>가 유지되고 새롭게 적용한 코드가 추가된 상태로 빌드됩니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="intro.html (super 사용)" data-tit="njk - layout inheritance">
+				<textarea>
+					<!-- 빌드 전 -->
+					{%- extends "_content.njk" -%}
+					{%- block content %}
+						{{ super() }}
+						<p>반갑습니다. 환영합니다.</p>
+					{%- endblock -%}
+
+					<!-- 빌드 후 -->
+					<div class="wrap">
+						<!-- content -->
+						<p>안녕하세요 UXKM 입니다.</p>
+						<p>반갑습니다. 환영합니다.</p>
+					</div>
+				</textarea>
+			</div>
+		</article>
+
+		<!-- 불필요한 공백 제어 -->
+		<article class="indent mt_l">
+			<h3 class="ml_mn">불필요한 공백 제어</h3>
+			<p class="mt_s">
+				layout을 호출하거나 include, 변수선언 또는 기타 javascript문법을 사용하고 빌드했을 경우 불피요한 공백이 발생합니다.<br>
+				예를 들어 아래 코드에서 변수를 선언하면 빌드되는 html에는 변수 자체가 없어지기 때문에 변수를 선언한 빈 공간만 남게됩니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="Before" data-tit="njk - blank control">
+				<textarea>
+					<!-- 빌드 전 -->
+					<div class="wrap">
+						{% set pageName = "main page" %}
+						<p>{{ pageName }}</p>
+					</div>
+
+					<!-- 빌드 후 -->
+					<div class="wrap">
+
+						<p>main page</p>
+					</div>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				위의 경우 minus 기호(-)를 활용하여 빈 공간을 없앨 수 있습니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="After" data-tit="njk - blank control">
+				<textarea>
+					<!-- 문법 -->
+					{%- 내용 -%}
+
+					<!-- 빌드 전 -->
+					<div class="wrap">
+						{%- set pageName = "main page" -%}
+						<p>{{ pageName }}</p>
+					</div>
+
+					<!-- 빌드 후 -->
+					<div class="wrap">
+						<p>main page</p>
+					</div>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				한 가지 예를 더 들어보겠습니다.<br>
+				_layout.njk 에서 <code>block <mark>content</mark></code>를 만든 후 html 페이지에서 <mark>content</mark>를 적용하고 빌드하면
+				아래처럼 <mark><code>block</code>을 선언한 라인이 공백</mark>으로 남아있게 됩니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="Before" data-tit="njk - blank control">
+				<textarea>
+					<!-- _layout.njk -->
+					<main role="main">
+						{% block content %}
+						{% endblock %}
+					</main>
+
+					<!-- index.html(빌드 전) -->
+					{% block content %}
+						<p>안녕하세요. UXKM입니다.</p>
+					{% endblock %}
+
+					<!-- index.html(빌드 후) -->
+					<main role="main">
+
+						<p>안녕하세요. UXKM입니다.</p>
+
+					</main>
+				</textarea>
+			</div>
+			<p class="mt_ms">
+				이 때 <code>block <mark>content</mark></code>를 이용하는 index.html에서 minus 기호(-)를 사용하여 공백 라인을 제거할 수 있습니다.
+			</p>
+			<div class="uk_gist_code_box mt_ms" data-filename="After" data-tit="njk - blank control">
+				<textarea>
+					<!-- _layout.njk -->
+					<main role="main">
+						{% block content %}
+						{% endblock %}
+					</main>
+
+					<!-- index.html(빌드 전) -->
+					{% block content -%}
+						<p>안녕하세요. UXKM입니다.</p>
+					{%- endblock %}
+
+					<!-- index.html(빌드 후) -->
+					<main role="main">
+						<p>안녕하세요. UXKM입니다.</p>
+					</main>
+				</textarea>
+			</div>
+		</article>
+
+		<p class="mt_ms">
+			여기까지 njk를 활용하기 위해 기본으로 알고있어야 하는 문법을 알아보았습니다. 위 문법을 활용하고 응용하면 웹만한 웹사이트 구축은 충분히 가능합니다.<br>
+			다음 페이지에서는 njk를 설치하는 적용하는 과정을 알아보겠습니다.
+		</p>
+	</section>
+
+
+	<!-- 1.5.2. gulp-nunjucks-render 설치 및 적용 -->
+	<!--<section class="indent mt_xxl">
+		<h2 class="ml_mn">1.5.2. gulp-file-include 설치 및 적용</h2>
+
+		<ol class="ol_lst">
+			&lt;!&ndash; 패키지 설치 &ndash;&gt;
+			<li class="tit_h3 mt_xl">
+				<h3>패키지 설치</h3>
+				<p class="mt_ms">
+					명령프롬프트에서 아래의 명령어를 입력합니다.
+				</p>
+				<div class="terminal_code_box mt_ms">
+					<textarea>
+						//full code
+						npm install gulp-file-include -D  // html include
+						npm install gulp-htmlmin -D        // html 압축
+
+						//shorthand
+						npm install -D gulp-file-include gulp-htmlmin
+					</textarea>
+				</div>
+			</li>
+
+			&lt;!&ndash; gulpfile.js 파일 수정 &ndash;&gt;
+			<li class="tit_h3 mt_xl">
+				<h3>gulpfile.js 파일 수정</h3>
+				<p class="mt_ms">
+					<mark>gulpfile.js</mark>를 아래 처럼 수정합니다.<br>
+				</p>
+				<div class="uk_gist_code_box mt_ms" data-filename="gulpfile.js" data-tit="gulpfile.js">
+					<textarea>
+						// plug-in 연결
+						//
+						// 생략...
+						//
+						const fileinclude = require('gulp-file-include');  // &#45;&#45;add&#45;&#45;
+						const htmlmin = require('gulp-htmlmin');           // &#45;&#45;add&#45;&#45;
+
+						// &#45;&#45;no_change&#45;&#45; autoprefixer 옵션: 브라우저 버전 지정
+
+						// &#45;&#45;no_change&#45;&#45; 소스 파일 경로
+
+						// &#45;&#45;no_change&#45;&#45; scss 컴파일
+
+						// html 빌드
+						gulp.task('html', () => {
+							return new Promise(resolve => {
+								//gulp.src(PATH.HTML + '/*.html') &#45;&#45;del&#45;&#45;
+								&#45;&#45;add_start&#45;&#45;
+								gulp.src([
+									PATH.HTML + '/**/*',             // 불러올 파일의 위치
+									'!' + PATH.HTML + '/**/_*',      // '_'로 시작하는 폴더 제외
+									'!' + PATH.HTML + '/**/_*/**/*'  // '_'로 시작하는 폴더의 파일 및 하위 폴더 제외
+									])
+									.pipe(fileinclude({
+										prefix: '@@',
+										basepath: '@file',
+        						indent : true                  //include 되는 tab 사이즈에 맞춰 들여쓰기 적용
+									}))
+      						.pipe( htmlmin({collapseWhitespace: true, removeComments: true}) )  // html 압축 및 주석 제거
+								&#45;&#45;add_end&#45;&#45;
+									.pipe( gulp.dest(DEST_PATH.HTML) )            &#45;&#45;no_change&#45;&#45;
+									.pipe( browserSync.reload({stream: true}) );  &#45;&#45;no_change&#45;&#45;
+								resolve();
+							});
+						});
+
+						// &#45;&#45;no_change&#45;&#45; app.js 파일을 참조하여 express 서버 구동
+
+						// &#45;&#45;no_change&#45;&#45; 변경, 추가되는 파일을 감지하여 자동 빌드
+
+						// &#45;&#45;no_change&#45;&#45; 빌드된 내용을 브라우저에 반영
+
+						// &#45;&#45;no_change&#45;&#45; 실행
+					</textarea>
+				</div>
+				<div class="uk_gist_code_box full_code_layer" data-filename="gulpfile.js" data-tit="gulpfile.js">
+					<textarea>
+						// plug-in 연결
+						const gulp = require("gulp");                      // gulp 연결
+						const Fiber = require('fibers');                   // dart sass 이용시 gulp-sass와 세트 플러그인
+						const dartSass = require('dart-sass');             // dart-sass 연결(기본)
+						const scss = require('gulp-sass');                 // gulp-sass 연결(기본)
+						const sourcemaps = require('gulp-sourcemaps');     // css.map 파일 생성용
+						const minificss = require('gulp-minify-css');      // css 압축
+						const autoprefixer = require('autoprefixer');      // 고려할 브라우저 버전 설정
+						const postCss = require('gulp-postcss');           // 설정한 브라우저에 버전에 맞춰 css 컴파일
+						const rename = require('gulp-rename');             // 파일 이름 변경
+						const nodemon = require('gulp-nodemon');           // 파일 변경이 감지될 때 자동으로 재시작
+						const browserSync = require('browser-sync');       // 변경된 내용을 브라우저에 적용
+						const fileinclude = require('gulp-file-include');  // html include를 위한 플러그인 연결
+						const htmlmin = require('gulp-htmlmin');           // html 압축
+
+
+						// autoprefixer 옵션: 브라우저 버전 지정
+						const apfBrwsowsers = [
+							'ie > 0', 'chrome > 0', 'firefox > 0'  // 브라우저의 모든 버전 적용
+							//'last 2 versions'                    // 최신 브라우저 기준 하위 2개의 버전까지 적용
+						];
+
+
+						// 소스 파일 경로
+						const src = './src';
+						const dist = './dist';
+						const assets = '/assets';
+						// 작업폴더 경로 ('src'에서 작업한 것을)
+						const PATH = {
+							HTML: src + '/html',
+							ASSETS: {
+								CSS: src + assets + '/css',
+								FONTS: src + assets + '/fonts',
+								IMAGES: src + assets + '/images',
+								JS: src + assets + '/js',
+							}
+						}
+						// 산출물 경로 ('dist'에 생성한다.)
+						const DEST_PATH = {
+							HTML: dist,
+							ASSETS: {
+								CSS: dist + assets +'/css',
+								FONTS: dist + assets +'/fonts',
+								IMAGES: dist + assets +'/images',
+								JS: dist + assets +'/js',
+							}
+						};
+
+
+						// scss 컴파일
+						gulp.task('scss:compile', () => {
+							return new Promise(resolve => {
+								const options = {
+									//scss 옵션 정의
+									scss : {
+										outputStyle: "expanded",  // 컴파일 스타일: nested(default), expanded, compact, compressed
+										indentType: "space",      // 들여쓰기 스타일: space(default), tab
+										indentWidth: 2,           // 들여쓰기 칸 수 (Default : 2)
+										precision: 8,             // 컴파일 된 CSS 의 소수점 자리수 (Type : Integer , Default : 5)
+										sourceComments: true,     // 코멘트 제거 여부 (Default : false)
+										compiler: dartSass,       // 컴파일 도구
+										fiber: Fiber,             // 컴파일 오버해드 방지
+									},
+									postcss: [ autoprefixer({
+										overrideBrowserslist: apfBrwsowsers,
+									}) ]
+								};
+								gulp.src( PATH.ASSETS.CSS + '/*.scss' )                   // 컴파일 대상 scss파일 찾기
+									// *.css 생성
+									.pipe( sourcemaps.init() )                              // 소스맵 작성
+									.pipe( scss(options.scss).on('error', scss.logError) )  // scss 옵션 적용, scss 작성시 watch가 멈추지 않도록 logError 설정
+									.pipe( postCss(options.postcss) )                       // 하위 브라우저 고려
+									.pipe( sourcemaps.write() )                             // 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+									.pipe( browserSync.reload({stream: true}) )             // 파일 변경 시 브라우저에 반영
+									// *.min.css 생성
+									.pipe( minificss() )                                    // 컴파일된 css 압축
+									.pipe( rename({ suffix: '.min' }) )                     // 압축파일 *.min.css 생성
+									.pipe( sourcemaps.write() )                             // 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+									.pipe( browserSync.reload({stream: true}) );            // 파일 변경 시 브라우저에 반영
+								resolve();
+							});
+						});
+
+
+						// html 빌드
+						gulp.task('html', () => {
+							return new Promise(resolve => {
+								gulp.src([
+									PATH.HTML + '/**/*',             // 불러올 파일의 위치
+									'!' + PATH.HTML + '/**/_*',      // '_'로 시작하는 폴더 제외
+									'!' + PATH.HTML + '/**/_*/**/*'  // '_'로 시작하는 폴더의 파일 및 하위 폴더 제외
+									])
+									.pipe(fileinclude({
+										prefix: '@@',
+										basepath: '@file',
+										indent : true                  //include 되는 tab 사이즈에 맞춰 들여쓰기 적용
+									}))
+									.pipe( htmlmin({collapseWhitespace: true, removeComments: true}) )  // html 압축 및 주석 제거
+									.pipe(gulp.dest(DEST_PATH.HTML))                                    // 컴파일 후 html파일이 생성될 목적지 설정
+									.pipe( browserSync.reload({stream: true}) );                        // 파일 변경 시 브라우저에 반영
+								resolve();
+							});
+						});
+
+
+						// app.js 파일을 참조하여 express 서버 구동
+						gulp.task('nodemon:start', () => {
+							return new Promise(resolve => {
+								nodemon({
+									script: 'app.js',
+									watch: DEST_PATH.HTML
+								});
+								resolve();
+							});
+						});
+
+
+						// 변경, 추가되는 파일을 감지하여 자동 빌드
+						gulp.task('watch', () => {
+							return new Promise(resolve => {
+								gulp.watch(PATH.HTML + "/**/*.html", gulp.series(['html']));                //html 폴더 내의 모든 파일 감시
+								gulp.watch(PATH.ASSETS.CSS + "/**/*.scss", gulp.series(['scss:compile']));  //css 폴더 내의 모든 파일 감시
+								resolve();
+							});
+						});
+
+
+						// 빌드된 내용을 브라우저에 반영
+						gulp.task('browserSync', () => {
+							return new Promise(resolve => {
+								browserSync.init(null, {
+									proxy: 'http://localhost:8005',
+									port: 8006
+								});
+								resolve();
+							});
+						});
+
+
+						// 실행
+						gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start', 'browserSync', 'watch']));
+					</textarea>
+				</div>
+				<p class="mt_ms">
+					html 빌드 task를 변경하였습니다.<br>
+					&lt;!&ndash;
+					'_'로 시작하는 폴더를 제외하는 이유는 include 템플릿을 '_include' 폴더에 생성할 것이고,
+					include 템플릿은 각각의 html파일에 병합되어 빌드가 되기 때문에
+					'dist' 폴더에 따로 빌드가 될 필요가 없습니다.
+					&ndash;&gt;
+					&lt;!&ndash;
+					gulp 실행 시 include 템플릿은 다른 html이나 html내의 폴더와 파일처럼 빌드가 될 필요가 없습니다.
+					이유는 include 템플릿은 각각의 html파일에 병합되어 빌드가 되기 때문입니다.<br>
+					&ndash;&gt;
+					gulp 실행 시 include 템플릿은 각각의 html파일에 병합되어 빌드가 되기 때문에 따로 빌드가 될 필요가 없습니다.<br>
+					그래서 '_'시작하는 폴더와 하위 파일들은 빌드에서 제외 시키는 설정을 추가로 하였고,
+					include 템플릿을 '_include' 폴더에 생성하여 빌드에서 제외하게 할 예정입니다.
+				</p>
+			</li>
+
+			&lt;!&ndash; sub.html 생성 및 include 템플릿 생성 &ndash;&gt;
+			<li class="tit_h3 mt_xl">
+				<h3>sub.html 생성 및 include 템플릿 생성</h3>
+				<p class="mt_ms">
+					include 기능을 테스트 하기 위해 필요한 파일을 생성합니다.
+				</p>
+
+				&lt;!&ndash; 파일 구조 &ndash;&gt;
+				<article class="indent mt_l">
+					<h4 class="ml_mn">파일 구조</h4>
+					<p class="mt_s">
+						html 폴더 내에 '<mark>_include</mark>', '<mark>page</mark>' 폴더 생성 후,<br>
+						'<mark>_include</mark>' 폴더 내에 <mark>head.html</mark>, <mark>header.html</mark>, <mark>nav.html</mark>, <mark>footer.html</mark> 파일 생성,<br>
+						'<mark>page</mark>' 폴더 내에 <mark>sub.html</mark> 파일을 생성합니다.
+					</p>
+					<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-include_srart.png" alt="html 폴더 파일 구조"/></p>
+				</article>
+
+				&lt;!&ndash; index.html 파일 수정 &ndash;&gt;
+				<article class="indent mt_l">
+					<h4 class="ml_mn">index.html 파일 수정</h4>
+					<p class="mt_s">
+						index.html 파일을 아래처럼 수정합니다.
+					</p>
+					<div class="uk_gist_code_box mt_ms" data-filename="index.html" data-tit="index.htmljs">
+						<textarea>
+							<!DOCTYPE html>
+							<html lang="ko">
+								&lt;!&ndash; head include &ndash;&gt;
+								@@include('./_include/head.html', {
+									main_page : true,
+									title_text : 'Gulp setting'
+								})
+								<body>
+									<div class="wrap">
+										&lt;!&ndash; header include &ndash;&gt;
+										@@include('./_include/header.html', {
+											h1_text : 'Main page 입니다.'
+										})
+										&nbsp;
+										<p>main content</p>
+										&nbsp;
+										&lt;!&ndash; footer include &ndash;&gt;
+										@@include('./_include/footer.html')
+									</div>
+									&lt;!&ndash; //wrap &ndash;&gt;
+									</body>
+							</html>
+						</textarea>
+					</div>
+				</article>
+
+				&lt;!&ndash; page > sub.html 파일 생성 &ndash;&gt;
+				<article class="indent mt_l">
+					<h4 class="ml_mn">page > sub.html 파일 생성</h4>
+					<p class="mt_s">
+						sub.html 파일을 아래처럼 생성합니다.<br>
+						index.html과 달리 include 경로 앞에 점(.)이 하나 더 있습니다.
+						include 템플릿의 위치와 include 하려는 파일의 위치를 잘 알아야 합니다.<br>
+						index.html은 <mark>'_include' 폴더와 형제</mark>이기 때문에 '<mark><code>./_include</code></mark>' 이렇게 시작하지만<br>
+						sub.html은 <mark>부모 폴더가 '_include' 폴더와 형제</mark>이기 때문에 '<mark><code>../_include</code></mark>' 이렇게 시작해야 합니다. '../'를 사용하므로써 자신의 위치에서 한단계 위로 올라가는 것입니다.
+					</p>
+					<div class="uk_gist_code_box mt_ms" data-filename="sub.html" data-tit="sub.html">
+						<textarea>
+							<!DOCTYPE html>
+							<html lang="ko">
+								&lt;!&ndash; head include &ndash;&gt;
+								@@include('../_include/head.html', {
+									main_page : false,
+									title_text : 'Sub page'
+								})
+								<body>
+									<div class="wrap">
+										&lt;!&ndash; header include &ndash;&gt;
+										@@include('../_include/header.html', {
+											h1_text : 'Sub page 입니다.'
+										})
+										&nbsp;
+										<p>sub content</p>
+										&nbsp;
+										&lt;!&ndash; footer include &ndash;&gt;
+										@@include('../_include/footer.html')
+									</div>
+									&lt;!&ndash; //wrap &ndash;&gt;
+								</body>
+							</html>
+						</textarea>
+					</div>
+				</article>
+
+				&lt;!&ndash; _include > head.html 파일 생성 &ndash;&gt;
+				<article class="indent mt_l">
+					<h4 class="ml_mn">_include > head.html 파일 생성</h4>
+					<p class="mt_s">
+						head.html 파일을 아래처럼 생성합니다.<br>
+						위 index.html, sub.html 파일의 head include 선언 부분의 변수 <mark>main_page</mark>의 값이 <mark>index는 true</mark>, <mark>sub는 false</mark>로 선언되어 있습니다.
+						그 변수와 값을 받아 head.html에 <mark>if문</mark>을 작성하여 index 페이지 일때와 sub 페이지 일때 각각 다른 <code>&lt;title&gt;</code>이 빌드 되도록 하였습니다.<br>
+						위 index.html에는 없지만 sub.html에는 <mark>title_text</mark>라는 변수가 있고 값에는 <code>&lt;title&gt;</code>에 들어갈 페이지의 이름이 선언되어 있습니다.
+						모든 홈페이지의 서브는 독립적인 페이지 이름이 <code>&lt;title&gt;</code>에 적용되야 하기 때문에 생성한 변수이며, 아래 주석의 '<mark>서브 페이지 일 때</mark>'부분을 보면
+						<code>&lt;title&gt;</code>에 <mark><code>@@title_text</code></mark>와 메인 페이지 일 때 적용한 title명 까지 같이 적용하였습니다.
+					</p>
+					<div class="uk_gist_code_box mt_ms" data-filename="head.html" data-tit="head.html">
+						<textarea>
+							<head>
+								<meta charset="UTF-8">
+								&lt;!&ndash; 메인 페이지 일 때 &ndash;&gt;
+								@@if ( main_page === true ) {
+									<title>@@title_text</title>
+								}
+								&lt;!&ndash; 메인 페이지가 아닐 때(서브 페이지 일 때) &ndash;&gt;
+								@@if ( main_page === false ) {
+									<title>@@title_text | Gulp setting</title>
+								}
+								<meta name="viewport" content="width=device-width, initial-scale=1.0">
+								<meta http-equiv="X-UA-Compatible" content="ie=edge">
+								<link rel="stylesheet" href="@@webRoot/assets/css/style.css">
+							</head>
+						</textarea>
+					</div>
+					<p class="mt_s">
+						위 파일의 style.css 링크를 보면 앞에 <mark><code>@@webRoot</code></mark>가 있습니다.<br>
+						include로 인해 각 페이지에서 불러들일 css, image, js파일 들의 상대 경로가 꼬일 경우 빌드 폴더(dist) 기준으로 상태 경로를 자동 생성하는 기능입니다.
+						예를 들어 css를 불러들일 때 index.html은 형제 경로의 assets부터 시작하지만 sub.html은 page폴더 위로 이동하여 assets폴더로 접근해야하는 문제가 있습니다.<br>
+						이 때 상대경로를 알아서 잡아주는 기능이 <mark><code>@@webRoot</code></mark>입니다.
+					</p>
+				</article>
+
+				&lt;!&ndash; _include > header.html 파일 생성 &ndash;&gt;
+				<article class="indent mt_l">
+					<h4 class="ml_mn">_include > header.html 파일 생성</h4>
+					<p class="mt_s">
+						header.html 파일을 아래처럼 생성합니다.<br>
+						<mark><code>@@h1_text</code></mark>는 이 파일을 include할때 선언한 <mark>h1_text</mark>변수의 값을 대입하는 것입니다.
+						그 아래 nav.html파일을 include하고 링크를 생성할 배열을 변수로 지정하였습니다.
+					</p>
+					<div class="uk_gist_code_box mt_ms" data-filename="header.html" data-tit="header.html">
+						<textarea>
+							<header class="header">
+								<h1>@@h1_text</h1>
+
+								@@include('./nav.html', {
+									link_item : [
+										{name: 'main page', link: '/'},
+										{name: 'sub page', link: '/page/sub.html'},
+									],
+								})
+							</header>
+						</textarea>
+					</div>
+				</article>
+
+				&lt;!&ndash; _include > nav.html 파일 생성 &ndash;&gt;
+				<article class="indent mt_l">
+					<h4 class="ml_mn">_include > nav.html 파일 생성</h4>
+					<p class="mt_s">
+						nav.html 파일을 아래처럼 생성합니다.<br>
+						위 header.html에서 정의한 배열을 이용하여 <mark><code>@@for</code></mark>문을 작성하였습니다.<br>
+						header.html에서 두개의 배열을 정의하였기 때문에 nav.html 빌드됬을 때 두 개의 <code>&lt;a&gt;</code>태그와
+						각각 <mark><code>href</code></mark>에는 <mark>link</mark>의 값이 <mark>링크 텍스트</mark>는 <mark>name</mark>의 값이 빌드됩니다.
+					</p>
+					<div class="uk_gist_code_box mt_ms" data-filename="nav.html" data-tit="nav.html">
+						<textarea>
+							<nav class="nav">
+								@@for (var i = 0; i < link_item.length; i++) {
+									<a href="`+link_item[i].link+`">`+link_item[i].name+`</a>
+								}
+							</nav>
+						</textarea>
+					</div>
+				</article>
+
+				&lt;!&ndash; _include > footer.html 파일 생성 &ndash;&gt;
+				<article class="indent mt_l">
+					<h4 class="ml_mn">_include > footer.html 파일 생성</h4>
+					<p class="mt_s">
+						footer.html 파일을 아래처럼 생성합니다.
+					</p>
+					<div class="uk_gist_code_box mt_ms" data-filename="footer.html" data-tit="footer.html">
+						<textarea>
+							<footer class="footer">
+								footer 영역 입니다.
+							</footer>
+						</textarea>
+					</div>
+				</article>
+
+				&lt;!&ndash; style.scss 파일 수정 &ndash;&gt;
+				<article class="indent mt_l">
+					<h4 class="ml_mn">style.scss 파일 수정</h4>
+					<p class="mt_s">
+						style.scss 파일을 아래처럼 수정합니다.<br>
+						index.html, sub.html 파일이 빌드되었을때 include 영역이 눈에 띄게 하기 위해 간단하게 수정을 진행합니다.
+					</p>
+					<div class="uk_gist_code_box mt_ms" data-filename="style.scss" data-tit="style.scss">
+						<textarea>
+							@charset 'utf-8';
+
+							$bg-color: #fff;
+
+							html {
+								background: $bg-color;
+							}
+
+							.header {
+								padding: 20px;
+								background: #eee;
+								nav {
+									padding:20px;
+									background: #888;
+									a {color:#fff;}
+								}
+							}
+
+							.footer {
+								padding: 20px;
+								background: #eee;
+							}
+						</textarea>
+					</div>
+				</article>
+			</li>
+
+			&lt;!&ndash; gulp 실행 후 웹서버 확인 &ndash;&gt;
+			<li class="tit_h3 mt_xl">
+				<h3>gulp 실행 후 웹서버 확인</h3>
+				<p class="mt_ms">
+					<code>gulp</code>를 실행하여 정상적으로 빌드가 되는지 확인합니다.
+				</p>
+				<div class="terminal_code_box mt_ms">
+					<textarea>
+						gulp
+					</textarea>
+				</div>
+				<p class="mt_ms">
+					gulp 실행 후 <mark>dist 폴더</mark>를 보면 <mark>assets 형제 폴더</mark>로 <mark>page 폴더</mark>가 생성되어 있고,
+					그 안에 <mark>sub.html</mark> 파일이 빌드된 것을 확인할 수 있습니다.<br>
+					<mark>gulpfile.js</mark>에서 세팅한대로 <mark>_include 폴더</mark>와 <mark>하위 파일</mark>은 <mark>빌드에 제외되어 dist 폴더에는 존재하지 않습니다.</mark>
+				</p>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-include_2.png" alt="html 빌드 후 dist 폴더 구조"/></p>
+				<p class="mt_ms">
+					브라우저에는 수정한 style.scss에 맞게 include된 부분이 구분되어 보여집니다.
+				</p>
+				<p class="mt_ms"><img src="ukncs/images/gulp/b_index_sub.png" alt="빌드 후 웹서버"/></p>
+				<p class="mt_ms">
+					빌드된 html파일을 보면 아래처럼 include 템플릿이 병합되어 하나의 파일로 완성되어 있을 것을 확인할 수 있습니다.<br>
+					<mark>gulpfile.js</mark>에 html 압축 기능까지 추가했기 때문에 아래 코드에서 빌드 수 압축 전화 후를 같이 확인 할 수 있습니다.(실제 빌드된 html은 압축되어 한줄로 보여집니다.)
+				</p>
+				<div class="uk_gist_code_box mt_ms" data-filename="index.html" data-tit="index.html">
+					<textarea>
+						&lt;!&ndash; 압축 전 -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;
+						<!DOCTYPE html>
+						<html lang="ko">
+							&lt;!&ndash; head include &ndash;&gt;
+							<head>
+								<meta charset="UTF-8">
+								<title>Gulp setting</title>
+								<meta name="viewport" content="width=device-width, initial-scale=1.0">
+								<meta http-equiv="X-UA-Compatible" content="ie=edge">
+								<link rel="stylesheet" href="./assets/css/style.css">
+							</head>
+							<body>
+								<div class="wrap">
+									&lt;!&ndash; header include &ndash;&gt;
+									<header class="header">
+									<h1>Main page 입니다.</h1>
+										<nav class="nav">
+											<a href="/">main page</a>
+											<a href="/page/sub.html">sub page</a>
+										</nav>
+									</header>
+									&nbsp;
+									<p>main content</p>
+									&nbsp;
+									&lt;!&ndash; footer include &ndash;&gt;
+									<footer class="footer">
+										footer 영역 입니다.
+									</footer>
+								</div>
+								&lt;!&ndash; //wrap &ndash;&gt;
+							</body>
+						</html>
+
+						&lt;!&ndash; 압축 후(실제 dist 빌드) -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;
+						<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>Gulp setting</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><link rel="stylesheet" href="./assets/css/style.css"></head><body><div class="wrap"><header class="header"><h1>Main page 입니다.</h1><nav class="nav"><a href="/">main page</a> <a href="/page/sub.html">sub page</a></nav></header><p>main content</p><footer class="footer">footer 영역 입니다.</footer></div></body></html>
+					</textarea>
+				</div>
+				<div class="uk_gist_code_box mt_ms" data-filename="sub.html" data-tit="sub.html">
+					<textarea>
+						&lt;!&ndash; 압축 전 -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;
+						<!DOCTYPE html>
+						<html lang="ko">
+							&lt;!&ndash; head include &ndash;&gt;
+							<head>
+								<meta charset="UTF-8">
+								<title>Sub page | Gulp setting</title>
+								<meta name="viewport" content="width=device-width, initial-scale=1.0">
+								<meta http-equiv="X-UA-Compatible" content="ie=edge">
+								<link rel="stylesheet" href="../assets/css/style.css">
+							</head>
+							<body>
+								<div class="wrap">
+									&lt;!&ndash; header include &ndash;&gt;
+									<header class="header">
+									<h1>Sub page 입니다.</h1>
+										<nav class="nav">
+											<a href="/">main page</a>
+											<a href="/page/sub.html">sub page</a>
+										</nav>
+									</header>
+									&nbsp;
+									<p>sub content</p>
+									&nbsp;
+									&lt;!&ndash; footer include &ndash;&gt;
+									<footer class="footer">
+										footer 영역 입니다.
+									</footer>
+								</div>
+								&lt;!&ndash; //wrap &ndash;&gt;
+							</body>
+						</html>
+
+						&lt;!&ndash; 압축 후(실제 dist 빌드) -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;
+						<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>Sub page | Gulp setting</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><link rel="stylesheet" href="../assets/css/style.css"></head><body><div class="wrap"><header class="header"><h1>Sub page 입니다.</h1><nav class="nav"><a href="/">main page</a> <a href="/page/sub.html">sub page</a></nav></header><p>sub content</p><footer class="footer">footer 영역 입니다.</footer></div></body></html>
+					</textarea>
+				</div>
+			</li>
+		</ol>
+	</section>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

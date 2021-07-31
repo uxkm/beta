@@ -1,0 +1,309 @@
+
+
+	<header>
+		<h1></h1><!-- Watch와 BrowserSync -->
+		<time class="last_update" datetime="2021-00-00">2021-19-19</time>
+	</header>
+
+	<blockquote class="uk_note mt_xxl" role="note">
+		<h2 class="sound_only">요약 설명</h2>
+		<p>
+			지난 과정까지 우리는 html과 scss를 명령프롬프트에 gulp를 입력하여 배포하는 작업을 진행했습니다.<br>
+			이번에는 명령프롬프트에 gulp를 입력하지 않고, html, scss 파일이 수정 또는 추가되었을때
+			gulp가 이를 감지하여 자동 배포하고 동시에 브라우저에도 자동으로 변경된 내용을 보여주는 기능을 추가할것입니다.
+		</p>
+	</blockquote>
+
+	<!-- 1.4.1. 파일 감시 와 자동 배포 -->
+	<section class="indent mt_xxl">
+		<h2 class="ml_mn">1.4.1. 파일 감시 와 자동 배포</h2>
+
+		<ol class="ol_lst">
+			<!-- 패키지 설치 -->
+			<li class="tit_h3 mt_xl">
+				<h3>패키지 설치</h3>
+				<p class="mt_ms">
+					명령프롬프트에서 아래의 명령어를 입력합니다.
+				</p>
+				<div class="terminal_code_box mt_ms">
+					<textarea>
+						//full code
+						npm install gulp-watch -D    // 수정이나 추가되는 파일이 있는지 감지하여 재배포 하는 기능
+						npm install browser-sync -D  // 변경된 내용을 브라우저에 적용
+
+						//shorthand
+						npm install -D gulp-watch browser-sync
+					</textarea>
+				</div>
+			</li>
+
+			<!-- gulpfile.js 파일 수정 -->
+			<li class="tit_h3 mt_xl">
+				<h3>gulpfile.js 파일 수정</h3>
+				<p class="mt_ms">
+					<mark>gulpfile.js</mark>를 아래 처럼 수정합니다.<br>
+				</p>
+				<div class="uk_gist_code_box mt_ms" data-filename="gulpfile.js" data-tit="gulpfile.js">
+					<textarea>
+						// plug-in 연결
+						//
+						// 생략...
+						//
+						const browserSync = require('browser-sync'); // --add--
+
+						// --no_change-- autoprefixer 옵션: 브라우저 버전 지정
+
+						// --no_change-- 소스 파일 경로
+
+						// scss 컴파일
+						gulp.task('scss:compile', () => {
+						return new Promise(resolve => {
+							const options = {
+								//scss 옵션 정의
+								scss : {
+									outputStyle: "expanded",  // 컴파일 스타일: nested(default), expanded, compact, compressed
+									indentType: "space",      // 들여쓰기 스타일: space(default), tab
+									indentWidth: 2,           // 들여쓰기 칸 수 (Default : 2)
+									precision: 8,             // 컴파일 된 CSS 의 소수점 자리수 (Type : Integer , Default : 5)
+									sourceComments: true,     // 코멘트 제거 여부 (Default : false)
+									compiler: dartSass,       // 컴파일 도구
+									fiber: Fiber,             // 컴파일 오버해드 방지
+								},
+							};
+							gulp.src( PATH.ASSETS.CSS + '/*.scss' )                   // 컴파일 대상 scss파일 찾기
+								// *.css 생성
+								.pipe( sourcemaps.init() )                              // 소스맵 작성
+								.pipe( scss(options.scss).on('error', scss.logError) )  // scss 옵션 적용, scss 작성시 watch가 멈추지 않도록 logError 설정
+								.pipe( postCss(options.postcss) )                       // 하위 브라우저 고려
+								.pipe( sourcemaps.write() )                             // 소스맵 적용
+								.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+								.pipe( browserSync.reload({stream: true}) )             // --add--
+								// *.min.css 생성
+								.pipe( minificss() )                                    // 컴파일된 css 압축
+								.pipe( rename({ suffix: '.min' }) )                     // 압축파일 *.min.css 생성
+								.pipe( sourcemaps.write() )                             // 소스맵 적용
+								.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+								.pipe( browserSync.reload({stream: true}) );            // --add--
+							resolve();
+						});
+
+						// html 빌드
+						gulp.task('html', () => {
+							return new Promise(resolve => {
+								gulp.src(PATH.HTML + '/*.html')
+									.pipe( gulp.dest(DEST_PATH.HTML) )
+									.pipe( browserSync.reload({stream: true}) );  // --add--
+								resolve();
+							});
+						});
+
+						// odemon:start : app.js 파일을 참조하여 express 서버 구동
+						gulp.task('nodemon:start', () => {
+							return new Promise(resolve => {
+								nodemon({
+									script: 'app.js',
+									watch: DEST_PATH.HTML  // --edit--
+								});
+								resolve();
+							});
+						});
+
+						// --add-- watch : 변경, 추가되는 파일을 감지하여 자동 빌드
+						gulp.task('watch', () => {
+							return new Promise(resolve => {
+								gulp.watch(PATH.HTML + "/**/*.html", gulp.series(['html']));
+								gulp.watch(PATH.ASSETS.CSS + "/**/*.scss", gulp.series(['scss:compile']));
+								resolve();
+							});
+						});
+
+						// --add-- browserSync : 빌드된 내용을 브라우저에 반영
+						gulp.task('browserSync', () => {
+							return new Promise(resolve => {
+								browserSync.init(null, {
+									proxy: 'http://localhost:8005',
+									port: 8006
+								});
+								resolve();
+							});
+						});
+
+						// default : 실행 --add-- 'browserSync', 'watch'
+						gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start', 'browserSync', 'watch']));
+					</textarea>
+				</div>
+				<div class="uk_gist_code_box full_code_layer" data-filename="gulpfile.js" data-tit="gulpfile.js">
+					<textarea>
+						// plug-in 연결
+						const gulp = require("gulp");                   // gulp 연결
+						const Fiber = require('fibers');                // dart sass 이용시 gulp-sass와 세트 플러그인
+						const dartSass = require('dart-sass');          // dart-sass 연결(기본)
+						const scss = require('gulp-sass');              // gulp-sass 연결(기본)
+						const sourcemaps = require('gulp-sourcemaps');  // css.map 파일 생성용
+						const minificss = require('gulp-minify-css');   // css 압축
+						const autoprefixer = require('autoprefixer');   // 고려할 브라우저 버전 설정
+						const postCss = require('gulp-postcss');        // 설정한 브라우저에 버전에 맞춰 css 컴파일
+						const rename = require('gulp-rename');          // 파일 이름 변경
+						const nodemon = require('gulp-nodemon');        // 파일 변경이 감지될 때 자동으로 재시작
+						const browserSync = require('browser-sync');    // 변경된 내용을 브라우저에 적용
+
+						// autoprefixer 옵션: 브라우저 버전 지정
+						const apfBrwsowsers = [
+							'ie > 0', 'chrome > 0', 'firefox > 0'  // 브라우저의 모든 버전 적용
+							//'last 2 versions'                    // 최신 브라우저 기준 하위 2개의 버전까지 적용
+						];
+
+						// 소스 파일 경로
+						const src = './src';
+						const dist = './dist';
+						const assets = '/assets';
+						// 작업폴더 경로 ('src'에서 작업한 것을)
+						const PATH = {
+							HTML: src + '/html',
+							ASSETS: {
+								CSS: src + assets + '/css',
+								FONTS: src + assets + '/fonts',
+								IMAGES: src + assets + '/images',
+								JS: src + assets + '/js',
+								LIB: src + assets + '/lib',
+							}
+						}
+						// 산출물 경로 ('dist'에 생성한다.)
+						const DEST_PATH = {
+							HTML: dist,
+							ASSETS: {
+								CSS: dist + assets +'/css',
+								FONTS: dist + assets +'/fonts',
+								IMAGES: dist + assets +'/images',
+								JS: dist + assets +'/js',
+								LIB: dist + assets + '/lib',
+							}
+						};
+
+						// scss 컴파일
+						gulp.task('scss:compile', () => {
+							return new Promise(resolve => {
+								const options = {
+									//scss 옵션 정의
+									scss : {
+										outputStyle: "expanded",  // 컴파일 스타일: nested(default), expanded, compact, compressed
+										indentType: "space",      // 들여쓰기 스타일: space(default), tab
+										indentWidth: 2,           // 들여쓰기 칸 수 (Default : 2)
+										precision: 8,             // 컴파일 된 CSS 의 소수점 자리수 (Type : Integer , Default : 5)
+										sourceComments: true,     // 코멘트 제거 여부 (Default : false)
+										compiler: dartSass,       // 컴파일 도구
+										fiber: Fiber,             // 컴파일 오버해드 방지
+									},
+								};
+								gulp.src( PATH.ASSETS.CSS + '/*.scss' )                   // 컴파일 대상 scss파일 찾기
+									// *.css 생성
+									.pipe( sourcemaps.init() )                              // 소스맵 작성
+									.pipe( scss(options.scss).on('error', scss.logError) )  // scss 옵션 적용, scss 작성시 watch가 멈추지 않도록 logError 설정
+									.pipe( postCss(options.postcss) )                       // 하위 브라우저 고려
+									.pipe( sourcemaps.write() )                             // 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+									.pipe( browserSync.reload({stream: true}) )             // 파일 변경 시 브라우저에 반영
+									// *.min.css 생성
+									.pipe( minificss() )                                    // 컴파일된 css 압축
+									.pipe( rename({ suffix: '.min' }) )                     // 압축파일 *.min.css 생성
+									.pipe( sourcemaps.write() )                             // 소스맵 적용
+									.pipe( gulp.dest(DEST_PATH.ASSETS.CSS) )                // 컴파일 후 css파일이 생성될 목적지 설정
+									.pipe( browserSync.reload({stream: true}) );            // 파일 변경 시 브라우저에 반영
+								resolve();
+							});
+						});
+
+						// html 빌드
+						gulp.task('html', () => {
+							return new Promise(resolve => {
+								gulp.src(PATH.HTML + '/*.html')
+									.pipe( gulp.dest(DEST_PATH.HTML) )
+									.pipe( browserSync.reload({stream: true}) );
+								resolve();
+							});
+						});
+
+						// nodemon:start : app.js 파일을 참조하여 express 서버 구동
+						gulp.task('nodemon:start', () => {
+							return new Promise(resolve => {
+								nodemon({
+									script: 'app.js',
+									watch: DEST_PATH.HTML
+								});
+								resolve();
+							});
+						});
+
+						// watch : 변경, 추가되는 파일을 감지하여 자동 빌드
+						gulp.task('watch', () => {
+							return new Promise(resolve => {
+								gulp.watch(PATH.HTML + "/**/*.html", gulp.series(['html']));
+								gulp.watch(PATH.ASSETS.CSS + "/**/*.scss", gulp.series(['scss:compile']));
+								resolve();
+							});
+						});
+
+						// browserSync : 빌드된 내용을 브라우저에 반영
+						gulp.task('browserSync', () => {
+							return new Promise(resolve => {
+								browserSync.init(null, {
+									proxy: 'http://localhost:8005',
+									port: 8006
+								});
+								resolve();
+							});
+						});
+
+						// default : 실행
+						gulp.task( 'default', gulp.series(['scss:compile', 'html', 'nodemon:start', 'browserSync', 'watch']));
+					</textarea>
+				</div>
+				<p class="mt_ms">
+					gulp의 task로 'watch'를 추가하는데 gulp.watch 메서드를 이용해 감시할 파일의 종류를 지정할 수 있습니다. 지금은 html, scss만 감시하고 있습니다.<br>
+				</p>
+				<p class="mt_ms">
+					잘 봐야 할 부분은 browserSync라는 task가 하나 추가 되었습니다.<br>
+					이 녀석은 localhost의 8005번 포트를 프록시로 삼아 페이지에 뭔가 변경이 있으면 새로고침을 자동으로 수행합니다.<br>
+
+					그리고 browserSync와 watch의 task 수행 순서를 잘 봐야합니다.<br>
+					watch는 일단 감시자 역할을 수행하는 task라서 종료되는게 아니라 계속 프로세스를 붙잡고 있게되고
+					browserSync보다 앞에 있으면 browserSync는 실행할 수가 없어서 브라우저 새로고침을 수행할 수 없게됩니다.<br>
+					그래서 browserSync를 watch보다 앞에 두고 watch가 리소스를 감시하면서 뭔가 코드의 변경이 발생하면
+					지정된 task를 재배포하게 되고 재배포된 리소스를 감지하여 browserSync가 동작하게 된다는 것을 이해하면 됩니다.
+				</p>
+			</li>
+
+			<!-- gulp 실행 후 웹서버 확인 -->
+			<li class="tit_h3 mt_xl">
+				<h3>gulp 실행 후 웹서버 확인</h3>
+				<p class="mt_ms">
+					<code>gulp</code> 명령을 입력하면 어떤 메시지를 띄우는지 확인해 봅니다.
+				</p>
+				<div class="terminal_code_box mt_ms">
+					<textarea>
+						gulp
+					</textarea>
+				</div>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-watch_browsersync.png" alt="watch, browsersync 실행"/></p>
+				<p class="mt_ms">
+					전과 다르게 gulp가 실행되고 브라우저가 자동으로 열리는 것을 확인할 수 있습니다.<br>
+					이제 html 또는 scss를 수정하게 되면 아래 이미지처럼 gulp가 자동으로 빌드하고 브라우저에 적용이 됩니다.
+					수정 후 브라우저를 그때마다 새로고침 할 필요가 없어서 아주 편리한 기능입니다.
+				</p>
+				<p class="mt_ms"><img src="ukncs/images/gulp/gulp-file-html_css_edit.png" alt="html, css 자동 빌드"/></p>
+				<div class="mt_ms" style="position:relative; padding-top:55%;">
+					<iframe style="position:absolute; left:0; top:0; width:100%; height:100%;" width="100%" height="315" src="https://www.youtube.com/embed/gzokrZl6fvE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</li>
+		</ol>
+	</section>
+
+
+
+
+
+
+
+
+
+
