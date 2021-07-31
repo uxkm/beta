@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<meta name="format-detection" content="telephone=no, address=no, email=no, date=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ACCESSIBILITY | UXKM UI/UX Assets</title>
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="fonts/uxFont.css">
+	<link rel="stylesheet" type="text/css" href="css/ukReset.css">
+	<link rel="stylesheet" type="text/css" href="css/uk.css">
+	<script type="text/javascript" src="js/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/common/ukDetect-1.0.0.min.js"></script>
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/plugin/html5.js"></script>
+		<script type="text/javascript" src="js/plugin/respond.min.js"></script>
+	<![endif]-->
+	<style>
+		p > em{color:blue;font-weight:700;font-size:16px;vertical-align: baseline;}
+	</style>
+</head>
+<body>
+	<nav class="uk-skip">
+		<a href="#cTitle">본문내용으로 건너띄기</a>
+	</nav>
+	<header class="ukheader">
+		<h1 class="uklogo">UXKM</h1>
+		<nav class="uknav">
+			<a href="uxkm-ncs.html">NCS</a>
+			<a href="uxkm-html.html">HTML</a>
+			<a href="uxkm-css.html">CSS</a>
+			<a href="uxkm-js.html">JAVASCRIPT</a>
+			<a href="uxkm-accessibility.html">ACCESSIBILITY</a>
+			<a href="uxkm-pjguide.html">PROJECT GUIDE</a>
+			<a href="uxkm-webtrends.html">WEB TRENDS</a>
+		</nav>
+	</header>
+	<!-- //.ukheader -->
+	<nav data-fill-with="table-of-contents" id="toc" class="uk-toc">
+		<h2>ACCESSIBILITY Table of Contents</h2>
+		<ol class="toc" role="directory">
+			<li><a href="#wa1">웹 접근성이란?</a></li>
+			<li><a href="#wa2">WA 인증 마크란?</a></li>
+			<li><a href="#wa3">KWCAG 2.1 개요</a></li>
+			<li><a href="#wa4">웹 접근성을 고려한 콘텐츠 제작 방법</a></li>
+			<li><a href="#wa5_1">인식의 용이성(perceivable)</a>
+				<ol>
+					<li><a href="#wa5_1">대체 텍스트</a></li>
+					<li><a href="#wa5_2">멀티미디어 대체 수단</a></li>
+					<li><a href="#wa5_3">명료성</a></li>
+				</ol>
+			</li>
+			<li><a href="#wa6">운용의 용이성(operable)</a>
+				<ol>
+					<li><a href="#wa6_1">입력장치 접근성</a></li>
+					<li><a href="#wa6_2">충분한 시간 제공</a></li>
+					<li><a href="#wa6_3">광과민성 발작 예방</a></li>
+					<li><a href="#wa6_4">쉬운 내비게이션</a></li>
+				</ol>
+			</li>
+			<li><a href="#wa7">이해의 용이성(understandable)</a>
+				<ol>
+					<li><a href="#wa7_1">가독성</a></li>
+					<li><a href="#wa7_2">예측 가능성</a></li>
+					<li><a href="#wa7_3">콘텐츠의 논리성</a></li>
+					<li><a href="#wa7_4">입력 도움</a></li>
+				</ol>
+			</li>
+			<li><a href="#wa8">견고성(robust)</a>
+				<ol>
+					<li><a href="#wa8_1">문법 준수</a></li>
+					<li><a href="#wa8_2">웹 애플리케이션 접근성</a></li>
+				</ol>
+			</li>
+			<li><a href="#wa9">WCAG 2.1</a>
+				<ol>
+					<li><a href="#wa9_1">인식의 용이성(Perceivable)</a></li>
+					<li><a href="#wa9_2">운용의 용이성(Operable)</a></li>
+					<li><a href="#wa9_3">이해의 용이성(Understandable)</a></li>
+					<li><a href="#wa9_4">견고성(Robust)</a></li>
+				</ol>
+			</li>
+			<li><a href="#wa10">KWACG2.1 VS WCAG 2.1 비교</a></li>
+			<li><a href="#wa11">WAI-ARIA</a></li>
+			<li><a href="#waBookmark">참조 사이트</a></li>
+		</ol>
+	</nav>
+	<main class="ukmain">
+		<h1 id="cTtitle">ACCESSIBILITY</h1>
+		<blockquote cite="https://uxkm.github.io">
+			<p>
+				UXKM에서 다루는 웹 접근성은 기본 개요와 화면낭독기에 대한 간략설명 및 <br>
+				한국형 웹 콘텐츠 접근성 지침 2.1(KWCAG 2.1) 과 WCAG 2.1에 대한 설명을 다루고 있으며, <br> 
+				WAI-ARIA기술에 대한 설명을 다루고자 하였습니다. <br>
+				웹 접근성은 작업하면서 필수로 해야하는 작업입니다. <br>
+				UXKM에서는 웹 접근성에 대해서 초안을 작업하고 점점 더 보완하면서 부족한 부분에 대한 내용은 채워나가려고 합니다.
+			</p>
+		</blockquote>
+		<section class="ukbody">
+			<h2 id="wa1">웹 접근성이란?</h2>
+			<section class="uksection">
+				<time datetime="2021-04-06 15:40:37">Last Updated on 2021-04-06 15:40:37</time>
+				<blockquote class="note" role="note">
+					<p>
+						웹 접근성이란?<br>
+						장애를 가진 사람들이 웹 콘텐츠를 인지하고, 편리하게 사용할 수 있으며, 그 내용이 쉬워야 하며, 견고성을 지녀야 합니다.
+						시각 장애인이나 특정 질환을 앓는 사람은 기존의 웹사이트를 이용하기 힘이들며, <br>
+						특정 질환(화면 깜빡임)에 발병이 되는 사람들도 있기 때문에 이와 관련된 것들을 지키기 위한 제도가 바로 웹 접근성입니다.<br>
+						현재 「지능정보화기본법」에 따라 장애인이나 고령자분들이 웹 사이트에서 제공하는 정보를 비장애인과 동등하게 접근하고 이용 할 수 있도록 보장하는 것으로 웹 접근성 준수는 법적의무사항 입니다.<br>
+						2007년 장애인차별금지법 제정 후, 웹에서 제공하는 전자정보를 장애 환경에 상관없이 동등한 수준으로 제공해야한다는 법이 시행되었습니다.<br>
+						이에 국가에서는 웹 접근성 지침(KWCAG)을 발표하여 모든 웹 사이트가 웹 접근성(정보 접근성)을 준수하도록 권고하고 있습니다.
+					</p>
+				</blockquote>
+
+				<h3>웹 접근성 정의</h3>
+				<article>
+					<p>월드 와이드 웹을 창시한 팀 버너스 리(Tim Berners-Lee)는 웹을 다음과 같이 정의 하였습니다.</p>
+					<blockquote class="note" role="note">
+						<p>
+							The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.<br>
+							웹의 힘은 보편성에 있습니다. 장애에 관계없이 모든 사람이 접근할 수 있는 것이 필수적인 요소입니다.
+						</p>
+					</blockquote>
+					<p>
+						즉 제약을 가진 사용자(장애인, 노인 등), 혹은 어떠한 기술환경에서도 전문적인 능력 없이 웹 사이트에서 제공하는 모든 정보에 접근할 수 있도록 보장하는 것이며,
+						웹 접근성이 보장되면 취약계층 뿐만 아니라 일반 사람들도 혜택을 누릴수 있게 됩니다.
+					</p>
+				</article>
+
+				<h3>접근성(Accessibility)</h3>
+				<article>
+					<blockquote class="note" role="note">
+						<p>
+							장애를 가진 사람들이 사용할 수 있도록 제품, 기기, 서비스 또는 환경을 설계하는 것 접근성은 "ability to access(접근 가능성)"이며, <br>
+							이는 일부 시스템이나 기업으로부터 이익을 얻을 수 있고 장애를 가진 사람들 또는 특별한 필요를 가진 사람들의 접근을 가능하게 하거나 보조 기술을 사용하여 접근을 가능하게 하는 것에 중점을 둡니다.
+						</p>
+					</blockquote>
+					<p>접근성은 다음과 같이 정의할 수 있습니다.</p>
+					<dl>
+						<dt>Accessibility</dt>
+						<dd>
+							Accessibility in the physical world is the degree to which an environment is usable by as many people as possible.<br>
+							물리적 세계에서 접근성은 가능한 많은 사람들이 환경을 이용할 수 있는 정도.
+						</dd>
+						<dt>Web Accessibility</dt>
+						<dd>
+							Web accessibility is the degree to which a website is usable by as many people as possible.<br>
+							웹 접근성은 가능한 많은 사람들이 웹사이트를 사용할 수 있는 정도
+						</dd>
+						<dt>Digital Accessibility</dt>
+						<dd>
+							Digital accessibility is the ability of a website, mobile application or electronic document to be easily navigated and understood by a wide range of users, including those users who have visual, auditory, motor or cognitive disabilities.<br>
+							디지털 접근성은 시각, 운동, 청각, 언어 또는 인지 장애가 있는 개인을 포함하여 광범위한 사용자가 웹사이트, 모바일 어플리케이션 또는 전자 문서를 쉽게 탐색하고 이해할 수 있는 능력
+						</dd>
+					</dl>
+				</article>
+
+				<h3>웹 접근성 준수 고려사항</h3>
+				<article>
+					<ul>
+						<li>시각 : 실명, 색각 이상,다양한 형태의 저시력을 포함한 시각 장애</li>
+						<li>이동성 : 파킨슨병, 근육병, 뇌성마비, 뇌졸중과 같은 조건으로 인한 근육 속도 저하, 근육 제어 손실로 말미암아 손을 쓰기 어렵거나 쓸 수 없는 상태</li>
+						<li>청각 : 영상, 음성 콘텐츠에 자막,원고, 수화등의 대체수단 부제로인한 인식이 불가능한 상태</li>
+						<li>인지 : 문제 해결과 논리 능력, 집중력, 기억력에 문제가 있는 정신 지체 및 발달 장애, 학습 장애(난독증, 난산증 등)</li>
+					</ul>
+				</article>
+				<h3>웹 브라우징에 쓰인는 보조과학기술</h3>
+				<article>
+					<p>웹 브라우징을 할 수 있게 하거나 도움을 주는 등을 목적으로 보조과학기술을 이용할 수 있습니다.</p>
+					<ul>
+						<li>스크린 리더 소프트웨어</li>
+						<li>화면 확대도구</li>
+						<li>음성 인식</li>
+						<li>키보드오버레이</li>
+					</ul>
+				</article>
+				<h3>시각장애인용 스크린리더란?</h3>
+				<article>
+					<dl>
+						<dt>스크린리더란?</dt>
+						<dd>시각장애인들에게 컴퓨터의 화면과 자신이 입력한 키보드 정보 그리고 마우스 좌표 등을 음성으로 알려 주어 컴퓨터를 사용할 수 있도록 도와주는 소프트웨어입니다.</dd>
+						<dt>스크린리더 기술</dt>
+						<dd>Jaws와 같은 PC형 스크린리더와 보이스 몬, 웹톡스와 같은 웹 스크린리더 방식의 두 가지로 이루어집니다.</dd>
+						<dd>PC형 스크린리더는 전맹 시각장애인이 주로 사용하며, 웹 스크린리더는 저시력 시각장애인과 난독증과 같은 학습장애, 인지장애인과 노인, 다문화 가족 등의 웹 접근성을 지원하기 위해 사용됩니다.</dd>
+						<dt>스크린리더 발전</dt>
+						<dd>스크린리더는 외국에서 개발된 것들을 비롯하여 다양한 종류의 프로그램들이 있는데 우리나라는 1990년대에 ‘가라사대’를 시작으로 ‘소리눈’, ‘아이즈2000(eyes2000)’, ‘이브 포 윈도우(Eve for Windows), 실로암시각장애인복지관의 ’드림보이스‘, 엑스비전 테크놀로지의 ‘센스리더’ 등이 개발되었습니다.</dd>
+						<dt>현재 웹에서 사용되는 대표적인 스크린리더의 종류</dt>
+						<dd>
+							<ul>
+								<li>Sense Reader : 유료이며 (주)엑스비전테크놀로지에서 개발해서 판매하는 국내용 스크린 리더입니다.</li>
+								<li>Jaws : 유료이며 주로 국외에서 사용이 많이 되고 있습니다.</li>
+								<li>NVDA : 무료이며 최근들어 사용도가 증가하고 있습니다.</li>
+							</ul>
+							<p>아래 제시된 이미지는 WebAIM에서 2019년 8월부터 9월까지 스크린 리더 사용자의 선호도를 조사한 결과 일반적으로 사용되는 스크린 리더 결과를 확인할 수 있습니다.</p>
+							<figure>
+								<img src="images/wa/img_screenreader.png" alt="WebAIM에서 2019년 8월부터 9월까지 스크린 리더 사용자의 선호도를 조사한 결과 일반적으로 사용되는 스크린 리더">
+								<figcaption>출처 : https://webaim.org/projects/screenreadersurvey8/</figcaption>
+							</figure>
+						</dd>
+						<dt>센스리더(Sense Reader)</dt>
+						<dd>
+							<p>센스리더는 유료이며 정품을 보유하고 있지 않을 경우 시간 혹은 사용에 제한이 있습니다. 무료로 사용할 경우에는 30분 시간 제약이 있으며, 다시 사용하려면 컴퓨터를 재부팅해야하는 번거로움이 있습니다.</p>
+							<p>또한 국내에서만 사용하며, 접근성 마크 심사를 진행할 경우 국내에서는 센스리더로 검사를 하기 때문에 국내에서는 필수라고 할 수 있습니다.</p>
+							<p>센스리더는 마이크로소프트의 운영체제인 윈도우와 기반 응용 프로그램을 사용할 수 있도록 도와주는 스크린리더로 디스플레이상에 표시되는 텍스트와 그래픽 정보를 음성합성 장치나 TTS 엔진을 사용해 읽어줌으로써 시각장애를 가진 사람들이 컴퓨터를 사용할 수 있도록 도와주는 응용 소프트웨어입니다.</p>
+							<p>센스리더는 다음과 같은 특징을 가지고 있습니다.</p>
+							<ul>
+								<li>
+									<strong>리뷰 기능</strong>
+									<p>리뷰 기능은 화면에 표시된 내용을 살펴볼 수 있는 기능으로 센스리더는 이 기능을 제공해 줍니다.</p>
+								</li>
+								<li>
+									<strong>다양한 환경설정 기능</strong>
+									<p>사용자들은 개개인에 따라 스크린리더를 사용하는 방식에도 차이를 나타내는데 센스리더는 사용자가 자신의 개성에 맞게 프로그램의 동작 방식을 설정할 수 있고, 모든 기능키를 컴퓨터 기종이나 개인의 취향에 따라 자유롭게 변경할 수 있는 기능을 제공해 줍니다.</p>
+								</li>
+								<li>
+									<strong>주요 응용프로그램을 위한 별도의 인터페이스를 제공</strong>
+									<p>센스리더는 인터넷 익스플로러, PDF 문서, MS-OFFICE, 한글 워드프로세서 등 국내에서 사용되고 있는 주요 프로그램들을 위해 별도의 인터페이스를 지원함으로써 시각장애인이 보다 편리하게 이들 소프트웨어를 사용할 수 있는 방법을 제공해 준다.</p>
+								</li>
+							</ul>
+							<p>센스리더 환경 설정</p>
+							<ul>
+								<li>가상커서 환경설정(ctrl + shift + F9)을 호출하여 숨긴 내용 읽기를 해제합니다.</li>
+								<li>가상커서 설정에서 새 페이지 자동 읽기를 ‘읽지 않기’ 또는 ‘간략하게 읽기’로 설정합니다.</li>
+								<li>가상커서 설정에서 셀 주소 읽기를 뒤에 읽기로 설정합니다. 이렇게 하면 테이블 탐색시에 병합된 셀 파악이 가능합니다.</li>
+								<li>Internet Explorer 메뉴 > 도구 > 인터넷 옵션 > 보안 탭에서 '인터넷 보호모드' 사용을 해제하면 센스리더에서 제공하는 가상커서의 임시 해제(ctrl + 아래쪽 화살표)를 사용할 수 있습니다.</li>
+							</ul>
+						</dd>
+						<dt>Jaws(Job Access With Speech)</dt>
+						<dd>
+							<figure>
+								<img src="images/wa/img_jaws-product-image.jpg" alt="Jaws 상품이미지">
+								<figcaption>출처 : https://www.freedomscientific.com/products/software/jaws/</figcaption>
+							</figure>
+							<ul>
+								<li>1995년도에 출시한 JAWS는 스크린 리더의 원조이며, 옛날부터 존재하던 스크린 리더이기 때문에 제일 많은 사용자들이 익숙하고 사용하던 스크린 리더일것입니다.</li>
+								<li>현재 JAWS는 스크린 리더에 필요한 모든 기능을 갖추고 있지만 최근에는 시장 점유율을 잃어가고 있습니다.</li>
+								<li>이유는 다른 스크린 리더도 충분히 JAWS를 대체할 수 있고 무엇보다 가격이 가장 큰 장벽을 들 수 있는데 가격을 살펴보면 여러가지 옵션이 있지만 기본 1년에 $90 혹은 라이센스 구매를 $1000에 할 수 있습니다.</li>
+								<li>무료인 NVDA와 비교해 봤을 때 가격에서 대비가 됩니다. 가격이 높다고 하더라도 예전부터 사용하던 이용자들은 JAWS를 편하게 생각하기 때문에 계속 찾을 수도 있습니다.</li>
+								<li>JAWS 데모를 이용하면 컴퓨터를 재시작할때마다 40분 동안 무료로 이용할 수 있으며, JAWS를 켯을 때 라이센스 등록하라고 물어보는 팝업이 뜨기전에 1분 가량 이용할 수도 있습니다.</li>
+							</ul>
+						</dd>
+						<dt>NVDA(NonVisual Desktop Access)</dt>
+						<dd>
+							<figure>
+								<img src="images/wa/img_maxresdefault.jpg" alt="NVDA 사용환경 샘플이미지">
+								<figcaption>출처 : https://ul.gpii.net/content/nvda-screenreader</figcaption>
+							</figure>
+							<p>NVDA는 2006년에 출시한 오픈소스 스크린리더로서 무료로 사용 가능하며 다국어를 지원합니다.</p>
+							<p>최근에는 인기가 급상승하면서 2017년에는 스크린 리더의 원조격인 JAWS 만큼이나 이용되고 있습니다.</p>
+							<p>그 비결은 무료이면서도 비슷한 기능을 제공하기 때문일것입니다.</p>
+							<p>WebAIM에서 2019년 8월부터 9월까지 스크린 리더 사용자의 선호도를 조사한 결과 Jaws 보다 NVDA가 앞서고 있는것을 볼 수 있습니다.</p>
+							<p>Nvda 사용시 간단한 관련 설정은 다음과 같습니다.</p>
+							<ul>
+								<li>Nvda 환경설정을 호출하려면 Nvda를 실행한 상태에서 언제든지 insert와 n키를 누르면 됩니다.</li>
+								<li>인터넷 관련 환경설정은 설정 > 브라우저모드에 있습니다.</li>
+								<li>다른 값은 다 기본으로 두셔도 되지만 페이지가 로딩되면 자동으로 읽기 항목은 체크 해제하고 테스트 하시기 바랍니다. 이는 우리나라의 많은 사이트에서는 페이지가 열렸을 때 포커스가 항상 문서 처음으로 가지 않는 경우가 많으므로 포커스가 있는 그 라인을 읽어주는 것이 사용자에게 더 명확한 정보를 줄 수 있기 때문입니다.
+								<li>"화면 레이아웃, 지원되면 사용" 항목은 센스리더와 비슷한 환경을 구현하기 위하여 해제하고 테스트 합니다. 이렇게 되면 센스리더처럼 모든 객체는 다른 라인으로 분리하여 출력합니다.</li>
+							</ul>
+						</dd>
+					</dl>
+				</article>
+				
+				<h3>정보 접근성 관련 법률 정책</h3>
+				<article>
+					<ul>
+						<li>「정보화촉진기본법」제정 (1995년 08월)</li>
+						<li>「정보격차해소에 관한 법률」제정 (2001년 01월) - 2009년 폐지</li>
+						<li>「장애인차별금지 및 권리구제 등에 관한 법률」 - [시행2008.4.11] [법률 제8341호, 2007.4.10, 제정] <a href="https://www.law.go.kr/LSW/lsInfoP.do?nwJoYnInfo=N&ancNo=08341&chrClsCd=010202&efYd=20080411&lsiSeq=78034&efGubun=Y&ancYd=20070410#0000" target="_blank" title="새 챵 열림">내용 보기</a></li>
+						<li>「국가정보화기본법」제정 - [시행2009.8.23] [법률 제9705호, 2009.5.22, 전부개정] 2020년 폐지 <a href="https://www.law.go.kr/LSW/lsInfoP.do?efYd=20090823&lsiSeq=93642&ancYd=20090522&nwJoYnInfo=N&ancNo=09705&chrClsCd=010202&efGubun=Y#0000" target="_blank" title="새 창 열림">내용보기</a></li>
+						<li>장애인·노인·임산부 등의 편의 증진 보장에 관한 법률 - [시행 1998.4.11.] [법률 제5332호, 1997.4.10, 제정] <a href="https://www.law.go.kr/LSW/lsEfInfoP.do?lsiSeq=59192#0000" target="_blank" title="새 창 열림">내용보기</a></li>
+						<li>「지능정보화 기본법」제정 - [시행 2020.12.10.] [법률 제17344호, 2020.6.9, 제정] <a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A7%80%EB%8A%A5%EC%A0%95%EB%B3%B4%ED%99%94%EA%B8%B0%EB%B3%B8%EB%B2%95" target="_blank" title="새 창 열림">내용보기</a></li>
+					</ul>
+				</article>
+				<h3>관련 표준 지침</h3>
+				<article>
+					<ul>
+						<li>장애인 · 노인 등의 정보통신 접근성 향상을 위한 권장지침(고시)마련 (2002년 01월)</li>
+						<li>"한국형 웹 콘텐츠 접근성 지침 1.0" 마련 - TTA 단체 표준 제정 (TTAS.OT-10.0003) : 2004년 12월 23일 <a href="https://www.wah.or.kr:444/_Upload/pds/11%ED%95%9C%EA%B5%AD%ED%98%95%20%EC%9B%B9%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EC%A0%91%EA%B7%BC%EC%84%B1%20%EC%A7%80%EC%B9%A8_20041223_TTA.pdf" target="_blank" title="새 챵 열림">내용 보기</a></li>
+						<li>"인터넷 웹 콘텐츠 접근성 지침" 국가표준 승인 - 한국정보통신표준 (KICS.OT-10.003) : 2005년 12월 21일 <a href="https://www.wah.or.kr:444/_Upload/pds/12%EC%9D%B8%ED%84%B0%EB%84%B7%20%EC%9B%B9%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EC%A0%91%EA%B7%BC%EC%84%B1%20%EC%A7%80%EC%B9%A8_%EA%B5%AD%EA%B0%80%ED%91%9C%EC%A4%80_11-TTAS.OT-10.0003.pdf" target="_blank" title="새 챵 열림">내용 보기</a></li>
+						<li>"웹 접근성 향상을 위한 국가표준 기술 가이드라인" 공표 - 행정안전부 산하 한국정보문화진흥원(현 한국지능정보사회진흥원) :  2009년 03월 17일 <a href="https://www.wah.or.kr:444/_Upload/news/090317_%EC%9B%B9_%EC%A0%91%EA%B7%BC%EC%84%B1_%ED%96%A5%EC%83%81%EC%9D%84_%EC%9C%84%ED%95%9C_%EA%B5%AD%EA%B0%80%ED%91%9C%EC%A4%80_%EA%B8%B0%EC%88%A0_%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8.pdf" target="_blank" title="새 창 열림">내용보기</a></li>
+						<li>"한국형 웹 콘텐츠 접근성 지침 2.0" - TTA 단체 표준 개정 (TTAK.OT-10.0003/R1) : 2009년 12월 22일 <a href="https://www.wah.or.kr:444/_Upload/pds/2008-676-%ED%95%9C%EA%B5%AD%ED%98%95%20%EC%9B%B9%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EC%A0%91%EA%B7%BC%EC%84%B1%20%EC%A7%80%EC%B9%A8%202.0_ttas.pdf" target="_blank" title="새 창 열림">내용보기</a></li>
+						<li>"한국형 웹 콘텐츠 접근성 지침 2.1" - 방송통신표준 개정 (KS X OT0003) : 2015년 03월 31일 <a href="https://webwatch.or.kr:50010/pds/(KS%20X%20OT0003)%20%ED%95%9C%EA%B5%AD%ED%98%95%20%EC%9B%B9%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EC%A0%91%EA%B7%BC%EC%84%B1%20%EC%A7%80%EC%B9%A8%202.1.pdf" target="_blank" title="새 창 열림">내용보기</a></li>
+						<li>"모바일 애플리케이션 콘텐츠 접근성 지침 2.0 - 방송통신표준 제정 (KS X 3253) : 2016년 10월 20일 <a href="https://webwatch.or.kr:50010/pds/(KS%20X%203253)%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EC%A0%91%EA%B7%BC%EC%84%B1%20%20%EC%A7%80%EC%B9%A8%202.0.pdf" target="_blank" title="새 창 열림">내용보기</a></li>
+					</ul>
+				</article>
+				<h3>장애인차별금지법 단계별 적용 범위</h3>
+				<article>
+					<ul>
+						<li>2008. 04. 11 - 적용범위 : 방송법에 따라 방송물을 송출하는 방송 사업자 등</li>
+						<li>2009. 04. 11 - 적용범위 : 공공기관, 특수학교, 특수반 설치 국 공립 유치원, 특수학급 설치 국 공립학교, 장애아전담 보육시설, 종합병원, 복지시설, 근로자 300인 이상 사업장(고용관계)</li>
+						<li>2010. 04. 11 - 적용범위 : 국 공립 문화예술기관, 국 공립(대학)박물관/미술관, 국립중앙도서관, 공공도서관, 국가 및 인구 50만 명 이상 지방자치단체가 설치한 체육시설</li>
+						<li>2011. 04. 11 - 적용범위 : 국 공립 유치원, 국 공 사립학교, 보육시설(100인 이상), 영재학교 교육원, 병원, 근로자 100인 이상 사업장(고용관계)</li>
+						<li>2012. 04. 11 - 적용범위 : 사립 유치원, 평생교육시설, 보육시설, 연수기관, 체육시설, 기타 의료기관, 의료인, 모든 법인 등</li>
+						<li>2013. 04. 11 - 적용범위 : 일반 공연장 영화관(300석 이상), 조각공원, 문화의 집, 사립박물관 미술관(500m2), 복지회관, 문화 체육센터, 인구 30만 명 미만 지방자치단체가 설치한 체육시설 등</li>
+					</ul>
+				</article>
+				<h3>해외 웹 접근성 법률 및 제도</h3>
+				<article>
+					<blockquote class="note" role="note">
+						<p>
+							국내에서 2009년 부터 장차법에 근거하여 웹접근성 보장이 의무화 되었다면<br>
+							외국의 경우에는 각 나라별로 오래 전부터 시행되고 있는데, <br>
+							호주의‘장애인 차별 금지법(Disability Discrimination Act 1992)’,<br> 
+							미국의‘재활법 508조(Section 508 of the Rehabilitation Act)’, <br>
+							영국의‘장애인 차별 금지법(The Disability Discrimination Act 1995)’등이 있으며<br> 
+							이 모두는 WCAG(Web Content Accessibility Guideline)의 내용을 바탕으로 하여 각 나라별 상황에 맞게 제도화 되어있습니다.
+						</p>
+					</blockquote>
+					<figure>
+						<img src="images/wa/img_world-law.png" alt="해외 웹접근성 법률 및 제도">
+						<figcaption>해외 웹접근성 법률 및 제도</figcaption>
+					</figure>
+				</article>
+				<h3>장애인 차별 금지법 처벌 법적 진행 절차</h3>
+				<article>
+					<ul>
+						<li>(인권위)민/형사 고발</li>
+						<li>형사:3개월 이내 수사, 민사:손해배상제도 절차</li>
+						<li>악의로 인정될 경우 3년 이하 징역 또는 3천 만원 이하 벌금</li>
+						<li>(인권위) 진정 접수</li>
+						<li>(인권위) 협의, 조정, 구제조치 등 시정권고</li>
+						<li>(법무부) 불이행 확인일로부터 3개월 내 시정명령</li>
+						<li>정당한 사유없이 명령 불이행 시 3천만원 이하 과태료</li>
+					</ul>
+				</article>
+				<dl class="linkdoc">
+					<dt>참조</dt>
+					<dd>
+						<a href="http://www.haeppa.kr/" target="_blank" title="새 창 열림">Heappa World</a>
+						<a href="http://njpaiks.egloos.com/2828268" target="_blank" title="새 창 열림">백남중, "센스리더 1.2.0.3 핫키 일람표"</a>
+						<a href="https://nuli.navercorp.com/community/article/1081603?email=true" target="_blank" title="새 창 열림">웹 개발자를 위한 센스리더 가이드</a>
+						<a href="https://damoa.or.kr/main/inner.php?sMenu=main&pre_url=https%3A%2F%2Fnuli.navercorp.com%2Fcommunity%2Farticle%2F1132999" target="_blank" title="새 창 열림">발달장애인 콘텐츠 전문사이트 다모아</a>
+						<a href="http://www.xvtech.com/" target="_blank" title="새 창 열림">(주)엑스비전테크놀로지</a>
+						<a href="https://www.freedomscientific.com/products/software/jaws/" target="_blank" title="새 창 열림">JAWS® Solutions</a>
+						<a href="https://ul.gpii.net/content/nvda-screenreader" target="_blank" title="새 창 열림">NVDA Screenreader</a>
+						<a href="https://webaim.org/projects/screenreadersurvey8/" target="_blank" title="새 창 열림">webaim.org Screen Reader User Survey</a>
+						<a href="https://digitalaccessibilitycentre.org/index.php/blog/20-diary/211-jaws-verses-nvda" target="_blank" title="새 창 열림">JAWS verses NVDA</a>
+					</dd>
+				</dl>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+			
+			<h2 id="wa2">WA 인증 마크란?</h2>
+			<section class="uksection">
+				<time datetime="2021-04-06 15:40:37">Last Updated on 2021-04-06 15:40:37</time>
+				<blockquote class="note" role="note">
+					<p>
+						장애인 및 고령자가 웹 사이트 이용에 불편이 없도록 웹 접근성 표준지침을 준수한 우수 사이트에 대해 웹 접근성 수준을 인정하고 이를 상징하는 품질 마크를 부여하는 인증제도이며,<br>
+						인증 마크 자체는 권장사항일 뿐 필수는 아니지만 대부분이 접근성을 준수하면 필수로 취득을 해야 하는것으로 오해를 하고 있는 부분이 있습니다.<br>
+						필수로 지켜져야 하는 것은 접근성 자체를 지켜야 하는것입니다.
+					</p>
+				</blockquote>
+				<article>
+					<dl>
+						<dt>배경</dt>
+						<dd>
+							<p>웹 접근성을 향상하기 위한 국가적인 노력이 계속되고 있으나, 국내 대부분 사이트의 웹 접근성 수준은 매우 낮음</p>
+							<p>공공기관에서 조차도 웹 접근성이 선진국들에 비하여 낮아 공공기관이 제공하는 중요 정보도 접근이 어려운 실태</p>
+						</dd>
+						<dt>인증대상</dt>
+						<dd>
+							<p>인터넷을 통해 정보통신서비스를 제공하는 웹 사이트를 운영하는 정부 및 공공기관, 민간 사업장('13년까지 의무화 준수 사업장)</p>
+						</dd>
+						<dt>기대효과</dt>
+						<dd>
+							<p>접근성 준수 향상을 통해 지식정보사회의 정보접근권 제고</p>
+							<p>고객 신뢰도 및 만족도 제고와 사회적 공헌</p>
+							<p>국내 웹 개발 환경 개선 및 관련 기술 발전 촉진</p>
+						</dd>
+						<dt>인증 유효기간</dt>
+						<dd>
+							<p>인증의 유효기간은 1년이며 매년마다 갱신 필요</p>
+						</dd>
+						<dt>웹 접근성 인증기관</dt>
+						<dd>
+							<p>「국가정보화기본법」제32조의2 및 동법 시행규칙 제3조의3에 의거 다음과 같이 웹 접근성 품질인증기관으로 지정되었음을 공고합니다.</p>
+							<ul>
+								<li>제 2014-01호 한국웹접근성인증평가원 (사단법인 한국장애인단체총연합회) 02-858-7220</li>
+								<li>제 2014-02호 주식회사 웹와치 02-2678-0078</li>
+								<li>제 2014-03호 사단법인 한국시각장애인연합회 (한국웹접근성평가센터) 02-973-0073</li>
+							</ul>
+						</dd>
+						<dt>웹 접근성 인증마크</dt>
+						<dd>
+							<figure>
+								<img src="images/wa/img_logo1.gif" alt="한국정보화진흥원 인증마크">
+								<img src="images/wa/img_mark.jpg" alt="과학기술정보통신부 지정 인증마크">
+								<figcaption>한국정보화진흥원 인증마크 (07년 ~ 13년) / 과학기술정보통신부 지정 인증마크  (14년 ~ 현재)</figcaption>
+							</figure>
+						</dd>
+					</dl>
+				</article>
+				
+				<dl class="linkdoc">
+					<dt>참조</dt>
+					<dd>
+						<a href="https://www.wah.or.kr:444/" target="_blank" title="새 창 열림">웹접근성 연구소</a>
+						<a href="http://www.wa.or.kr/" target="_blank" title="새 창 열림">한국웹접근성인증평가원 (사단법인 한국장애인단체총연합회)</a>
+						<a href="http://www.webwatch.or.kr/" target="_blank" title="새 창 열림">주식회사 웹와치</a>
+						<a href="http://www.kwacc.or.kr/" target="_blank" title="새 창 열림">사단법인 한국시각장애인연합회 (한국웹접근성평가센터)</a>
+					</dd>
+				</dl>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa3">KWCAG 2.1 개요</h2>
+			<section class="uksection">
+				<time datetime="2021-04-05 16:13:38">Last Updated on 2021-04-05 16:13:38</time>
+				<h3>KWCAG 의미</h3>
+				<article>
+					<p>KWCAG (Korean Web Content Accessibility Guidelines) 라고 지칭한다.</p>
+					<p>이를 풀어서 설명하면 <em>K</em>orean 한국형, <em>W</em>eb 웹, <em>C</em>ontent 콘텐츠, <em>A</em>ccessibility 접근성, <em>G</em>uidelines 지침</p>
+					<p>본 표준은 해외의 웹 표준 기술 동향을 토대로 국내 환경에 맞게 반영된 한국형 웹 콘텐츠 접근성 지침이며, 원칙 4개, 지침 13개, 항목 24개로 구성되어 있음.</p>
+					<p>
+						한국도 2009년 5월 '국가 정보화 기본법'을 개정해 '장애인, 고령자 등의 정보 접근 및 이용 보장'을 명시했으며, <br>
+						2015년까지 한국 내 모든 인터넷 사이트가 웹 접근성을 보장하도록 규정했습니다. 
+					</p>
+				</article>
+				<h3>용어 정의</h3>
+				<article>
+					<dl>
+						<dt>1. 건너뛰기 링크</dt>
+						<dd>반복 영역의 순차적인 내비게이션을 생략하고 웹 페이지의 핵심 영역으로 이동할 수 있는 수단(버튼, 텍스트 링크 등)을 의미한다.</dd>
+
+						<dt>2. 고대비 모드</dt>
+						<dd>고대비 모드란 전경과 배경 간의 명도 대비를 강조하여 표시하는 것으로, 해당 항목을 보다 뚜렷하게 식별할 수 있도록 도와준다. 또 한 검정색 배경에 하얀색으로 텍스트를 표시하는 경우와 같이 명도 대비 또는 색대비가 큰 차이가 나도록 조정하여 화면에 표시하는 방식을 경조(硬調) 모드라고 하며, 최신 운영체제에서는 기본적으로 이 기능을 지원하고 있다.</dd>
+
+						<dt>3. 공백 문자</dt>
+						<dd>아무런 정보도 가지고 있지 않은 문자열을 의미한다. HTML(Hyper Text Markup Language) 등의 문법에서 공백 문자는 “”을 나타낸 다. 공백 문자를 화면 낭독 프로그램(screen reader)을 사용하여 읽으면 아무런 소리도 나지 않는다.</dd>
+
+						<dt>4. 광과민성 증후</dt>
+						<dd>빛의 깜빡거림에 의해 발작을 일으키는 증상을 말한다. 주로 초당 3 회~50 회 주기의 번쩍거림이 광과민성 발작을 일으키는 원인이 되며, 초당 20 회 부근의 번쩍거림이 발작을 가장 잘 일으키는 주 파수로 알려져 있다. </dd>
+
+						<dt>5. 대체 수단</dt>
+						<dd>멀티미디어 콘텐츠에 포함된 음성(대화)을 대체하기 위한 콘텐츠로, 자막, 구술된 내용을 글로 옮긴 대본(transcript), 수화(sign language) 등이 그것이다. 여기서 자막과 대본은 텍스트 콘텐츠이며, 수화는 미디어 형식의 대체 콘텐츠이다. </dd>
+
+						<dt>6. 대체 콘텐츠</dt>
+						<dd>텍스트 콘텐츠를 오디오, 비디오 또는 오디오-비디오 형식으로 변 환하여 제공하는 미디어 콘텐츠를 말한다. 예를 들어, 어떤 텍스트 를 수화로 번역하여 제공하는 비디오 파일은 대체 콘텐츠라고 할 수 있다.</dd>
+
+						<dt>7. 대체 텍스트</dt>
+						<dd>텍스트 아닌 콘텐츠를 대신하기 위해 제공되는 등가의 텍스트를 의 미한다. 동영상의 경우에는 6.2 절 멀티미디어 대체 수단에서 제시 하는 대체 수단을 제공한다.</dd>
+
+						<dt>8. 드롭다운 메뉴</dt>
+						<dd>여러 개의 항목을 포함하고 있는 목록에서 하나의 항목만 보이다가 사용자가 메뉴 확장 버튼을 활성화시키면 나머지 목록의 전부 또는 일부가 아래로 펼쳐져 나타나는 방식의 사용자 입력 컨트롤을 의미 한다. 콤보상자(combo box)라고도 한다.</dd>
+
+						<dt>9. 레이블</dt>
+						<dd>모든 사용자 입력(예 : 텍스트 입력 상자, 라디오 버튼, 체크 상자, 드롭다운 메뉴 등)의 용도 또는 역할에 대한 설명을 레이블이라 한다. </dd>
+
+						<dt>10. 레이어 팝업 콘텐츠</dt>
+						<dd>팝업 창 차단 기능이 있는 브라우저에서 시각적으로 팝업 창과 같 은 효과를 내도록 구현한 콘텐츠를 말한다. 레이어 팝업 콘텐츠는 같은 페이지의 일부 영역을 가리고 그 위에 표시되므로 그 뒤의 콘 텐츠를 보기 위해서는 반드시 레이어 팝업을 화면에서 사라지도록 해야 한다. 레이어 팝업은 웹 페이지에 포함되는 콘텐츠이므로 7.1.2 절(초점 이동)과 8.3.1 절(콘텐츠의 선형 구조)을 위반하지 않도록 구현해야 한다.</dd>
+
+						<dt>11. 마우스 오버 (mouse-over)</dt>
+						<dd>웹 페이지 안의 어떤 요소에 마우스 포인터를 올려놓았지만 마우스 버튼을 누르지 않은 상태를 지칭한다. 따라서 마우스 오버는 해당 요소를 선택만 하고 활성화 하지 않은 상태를 의미한다. </dd>
+
+						<dt>12. 마우스 클릭</dt>
+						<dd>마우스 포인터를 특정 객체나 요소를 가리킨 다음 마우스의 버튼을 누르는 행위를 뜻한다. 마우스 클릭 이벤트가 발생하면 보통은 해당 객체가 활성화되어 어떤 동작이나 기능을 실행하며, 종종 맥락의 변화가 일어난다.</dd>
+
+						<dt>13. 마크업 언어 (Markup Language)</dt>
+						<dd>마크업 언어는 텍스트의 각 부분에 의미를 나타내는 정보를 기술할 수 있도록 정의한 프로그래밍 언어를 말한다. HTML, 확장 마크업 언어(XML : eXtensible Markup Language) 등이 이에 해당한다.</dd>
+
+						<dt>14. 멀티미디어 (multimedia)</dt>
+						<dd>시간의 변화에 따른 정보를 제공하기 위하여 오디오 또는 비디오 콘텐츠를 또 다른 포맷과 동기화하여 제공하도록 만들어진 콘텐츠 또는 콘텐츠 재생 과정의 특정 시점에서 사용자와의 상호작용이 필 요한 매체를 말한다.</dd>
+
+						<dt>15. 명도 대비</dt>
+						<dd>색의 밝고 어두운 정도를 말한다. 
+
+						<dt>16. 반복 영역 (repetitive block)</dt>
+						<dd>반복되는 영역, 메뉴, 링크 모음과 같이 동일한 내용이 같은 위치에 여러 웹 페이지에 걸쳐 나타나는 영역을 의미한다. 글로벌 내비게 이션(global navigation)도 반복 영역의 하나다. 모든 페이지에 걸쳐 존재하는 광고 영역 등도 그 내용의 다름 여부와 관계없이 반복 영 역으로 간주된다. </dd>
+
+						<dt>17. 배경 이미지</dt>
+						<dd>배경 이미지란 콘텐츠의 배경을 장식하기 위하여 사용되는 이미지 를 의미한다. 따라서 배경 이미지는 제거하더라도 콘텐츠의 이해와 사용에 아무런 영향을 주지 않아야 한다. 배경 이미지를 제거하는 경우 콘텐츠의 이해가 불가능하거나 사용이 어려운 콘텐츠는 배경 이미지가 의미하는 정보를 보조 기술로 전달하도록 구현해야 한다. </dd>
+
+						<dt>18. 배치용 테이블 (layout table)</dt>
+						<dd>제목 행과 제목 열이 있는 데이터용 테이블(data table)과는 달리, 콘텐츠 블록을 원하는 크기와 형태로 배치하기 위하여 사용한 테이 블을 말한다. 배치용 테이블은 제목 행, 제목 열 및 표 제목이 없다.</dd>
+
+						<dt>19. 보조 기술 (assistive technology)</dt>
+						<dd>장애를 지닌 사용자의 요구 조건을 만족시키는 기능을 추가하여 제 공하는 하드웨어 또는 소프트웨어를 의미한다. 대표적으로 화면 낭 독 프로그램(screen reader), 화면 확대 프로그램, 특수 키보드 등 을 들 수 있다. 보조 기술은 보조 공학(기기) 또는 보조 기기라고도 한다.</dd>
+
+						<dt>20. 새 창, 팝업 창 </dt>
+						<dd>새로운 페이지를 보여주기 위해 현재의 창이 아닌 별도의 창 또는 탭으로 열리는 경우, 이를 새 창이라고 한다. 단, 스크립트 언어의 고유한 기능이나 플랫폼에 의해 생성되는 경고(alert), 확인 (confirm), 입력 프롬프트(prompt) 등의 메시지 대화상자(dialog box)는 새 창이나 팝업 창의 범주에 포함되지 않는다. 여기서 팝업 창은 웹 페이지가 로드될 때 자동으로 열리는 새 창을 의미한다.</dd>
+
+						<dt>21. 스타일 시트 (style sheet)</dt>
+						<dd>문서의 표현 형태를 규정하는 일련의 명령문을 의미한다. 스타일 시트는 콘텐츠 제공자가 마련한 것, 사용자가 마련한 것, 웹 브라우 저에 내장된 형태 등의 세 가지가 있다. 예를 들어 W3C의 종속형 시트(CSS : Cascading Style Sheets) 레벨 2, 3 등이 스타일 시트 의 대표적인 표준 규격이다.</dd>
+
+						<dt>22. 시간제한이 있는 콘텐츠</dt>
+						<dd>
+							시간을 통제할 수 없도록 구현된 콘텐츠를 말한다. 시간제한이 있는 콘텐츠의 예는 다음과 같다. ­
+							<ul>
+								<li>자동 갱신되도록 구성된 콘텐츠</li>
+								<li>몇 초 후에 다른 페이지로 이동하도록 구성된 콘텐츠 </li>
+								<li>자동적으로 스크롤되는 콘텐츠 </li>
+								<li>짧은 기간 동안 나타났다 일정시간 후에 자동적으로 사라지는 대화상자(dialog box), 팝업 창, 레이어 팝업 등</li>
+								<li>일정시간 동안 사용하지 않으면 웹 페이지에 대한 접근이 강제 로 차단되거나 사용할 수 없게 되는 콘텐츠</li>
+							</ul>
+						</dd>
+						
+						<dt>23. 온라인 서식 (online form)</dt>
+						<dd>온라인 서식은 사용자의 입력을 통해 값을 수정하여 전달할 수 있 는 여러 가지 컨트롤(예 : 텍스트 입력 상자, 드롭다운 선택 메뉴, 라디오 버튼, 누르는 버튼 등)과 그것의 레이블로 구성된 콘텐츠를 말한다.</dd>
+
+						<dt>24. 웹 애플리케이션</dt>
+						<dd>웹 콘텐츠에 포함되어 특정한 기능을 수행하도록 구성된 소프트웨 어의 일종으로, 리치 인터넷 애플리케이션(RIA : Rich Internet Application)이라고도 한다.</dd>
+
+						<dt>25. 위치 지정 도구 (pointing device)</dt>
+						<dd>마우스나 터치패드 및 터치스크린과 같이 컴퓨터 화면의 특정 지점 을 직접 지정할 수 있는 장치를 의미한다. 터치스크린을 채용한 기 기에서는 끝이 뭉툭한 손가락으로도 컨트롤을 선택하거나 활성화 시킬 수 있어야 하므로 조작이 가능한 크기로 컨트롤이 제공되어야 한다.</dd>
+
+						<dt>26. 음성 입력장치</dt>
+						<dd>음성으로 컴퓨터를 제어하거나 텍스트를 입력할 수 있도록 구성된 시스템 또는 이러한 시스템을 구성하는 데 사용되는 프로그램을 의 미한다.</dd>
+
+						<dt>27. 자막 (captions)</dt>
+						<dd>영상 매체에 포함된 말, 음향 및 주변 소리 등을 텍스트로 표현한 매체를 의미한다. 자막은 영상 매체의 진행에 따라 해당 이벤트와 동기화되어야 한다. 자막은 크게 폐쇄 자막(closed caption)과 개방 자막(open caption)으로 구분된다. 폐쇄 자막은 사용자의 필요에 따라 자막을 끄거나 켤 수 있는 데 반해, 개방 자막은 비디오 콘텐 츠에 캡션 정보가 함께 녹화되어 있으므로 사용자가 임의로 자막을 끄거나 켤 수 없다.</dd>
+
+						<dt>28. 장식을 위한 글자</dt>
+						<dd>정보 제공이나 콘텐츠 이용에 필요한 기능과는 무관하게 웹 페이지 의 시각적인 표현만을 위해 사용된 콘텐츠의 글자를 말한다. 로고 등이 이에 해당된다.</dd>
+
+						<dt>29. 적절한 제목 (appropriate title)</dt>
+						<dd>콘텐츠의 내용을 쉽게 파악할 수 있도록 해당 주제나 목적을 간단 명료하게 표현한 명칭을 의미한다.</dd>
+
+						<dt>30. 접근성 프로그래밍 인터페이스 (accessibility programming interface)</dt>
+						<dd>운영체제 또는 플랫폼은 응용 프로그램과 보조 기술 간의 정보 전 달 방법에 관한 프로그램 인터페이스(programming interface)를 제 공한다. 예를 들어 Windows 환경의 MSAA, UI Automation, IAccessible2, MacOSX 환경의 AXAPI, Gnome 환경의 Gnome Accessibility Toolkit API, Java 플랫폼의 Java Access API 등이 그것이다. 웹 애플리케이션을 접근성 프로그래밍 인터페이스를 이 용하여 구현하면 보조 기술과 호환성이 유지된다.</dd>
+
+						<dt>31. 초점 (focus)</dt>
+						<dd>웹 페이지 안에서 프로그램에 의해 또는 사용자의 행위(예 : 탭 (tab) 키를 이용한 이동)에 의해 어떤 요소(element)가 선택되었을 경우에 초점이 그 요소에 있다고 말한다. 또한 어떤 요소가 선택되 었다는 것은 그 요소가 사용 가능 상태임을 의미한다. 대부분의 응 용 소프트웨어(웹 브라우저 포함)에서 초점을 받은 요소는 다른 요 소와 구분할 수 있게 밑줄을 보이게 하거나, 테두리를 씌우거나 또 는 색을 변경하는 등 시각적으로 구별할 수 있는 기능을 제공한다.</dd>
+
+						<dt>32. 콘텐츠 블록 (content block)</dt>
+						<dd>특정 내용에 관해 설명하거나 기술하고 있는 정보의 묶음 또는 영 역을 의미하며, 일반적으로 하나의 주제를 설명 또는 기술하고 있 는 장(chapter)이나 절(section) 등을 들 수 있다.</dd>
+
+						<dt>33. 콘텐츠의 선형구조</dt>
+						<dd>웹 페이지의 모든 콘텐츠는 시각적인 2 차원 공간의 상하좌우로 배 치되어 있어서 원하는 곳을 바로 찾아가거나 그 기능을 바로 선택 하여 실행할 수 있다. 그러나 화면 낭독 프로그램 사용자는 모든 콘텐츠를 순차적으로 접근할 수 있기 때문에 시각적인 배치가 아닌 읽어주는 순서가 중요하다. 여기서 콘텐츠가 보조 기술로 제공되는 순서를 콘텐츠의 선형 구조라고 하며 이 구조는 논리적이어야 한 다. 마크업 언어로 제작된 콘텐츠의 선형 구조는 스타일 시트와 테 이블 구조들을 제거하면 얻을 수 있다.</dd>
+
+						<dt>34. 키보드 (keyboard)</dt>
+						<dd>사용자가 텍스트를 입력하기 위하여 사용하는 입력장치를 의미한 다. 여기에는 키보드의 자판입력을 해독하기 위하여 사용되는 소프 트웨어도 포함된다. 예를 들어, 키보드의 형태를 가지지 않았지만 기능적으로 키보드를 대신하는 입력장치(예 : 노트북 및 개인 휴대 정보 단말기(PDA : Personal Digital Assistant) 등의 터치패드, 음 성 입력장치 등) 등도 키보드로 간주한다. 위치 지정 도구와 화면 키보드 프로그램을 조합한 가상 키보드 입력 장치와 스마트폰과 태 블릿 기기의 키보드 입력 프로그램도 키보드의 일종으로 간주한다.</dd>
+
+						<dt>35. 텍스트 아닌 콘텐츠 (non-text content)</dt>
+						<dd>그림, 이미지 등으로 제작된 텍스트, 애니메이션, 아스키(ASCII) 그 림문자, 불릿(bullet) 이미지, 그래픽 버튼, 이모티콘, 릿스피크 (leetspeak) 등과 같이 표준 문자(부호) 체계가 아닌 시각적 또는 청각적 정보가 포함된 콘텐츠를 의미한다. 한글 부호의 경우, 유니 코드, 조합형 또는 완성형 부호 체계를 사용하여 작성된 텍스트 이 외의 모든 경우를 포함한다.</dd>
+
+						<dt>36. 풀다운 메뉴 (pull-down menu)</dt>
+						<dd>메뉴 바(menu bar)에서 특정 항목을 선택(마우스 오버, 키보드를 이용한 초점)하거나, 활성화(마우스 클릭 또는 엔터키의 누름 등)되 면 선택한 메뉴 항목의 아래쪽으로 하위 메뉴 항목들이 펼쳐져 나 타나는 방식의 메뉴를 말한다.</dd>
+
+						<dt>37. 플러그인 (plug-in)</dt>
+						<dd>어떤 응용 프로그램에 추가되어 특정한 기능을 수행하도록 구현한 프로그램 모듈로, 웹 브라우저에서 사용되는 플래시 플레이어(Flash Player), 실버라이트 플레이어(Microsoft Silverlight Player), 검색기 (search engine) 및 자바 플러그인(Java plug-in) 등이 이에 해당 한다.</dd>
+
+						<dt>38. 핵심 영역</dt>
+						<dd>웹페이지의 핵심이 되는 주제 또는 콘텐츠를 담고 있는 영역으로, 웹페이지별로 사용자에게 전달하고 싶은 핵심 주제를 담고 있는 콘 텐츠가 위치한 영역을 의미한다. 예를 들어 뉴스 포털의 경우에 헤 드라인 뉴스가 위치한 곳을 핵심 영역이라고 할 수 있다.</dd>
+					</dl>
+				</article>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa4">웹 접근성을 고려한 콘텐츠 제작 방법</h2>
+			<section class="uksection">
+				<time datetime="2021-04-06 15:40:37">Last Updated on 2021-04-06 15:40:37</time>
+				<blockquote class="note" role="note">
+					<p>
+						정보 접근성은 모든 사용자가 특정 환경이나 신체적 장애에 상관없이 웹 사이트나 애플리케이션에서 제공하는<br>
+						모든 정보에 동등하게 접근하고 이용할 수 있도록 보장해 주는 것입니다.<br>
+						장애인뿐만 아니라 고령자, 비장애인도 접근성의 대상이 되며 4가지 핵심원리는 다음과 같습니다.<br>
+						각 지침을 4가지 원칙의 범주로 분류하여 제공합니다. 인식 가능하고, 조작 가능하며, 이해 할 수 있고, 견고 해야 합니다.<br>
+						크게 4가지 원칙 기준에 맞추어서 제작을 하며, 제작한 평가는 진단도구를 활용하여 진행합니다. 
+					</p>
+				</blockquote>
+				<article>
+					<ul>
+						<li>
+							<strong>인식 Perceivable</strong>
+							<p>모든 사용자는 서비스 콘텐츠를 인식할 수 있어야 합니다.</p>
+							<p>질문 : 시/청각 장애를 가진 사용자가 서비스를 인식하는데 문제가 없습니까?</p>
+						</li>
+						<li>
+							<strong>운용 Operable</strong>
+							<p>모든 사용자는 서비스의 기능을 운용할 수 있어야 합니다.</p>
+							<p>질문 : 마우스 없이 서비스를 이용할 수 있고, 성공적으로 수행할 수 있습니까?</p>
+						</li>
+						<li>
+							<strong>이해 Understandable</strong>
+							<p>모든 사용자가 서비스의 콘텐츠, 기능 사용법 등을 이해하기 쉬워야 합니다.</p>
+							<p>질문 : 명확하고 이해하기 쉬운 콘텐츠를 제공하고 있습니까?</p>
+						</li>
+						<li>
+							<strong>견고 Robust</strong>
+							<p>사용자가 이용하는 모든 기기 및 브라우저에서 접근, 사용 가능해야 합니다.</p>
+							<p>질문 : 특정 운영체제 또는 브라우저에서만 서비스를 이용할 수 있지 않나요?</p>
+						</li>
+					</ul>
+				</article>
+
+				<h3>다양한 사용자를 향한 폭넓은 이해</h3>
+				<article>
+					<dl>
+						<dt>전맹 사용자</dt>
+						<dd>시각을 통해 화면의 이미지 정보를 인식하기 어려워서 화면의 텍스트를 음성으로 읽어주는 화면 낭독 프로그램(스크린 리더)를 이용합니다.</dd>
+						<dt>색각이상 사용자</dt>
+						<dd>특정한 색 또는 색상 구별 자체가 어려워 색으로만 구분자를 표시할 경우 인지하기 어렵습니다.</dd>
+						<dt>고령자와 약시자</dt>
+						<dd>통상적인 크기의 폰트는 인식하기 어려워 폰트 확대 기능 또는 프로그램이 필요합니다.</dd>
+						<dt>청각장애 사용자</dt>
+						<dd>동영상의 음성, 오디오, 알람과 같은 청각 콘텐츠는 인식할 수 없습니다.</dd>
+						<dt>뇌병변 장애 및 지체장애 사용자</dt>
+						<dd>마우스와 같은 포인팅 장치를 이용하지 않는 사용자는 키보드만으로도 모든 정보의 접근 및 조작이 가능해야 합니다.</dd>
+						<dt>일시적 장애를 겪고 있는 사용자</dt>
+						<dd>사고로 인해 일시적으로 신체의 일부를 활용하지 못하거나 갑자기 극심한 불안감을 느껴 발작을 일으키는 사용자도 고려해야 합니다.</dd>
+						<dt>일반 사용자</dt>
+						<dd>
+							<ul>
+								<li>직사광선이나 조명이 반사되는 장소에 설치된 모니터에 표시되는 콘텐츠는 인식하기 어렵습니다.</li>
+								<li>매우 작은 폰트를 사용하는 콘텐츠는 알아보기 힘듭니다.</li>
+								<li>흑백 모니터를 사용할 경우엔 콘텐츠의 색을 구별하기 어렵습니다.</li>
+								<li>스피커가 고장난 상황이나 소음이 매우 심한 환경에서 청각을 이용하는 영상이나 음성 콘텐츠는 감상하기 힘듭니다.</li>
+								<li>한 손으로 물건을 들고 있는 경우, 나머지 한 손으로만 PC나 모바일을 조작해야 합니다.</li>
+							</ul>
+						</dd>
+					</dl>
+				</article>
+
+				<h3>정보 접근성 지침 이해하기</h3>
+				<article>
+					<dl>
+						<dt>대체 텍스트</dt>
+						<dd>
+							<p>눈으로 화면을 볼 수 없는 경우, 이미지에 대한 설명을 대체 텍스트로 입력하여 스크린리더를 통해 정보를 인식하게 도와줍니다.</p>
+							<p>텍스트 아닌 콘텐츠는 그 의미나 용도를 인식할 수 있도록 대체 텍스트를 제공해야 합니다.</p>
+						</dd>
+						<dt>자막 제공</dt>
+						<dd>
+							<p>음성을 귀로 듣지 못할 경우, 시각을 이용해서 내용을 이해하므로 멀티미디어 콘텐츠에는 자막, 대본 또는 수화를 제공해야 합니다.</p>
+						</dd>
+						<dt>콘텐츠 구분</dt>
+						<dd>
+							<p>특정한 색을 구별할 수 없는 사용자나 흑백 디스플레이 사용자와 같이 색상만으로 콘텐츠를 구분하지 못할 경우, 다양한 감각을 통해서 인식하므로 화면에 표시되는 모든 정보는 두 가지 이상의 구분자가 필요합니다.</p>
+						</dd>
+						<dt>명도 대비</dt>
+						<dd>
+							<p>저시력자, 고령자 등도 인식할 수 있도록 콘텐츠와 배경 간의 명도 대비는 4.5:1 이상이어야 합니다.</p>
+						</dd>
+						<dt>초점 이동</dt>
+						<dd>
+							<p>마우스와 같은 포인팅 장치를 이용하기 어려운 시각/지체 장애 사용자는 키보드만으로도 모든 정보의 접근 및 조작이 가능해야 하기 때문에 키보드에 의한 초점은 논리적으로 이동해야 하며 시각적으로 구별할 수 있어야 합니다.</p>
+						</dd>
+						<dt>조작 가능</dt>
+						<dd>
+							<p>손떨림이 심하여 미세한 조작이 어려운 경우와 같이 운동 장애가 있는 경우에도 사용자 입력 및 컨트롤은 조작이 가능하도록 제공되어야 합니다.</p>
+						</dd>
+						<dt>재생 조절 가능</dt>
+						<dd>
+							<p>손떨림이 심하여 미세한 조작이 어려운 경우와 같이 운동 장애가 있는 경우에도 사용자 입력 및 컨트롤은 조작이 가능하도록 제공되어야 합니다.</p>
+						</dd>
+						<dt>사용자 요구에 따른 실행</dt>
+						<dd>
+							<p>시각이나 청각 장애가 있는 사용자가 직접 마우스로 클릭하거나 키보드로 입력하지 않고도 자동으로 팝업 창이 오픈되거나 새로운 기능이 실행되면 그것을 인지하기 어렵습니다.</p>
+							<p>그러므로 사용자가 의도하지 않은 기능(새 창, 초점에 의한 맥락 변화 등)은 실행되지 않아야 합니다.</p>
+						</dd>
+						<dt>오류 정정</dt>
+						<dd>
+							<p>화면 낭독 프로그램을 이용하는 (시각 장애)사용자의 경우, 입력 오류가 발생했을 때 무엇이 잘못 되었는지 알 수가 없어서 입력 전체를 포기할 가능성이 있습니다.</p>
+							<p>그러므로 입력 오류가 발생할 경우 이를 쉽게 찾아서 정정할 수 있는 방법을 제공해야 합니다.</p>
+						</dd>
+					</dl>
+				</article>
+
+				<h3>접근성 지원 도구</h3>
+				<article>
+					<dl>
+						<dt>스크린 리더</dt>
+						<dd>
+							<p>컴퓨터나 모바일을 사용할 때 화면에 표시되는 입출력 정보를 음성으로 알려주는 프로그램입니다.</p>
+							<ul>
+								<li>센스리더</li>
+								<li>NVDA</li>
+								<li>JAWS</li>
+								<li>TalkBack</li>
+								<li>VoiceOver</li>
+							</ul>
+						</dd>
+						<dt>명도 대비</dt>
+						<dd>
+							<p>전경색과 배경색의 명도 차이를 비교할 수 있게 도와주는 확장 프로그램과 화면을 고대비로 전환할 수 있는 프로그램입니다.</p>
+							<ul>
+								<li>Colour Contrast Analyser</li>
+								<li>Contrast Ratio</li>
+								<li>고대비</li>
+							</ul>
+						</dd>
+						<dt>접근성 자동 진단</dt>
+						<dd>
+							<p>접근성을 개선이 필요한 부분을 자동으로 검출해주는 프로그램입니다.</p>
+							<ul>
+								<li>PC(WAVE)</li>
+								<li>모바일(Android)</li>
+								<li>WATCH2.0</li>
+							</ul>
+						</dd>
+						<dt>웹 브라우저 개발자 도구</dt>
+						<dd>
+							<p>웹 콘텐츠 구성 요소를 탐색할 수 있으며 대부분의 브라우저가 지원합니다.</p>
+							<ul>
+								<li>(Chrome) Web Developer</li>
+								<li>(Firefox) Web Developer</li>
+								<li>Firebug</li>
+							</ul>
+						</dd>
+					</dl>
+				</article>
+
+				<h3>구성요소</h3>
+				<article>
+					<blockquote class="note" role="note">
+						<p>
+							웹 접근성과 관련된 구성요소(Components)로는 크게 7가지로 이러한 구성요소는 독단적으로 떨어져 있기보다는, 서로 상호관계를 맺고 있습니다.<br>
+							구성요소를 자세히 살펴보면 다음과 같습니다.<br>
+							콘텐츠(Contents) : 웹 상의 정보로 텍스트, 이미지, 음성, 구조나 표현을 위한 마크업 또는 코드<br>
+							웹 브라우저, 미디어 플레이어 및 사용자 도구(UserAgent) : 웹 상의 콘텐츠를 사용자들이 이용할 수 있도록 도와주는 도구<br>
+							보조기술(Assistive Technologies) : 화면낭독 프로그램(Screen reader), 대체 키보드, 스위치, 스캐닝 소프트웨어, 화면확대 프로그램 등<br>
+							사용자(Users) : 웹을 이용하는 사람(장애인, 노인 등포함)<br>
+							개발자(Developers) : 디자이너, 코더(Coder), 저작자 등<br>
+							저작도구(Authoring Tools) : 웹 사이트를 제작할수 있는 소프트웨어<br>
+							평가도구(Evaluation Tools) : 웹 접근성 평가도구로 HTML Validators, CSS Validators 등이 포함<br>
+							이러한 다양한 구성요소를 파악하고 W3C에서는 3가지 분야의 기술 가이드라인(ATAG, WCAG, UAAG)을 제시하고 있으며, <br>
+							웹 접근성 기술 가이드라인의 기본이 되는 웹 관련 기술(HTML, XML, CSS, SVG, SMIL 등)에 대한 접근성 기술 명세서(Technical Specification)를 제공하고 있습니다.
+						</p>
+					</blockquote>
+					
+					<figure>
+						<img src="images/wa/img_specs.png" alt="다른 요소에 대한 지침들을 보여주는 삽화. 자세한 설명은 다음 링크 참고 : https://www.w3.org/WAI/intro/components-desc.html#guid">
+						<figcaption>[구성 요소에 대한 지침] 출처 : https://www.w3.org/WAI/standards-guidelines/ko#atag</figcaption>
+					</figure>
+					<dl>
+						<dt>개발자(Developers)</dt>
+						<dd>
+							<ul>
+								<li>
+									<strong>저작도구(Authoring Tools)</strong>
+									<p>웹 사이트를 제작할 수 있게 도와주는 소프트웨어</p>
+								</li>
+								<li>
+									<strong>평가도구(Evaluation Tools)</strong>
+									<p>웹 접근성 평가도구, HTML/CSS 타당성 검사기 등</p>
+									<p>웹 접근성 준수 여부 평가도구</p>
+								</li>
+							</ul>
+						</dd>
+						<dt>사용자(Users)</dt>
+						<dd>
+							<ul>
+								<li>
+									<strong>웹브라우저, 미디어 플레이어(Browsers, Media Players)</strong>
+									<p>웹 상의 콘텐츠를 사용자들이 이용할 수 있도록 도와주는 도구</p>
+								</li>
+								<li>
+									<strong>보조기술(Assistive Technologies)</strong>
+									<p>화면낭독 프로그램(Screen reader), 대체 키보드, 스위치, 스캐닝 소프트웨어, 화면 확대 프로그램 등</p>
+								</li>
+							</ul>
+						</dd>
+						<dt>공통</dt>
+						<dd>
+							<ul>
+								<li>
+									<strong>콘텐츠(Contents)</strong>
+									<p>웹 페이지 또는 웹 어플리케이션에 있는 정보</p>
+									<p>텍스트, 이미지, 소리 정보와 같은 자연적인 정보 (natural information)</p>
+									<p>구조와 표현 등을 정의하는 코드나 마크업</p>
+								</li>
+								<li>
+									<strong>가이드라인</strong>
+									<p>웹 콘텐츠 접근성 가이드라인(WCAG, Web Content Accessibility Guidelines)</p>
+									<p>저작 도구 접근성 가이드라인(ATAG, Authoring Tool Accessibility Guidelines)</p>
+									<p>사용자 도구 접근성 가이드라인(UAAG, User Agent Accessibility Guidelines)</p>
+								</li>
+								<li>
+									<strong>기술 사양</strong>
+									<p>웹 접근성을 지원하기 위한 기술 사양</p>
+									<p>HTML, XML, CSS, SVG, SMIL 등</p>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</article>
+				
+				
+				<dl class="linkdoc">
+					<dt>참조</dt>
+					<dd>
+						<a href="https://www.w3.org/WAI/standards-guidelines/ko#atag" target="_blank" title="새 창 열림">W3C 접근성 기준 개요</a>
+						<a href="https://www.wah.or.kr:444/Participation/technique.asp?tab=1" target="_blank" title="새 창 열림">웹접근성 연구소 웹 콘텐츠 제작기법</a>
+						<a href="https://accessibility.naver.com/accessibility" target="_blank" title="새 창 열림">NAVER 접근성</a>
+					</dd>
+				</dl>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa5">인식의 용이성(perceivable)</h2>
+			<section class="uksection">
+				<time datetime="2021-04-08 14:22:32">Last Updated on 2021-04-08 14:22:32</time>
+				<blockquote class="note" role="note">
+					<p>
+						인식의 용이성은 사용자가 장애 유무 등에 관계없이 웹 사이트에서 제공하는 모든 콘텐츠를 동등하게 인식할 수 있도록 제공하는 것을 의미하며,<br>
+						대체 텍스트, 멀티미디어 대체 수단, 명료성의 3 가지 지침으로 구성, 7개의 검사 항목이 있습니다. 
+					</p>
+				</blockquote>
+				
+				<h3 id="wa5_1">대체 텍스트</h3>
+				<section class="subsection">
+					<h4 id="wa5_1_1">(적절한 대체 텍스트 제공) 텍스트 아닌 콘텐츠는 그 의미나 용도를 인식할 수 있도록 대체 텍스트를 제공해야 한다.</h4>
+					<article>
+						이미지 등 텍스트 아닌 콘텐츠를 이용할 경우, 그 의미나 용도를 동등하게 인식할 수 있도록 적절한 대체 텍스트를 제공해야 한다. 
+						대체 텍스트는 간단명료하게 제공해야 한다.
+						단순히 장식이나 시각적인 형태를 위해 사용되는 콘텐츠의 경우, 보조 기술을 통해 해당 설명을 제공받을 때 오히려 혼란을 일으킬 가능성이 있으므로 대체 텍스트로 공백 문자를 제공해야 한다.
+
+						눈으로 화면을 볼 수 없는 경우, 이미지에 대한 설명을 대체 텍스트로 입력하여 스크린리더를 통해 정보를 인식하게 도와줍니다. 텍스트 아닌 콘텐츠는 그 의미나 용도를 인식할 수 있도록 대체 텍스트를 제공해야 합니다.
+					</article>
+				</section>
+				<h3 id="wa5_2">멀티미디어 대체 수단</h3>
+				<section class="subsection">
+					<h4 id="wa5_2_1">(자막 제공) 멀티미디어 콘텐츠에는 자막, 대본 또는 수화를 제공해야 한다.</h4>
+					<article>
+						멀티미디어 콘텐츠에는 자막, 대본 또는 수화를 제공해야 한다. 가장 중요한 요소는 멀티미디어 콘텐츠와 동등한 내용을 제공하는 것이다.
+					</article>
+				</section>
+				<h3 id="wa5_3">명료성</h3>
+				<section class="subsection">
+					<h4 id="wa5_3_1">(색에 무관한 콘텐츠 인식) 콘텐츠는 색에 관계없이 인식될 수 있어야 한다.</h4>
+					<article>
+						콘텐츠는 색에 관계없이 인식될 수 있어야 한다.
+						콘텐츠에서 제공하는 모든 정보는 특정한 색을 구별할 수 없는 사용자, 흑백 디스플레이 사용자, 흑백 인쇄물을 보는 사용자 및 고대비 모드 사용자가 인식할 수 있도록 제공해야 한다.
+					</article>
+					<h4 id="wa5_3_2">(명확한 지시 사항 제공) 지시 사항은 모양, 크기, 위치, 방향, 색, 소리 등에 관계없이 인식될 수 있어야 한다.</h4>
+					<article>
+						지시사항은 모양, 크기, 위치, 방향, 색, 소리 등에 관계없이 인식될 수 있어야 한다.
+					</article>
+					<h4 id="wa5_3_3">(텍스트 콘텐츠의 명도 대비) 텍스트 콘텐츠와 배경 간의 명도 대비는 4.5 대 1 이상이어야 한다.</h4>
+					<article>
+						텍스트 및 텍스트 이미지는 배경 간의 충분한 대비를 제공하여, 저시력 장애인, 색각 장애인, 노인 등도 콘텐츠를 인식할 수 있도록 제공해야 한다. 텍스트 및 텍스트 이미지와 배경 간의 명도 대비는 4.5 대 1 이상이어야 한다.
+					</article>
+					<h4 id="wa5_3_4">(자동 재생 금지) 자동으로 소리가 재생되지 않아야 한다.</h4>
+					<article>
+						자동으로 소리가 재생됨으로 인해 화면 낭독 프로그램 사용자가 콘텐츠를 인식하고 사용하는데 방해받지 않아야 한다. 단, 자동으로 재생되는 소리는 3 초 내에 멈추거나, 지정된 키(예 : esc 키)를 누르면 재생을 멈추도록 구현한 경우에 자동 재생음을 허용한다.
+					</article>
+					<h4 id="wa5_3_5">(콘텐츠 간의 구분) 이웃한 콘텐츠는 구별될 수 있어야 한다.</h4>
+					<article>
+						이웃한 콘텐츠는 시각적으로 구분되도록 제공해야 한다. 테두리, 구분선, 서로 다른 무늬 적용, 배경색 명도 또는 채도 조정, 줄 간격 또는 글자 간격 조정 등의 방법을 이용한다.
+					</article>
+				</section>
+			</section>
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa6">운용의 용이성(operable)</h2>
+			<section class="uksection">
+				<time datetime="2021-04-08 14:22:32">Last Updated on 2021-04-08 14:22:32</time>
+				<blockquote class="note" role="note">
+					<p>
+						지침 4개, 검사 항목 9개로 구성 되어있습니다.
+					</p>
+				</blockquote>
+				<h3 id="wa6_1">입력장치 접근성</h3>
+				<section class="subsection">
+					<h4 id="wa6_1_1">(키보드 사용 보장) 모든 기능은 키보드만으로도 사용할수 있어야 한다.</h4>
+					<article>
+						모든 기능은 키보드만으로도 사용할 수 있어야 한다. 
+					</article>
+					<h4 id="wa6_1_2">(초점 이동) 키보드에 의한 초점은 논리적으로 이동해야 하며 시각적으로 구별할 수 있어야 한다.</h4>
+					<article>
+						키보드 조작을 통해 버튼이 초점을 받았을 때 이 버튼의 주위에 점선의 테두리가 표시되도록 하여 사용자 입력 등이 조작을 통해 초점을 받았을 때, 해당 컨트롤이 초점을 받았음을 시각적으로 구별할 수 있도록 한다.
+					</article>
+					<h4 id="wa6_1_3">(조작 가능) 사용자 입력 및 컨트롤은 조작 가능하도록 제공되어야 한다.</h4>
+					<article>
+						모든 이웃한 컨트롤은 개별적으로 선택하고 사용할 수 있도록 충분한 크기로 제공해야 한다.
+					</article>
+				</section>
+				<h3 id="wa6_2">충분한 시간 제공</h3>
+				<section class="subsection">
+					<h4 id="wa6_2_1">(응답시간 조절) 시간제한이 있는 콘텐츠는 응답시간을 조절할 수 있어야 한다.</h4>
+					<article>
+						시간제한이 있는 콘텐츠는 가급적 포함하지 않는 것이 바람직하다. 보안 등의 사유로 시간제한이 반드시 필요할 경우에는 반응 시간이 완료되기 전에 사용자가 시간제한을 해제 또는 연장할 수 있는 수단을 제공해야 한다. 반응 시간 조절 기능은 최소 20초 전에 알려 주어야 한다.
+						단, 온라인 경매, 실시간 게임 등과 같이 반응 시 간의 조절이 원천적으로 허용되지 않는 경우에는 이 검사 항목이 적용되지 않는다. 다만, 이 경우에도 사용자에게 시간제한이 있다는 것을 미리 알려주고, 종료되었을 경우에도 이를 알려주어야 한다.
+					</article>
+					<h4 id="wa6_2_2">(정지 기능 제공) 자동으로 변경되는 콘텐츠는 움직임을 제어할 수 있어야 한다.</h4>
+					<article>
+						저시력 장애인이나 지적 장애인 등은 이동하거나 스크롤되는 콘텐츠를 사용하기 어려우므로, 
+						웹 콘텐츠는 사용자가 이동이나 스크롤을 일시 정지시키고, 지나간 콘텐츠 또는 앞으로 나타날 콘텐츠를 선택할 수 있는 컨트롤
+						(예 : ‘앞으로 이동', ‘뒤로 이동’, ‘정지’ 등)을 제공해야 한다. 
+					</article>
+				</section>
+				<h3 id="wa6_3">광과민성 발작 예방</h3>
+				<section class="subsection">
+					<h4 id="wa6_3_1">(깜빡임과 번쩍임 사용 제한) 초당 3~50 회 주기로 깜빡이거나 번쩍이는 콘텐츠를 제공하지 않아야 한다.</h4>
+					<article>
+						깜빡이거나(flashing) 번쩍이는(blinking) 콘텐츠로 인해 발작을 일으키지 않도록 빠르게 깜빡이거나 번쩍이는 콘텐츠를 초당 3∼50 회 주기로 제공하지 않아야 한다.
+						특히, 10 인치 이상의 기기에서는 콘텐츠에 의한 광과민성 발작 가능성을 주의해야 하므로 화면에 표시된 번쩍이는 콘텐츠가 차지하는 면적의 합이 화면 전체 면적의 10%를 넘지 않아야 한다. 
+						콘텐츠의 번쩍이는 시간을 3 초 미만으로 제한하면 지속적인 번쩍임으로 인한 사용자의 발작을 예방하면서도 콘텐츠의 중요성을 알릴 수 있다. 
+					</article>
+				</section>
+				<h3 id="wa6_4">쉬운 내비게이션</h3>
+				<section class="subsection">
+					<h4 id="wa6_4_1">(반복 영역 건너뛰기) 콘텐츠의 반복되는 영역은 건너뛸수 있어야 한다.</h4>
+					<article>
+						페이지가 로드되거나 갱신될 때마다 모든 웹페이지에 공통적으로 들어있는 메뉴 등을 다시 도달하게 되는 키보드 사용자와 화면 낭독 프로그램 사용자가 겪게 되는 불편을 방지하기 위해, 
+						사용자가 메뉴 등과 같은 반복 영역을 바로 건너뛰어 핵심 영역으로 직접 이동할 수 있는 수단을 제공해야 한다.
+					</article>
+					<h4 id="wa6_4_2">(제목 제공) 페이지, 프레임, 콘텐츠 블록에는 적절한 제목을 제공해야 한다. </h4>
+					<article>
+						페이지, 프레임, 콘텐츠 블록의 제목은 간단명료해야 하며, 해당 페이지, 프레임, 콘텐츠 블록을 유추할 수 있도록 제공해야 한다.
+					</article>
+					<h4 id="wa6_4_3">(적절한 링크 텍스트) 링크 텍스트는 용도나 목적을 이해할 수 있도록 제공해야 한다.</h4>
+					<article>
+						링크는 주변 맥락을 통하여 용도나 목적지를 명확하게 이해할 수 있는 링크 텍스트를 제공해야 한다. 
+						이미지 링크를 제공하는 경우에는 URL에 관한 정보를 제공하는 텍스트와 URL로 이동하는 이미지 링크는 하나의 링크로 구성하는 것이 바람직하다. 
+						이 경우, 이미지 링크의 대체 텍스트는 공백 문자로 제공해야 한다.
+					</article>
+				</section>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa7">이해의 용이성(understandable)</h2>
+			<section class="uksection">
+				<time datetime="2021-04-08 14:22:32">Last Updated on 2021-04-08 14:22:32</time>
+				<blockquote class="note" role="note">
+					<p>
+						지침 4개, 검사 항목 6개
+					</p>
+				</blockquote>
+				<h3 id="wa7_1">가독성</h3>
+				<section class="subsection">
+					<h4 id="wa7_1_1">(기본 언어 표시) 주로 사용하는 언어를 명시해야 한다.</h4>
+					<article>
+						다국어를 지원하는 화면 낭독 프로 그램을 사용하는 경우, 텍스트 콘텐츠의 언어 정보를 화면 낭독 프로그램으로 전달하기 때문에 콘텐츠에 적용되는 기본 언어를 반드시 명시해야 한다.
+					</article>
+				</section>
+				<h3 id="wa7_2">예측 가능성</h3>
+				<section class="subsection">
+					<h4 id="wa7_2_1">(사용자 요구에 따른 실행) 사용자가 의도하지 않은 기능(새 창, 초점에 의한 맥락 변화 등)은 실행되지 않아야 한다.</h4>
+					<article>
+						컨트롤이나 사용자 입력은 초점을 받았을 때에 의도하지 않는 기능이 자동적으로 실행되지 않도록 콘텐츠를 개발해야 한다. 
+						즉, 컨트롤이나 사용자 입력의 기능은 사용자의 마우스 클릭이나 키보드 조작에 의하여 실행되어야 한다. 특히 사용자가 인지하지 못한 상황에서 새 창, 팝업 창 등이 열리지 않아야 한다.
+					</article>
+				</section>
+				<h3 id="wa7_3">콘텐츠의 논리성</h3>
+				<section class="subsection">
+					<h4 id="wa7_3_1">(콘텐츠의 선형 구조) 콘텐츠는 논리적인 순서로 제공해야 한다.</h4>
+					<article>
+						웹 페이지를 구성하는 모든 콘텐츠는 사용자가 그 내용을 이해할 수 있도록 선형 구조로 작성되어야 한다. 
+						스타일 시트를 사용하면 웹 페이지를 구성하는 콘텐츠의 순서를 변경하지 않고도 화면에 표시되는 콘텐츠의 배치를 임의로 변경하더라도 웹 페이지를 구성하는 콘텐츠의 나열 순서는 그 맥락을 이해할 수 있도록 논리적으로 구성해야 한다. 
+					</article>
+					<h4 id="wa7_3_2">(표의 구성) 표는 이해하기 쉽게 구성해야 한다.</h4>
+					<article>
+						데이터를 표로 구성할 경우, 표의 내용, 구조 등을 이해할 수 있도 록 정보를 제공하여 표의 이용 방법을 예측할 수 있도록 한다. 
+						표의 내비게이션을 위하여 표의 셀은 제목 셀과 데이터 셀이 구분되도록 구성해야 한다. 
+					</article>
+				</section>
+				<h3 id="wa7_4">입력 도움</h3>
+				<section class="subsection">
+					<h4 id="wa7_4_1">(레이블 제공) 사용자 입력에는 대응하는 레이블을 제공해야 한다.</h4>
+					<article>
+						사용자 입력 근처에 사용법을 알려주는 레이블을 제공해야 한다.
+						레이블과 사용자 입력 간의 관계를 보조 기술이 인식할 수 있도록 대응시키면 화면 낭독 프로그램을 사용하는 시각 장애인에게 해당 컨트롤이 어떤 용도로 사용되는지를 알려줄 수 있으나 단순히 텍스트로만 제공할 경우 잘못된 데이터의 입력을 유발할 수 있다.
+					</article>
+					<h4 id="wa7_4_2">(오류 정정) 입력 오류를 정정할 수 있는 방법을 제공해야 한다.</h4>
+					<article>
+						입력 서식 작성 시, 사용자의 실수로 오류가 발생할 경우 이를 정정할 수 있는 방법을 제공해야 한다. 
+						또 온라인 서식에서 오류가 발생하는 경우, 사용자에게 오류 가 발생한 위치와 오류를 유발하게 된 이유 등에 관한 정보를 알려 주어야 한다.
+					</article>
+				</section>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa8">견고성(robust)</h2>
+			<section class="uksection">
+				<time datetime="2021-04-08 14:22:32">Last Updated on 2021-04-08 14:22:32</time>
+				<blockquote class="note" role="note">
+					<p>
+						지침 2개, 검사 항목 2개
+					</p>
+				</blockquote>
+				<h3 id="wa8_1">문법 준수</h3>
+				<section class="subsection">
+					<h4 id="wa8_1_1">(마크업 오류 방지) 마크업 언어의 요소는 열고 닫음, 중첩 관계 및 속성 선언에 오류가 없어야 한다.</h4>
+					<article>
+						마크업 언어의 요소는 열고 닫음, 중첩 관계 및 속성 선언에 오류가 없어야 한다. 
+						시작 요소와 끝나는 요소가 잘 대응되고 요소 간의 포함 관계가 어긋나지 않도록 웹 페이지의 마크업 문서를 구성하면, 웹 브라우저나 보조 기술이 작동을 멈추지 않고 콘텐츠를 명확히 전달할 수 있다.
+					</article>
+				</section>
+				<h3 id="wa8_2">웹 애플리케이션 접근성</h3>
+				<section class="subsection">
+					<h4 id="wa8_2_1">(웹 애플리케이션 접근성 준수) 콘텐츠에 포함된 웹 애플리케이션은 접근성이 있어야 한다. </h4>
+					<article>
+						웹 콘텐츠를 사용하는 데 필요한 플러그인 또는 웹 페이지의 기능을 실행하는 데 필요한 웹 애플리케이션은 사용자가 웹 페이지에 접근하여 사용하는 것을 방해하지 않아야 한다. 
+						국내의 보조 기술로 접근이 불가능한 웹 애플리케이션은 가능한 한 사용하지 않는 것이 좋으며, 꼭 사용해야 하는 경우에는 해당 웹 애플리케이션에 대한 대체 수단을 제공해야 한다
+					</article>
+				</section>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa9">WCAG 2.1</h2>
+			<section class="uksection">
+				<time datetime="2021-04-08 14:22:32">Last Updated on 2021-04-08 14:22:32</time>
+				<blockquote class="note" role="note">
+					<p>
+						W3C에서 제정한 웹 콘텐츠 접근성 가이드라인 (WCAG)에는 네 가지의 원칙이 있습니다.
+
+						인지 가능(Perceivable)
+						사용자가 콘텐츠를 인지할 수 있도록 해야 합니다. 폼에 라벨을 달아 입력을 돕고, 콘텐츠가 제공되지 않을 때를 대비해 대체 텍스트를 넣어주고, 꾸미는 요소는 스크린 리더기가 무시할 수 있도록 해주는 것들이 해당합니다.
+
+						작동 가능(Operable)
+						사용자가 UI 구성 요소를 사용할 수 있어야 합니다. 키보드 동작을 위한 :focus, tabindex 추가가 그 예입니다.
+
+						이해 가능(Understandable)
+						사용자가 콘텐츠를 이해할 수 있도록 도와야 합니다. 이게 텍스트인지 이미지인지 버튼인지 혼란이 오면 안 되겠죠.
+
+						안정적(Robust)
+						장애인 사용자를 위한 보조 기술은 물론, 다양한 사용자 에이전트에 호환되어야 합니다.
+					</p>
+				</blockquote>
+				<h3 id="wa9_1">인식(Perceivable)</h3>
+				<article>
+					정보 및 UI 컴포넌트가 인식 가능하도록 제공해야 합니다.
+					1.1 대체 텍스트
+					1.2 시간 기반 미디어
+					1.3 적응성
+					1.4 명료성
+				</article>
+				<h3 id="wa9_2">운용(Operable)</h3>
+				<article>
+					UI 컴포넌트와 내비게이션이 작동하는데 문제가 없어야 합니다.
+					2.1 키보드 접근
+					2.2 충분한 시간 제공
+					2.3 발작 예방
+					2.4 탐색 가능
+					2.5 입력 양식
+				</article>
+				<h3 id="wa9_3">이해(Understandable)</h3>
+				<article>
+					정보 전달 및 사용자 인터페이스(UI) 작동에 대해 이해하기 쉬워야 합니다.
+					3.1 가독성
+					3.2 예측 가능성
+					3.3 입력 도움​
+				</article>
+				<h3 id="wa9_4">견고(Robust)</h3>
+				<article>
+					콘텐츠는 보조 기술을 포함하여 다양한 사용자 에이전트가 처리 할 수 있을 정도로 견고해야 합니다.
+					4.1 호환성
+				</article>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa10">KWACG2.1 VS WCAG 2.1 비교 분석</h2>
+			<section class="uksection">
+				<time datetime="2021-04-08 14:22:32">Last Updated on 2021-04-08 14:22:32</time>
+				<blockquote class="note" role="note">
+					<p>
+						
+					</p>
+				</blockquote>
+				<article></article>
+			</section>
+
+			<hr title="Separator for Contents" style="margin:100px auto">
+
+			<h2 id="wa11">WAI-ARIA</h2>
+			<section class="uksection">
+				<time datetime="2021-07-16 13:12:50">Last Updated on 2021-07-16 13:12:50</time>
+				<blockquote class="note" role="note">
+					<p>
+						WAI-ARIA(Web Accessibility Initiative – Accessible Rich Internet Applications)
+					</p>
+				</blockquote>
+				<article></article>
+			</section>
+
+			<hr title="Separator for Contents">
+
+			<h2 id="waBookmark">참조 사이트</h2>
+			<section class="uksection">
+				<dl>
+					<dt>W3C</dt>
+					<dd>
+						<p><a href="https://www.w3.org/TR/WCAG21/" target="_blank" title="새 창 열림">Web Content Accessibility Guidelines (WCAG) 2.1</a></p>
+						<p><a href="http://www.kwacc.or.kr/WAI/wcag21/" target="_blank" title="새 창 열림">Web Content Accessibility Guidelines (WCAG) 2.1 한국어 번역본</a></p>
+						<p><a href="https://www.w3.org/WAI/standards-guidelines/" target="_blank" title="새 창 열림">W3C Accessibility Standards Overview</a></p>
+						<p><a href="https://www.w3.org/WAI/fundamentals/components/" target="_blank" title="새 창 열림">Essential Components of Web Accessibility</a></p>
+						<p><a href="https://www.w3.org/WAI/fundamentals/accessibility-principles/" target="_blank" title="새 창 열림">Accessibility Principles</a></p>
+						<p><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" title="새 창 열림">WCAG (Quick Reference)</a></p>
+						<p><a href="https://www.w3.org/WAI/ER/tools/" target="_blank" title="새 창 열림">Web Accessibility Evaluation Tools List</a></p>
+					</dd>
+					<dt>Site</dt>
+					<dd>
+						<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics" target="_blank" title="새 창 열림">MOZ WAI-ARIA basics</a></p>
+						<p><a href="https://accessibility.naver.com/accessibility" target="_blank" title="새 창 열림">NAVER 접근성</a></p>
+						<p><a href="https://naradesign.github.io/wcag-2.1.html" target="_blank" title="새 창 열림">naradesign</a></p>
+						<p><a href="https://github.com/lezhin/accessibility" target="_blank" title="새 창 열림">레진 웹 접근성 가이드라인</a></p>
+						<p><a href="http://www.haeppa.kr/tag/steam" target="_blank" title="새 창 열림">Haeppa World</a></p>
+						<p><a href="http://njpaiks.egloos.com/" target="_blank" title="새 창 열림">백남중</a></p>
+						<p><a href="https://www.wah.or.kr:444/" target="_blank" title="새 창 열림">웹접근성 연구소</a></p>
+						<p><a href="http://www.wa.or.kr/" target="_blank" title="새 창 열림">한국웹접근성인증평가원 (사단법인 한국장애인단체총연합회)</a></p>
+						<p><a href="http://www.webwatch.or.kr/" target="_blank" title="새 창 열림">주식회사 웹와치</a></p>
+						<p><a href="http://www.kwacc.or.kr/" target="_blank" title="새 창 열림">사단법인 한국시각장애인연합회 (한국웹접근성평가센터)</a></p>
+						<p><a href="https://romeo.elsevier.com/accessibility_checklist/" target="_blank" title="새 창 열림">Accessibility Checklist</a></p>
+						<p><a href="https://webaim.org/techniques/css/invisiblecontent/" target="_blank" title="새 창 열림">Webaim Tech</a></p>
+						<p><a href="https://wave.webaim.org/" target="_blank" title="새 창 열림">WAVE Web Accessibility Evaluation Tool</a></p>
+						<p><a href="https://www.powermapper.com/tests/screen-readers/aria/" target="_blank" title="새 창 열림">PowerMapper Website Tool Screen Readers Aria</a></p>
+					</dd>
+				</dl>
+<!-- 
+https://nuli.navercorp.com/community/article/1132969
+https://t-kachu-1004.tistory.com/16
+https://happysos.tistory.com/10
+https://web-for-all.tistory.com/2
+https://tink.uk/accessibility-support-for-css-generated-content/
+https://web-for-all.tistory.com/2
+https://thinkofweb.net/128
+https://kimtoma.com/2020/04/14/ui-color-contrast-check/
+https://medium.com/@barosmk/adobe-xd%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B8%B0%ED%9A%8D-%EA%B8%B0%EC%B4%88-826f97105c3d
+https://medium.com/@haecha_/figma-%ED%94%BC%EA%B7%B8%EB%A7%88-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EC%BB%AC%EB%9F%AC-%EC%8A%A4%ED%83%80%EC%9D%BC-6e6f0ea93ace
+https://marketplace.visualstudio.com/items?itemName=deque-systems.vscode-axe-linter
+https://v3.vuejs.org/guide/a11y-semantics.html#labels
+https://vue-a11y.com/project/#vue-accessibility-day
+https://developer.mozilla.org/ko/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Vue_first_component
+https://madewithvuejs.com/blog/top-vue-js-slider-components
+https://vuejsexamples.com/tag/a11y/
+http://vuejscomponent.com/vue-simple-range-slider
+
+
+ -->
+			</section>
+			<!-- //.uksection -->
+
+		</section>
+		<!-- //.ukbody -->
+	</main>
+	<!-- ukmain -->
+	<footer class="ukfooter">
+		&copy; 2019 All Right Reserved. By UXKM.
+	</footer>
+	<!-- //.ukfooter -->
+</body>
+</html>
